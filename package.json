@@ -1,0 +1,39 @@
+{
+  "name": "quantum-mobile-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Quantum Mobile - MERN Stack React Frontend (JavaScript)",
+  "scripts": {
+    "dev": "vite --port 5174 --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^7.3.0",
+    "@stripe/react-stripe-js": "^6.10.0",
+    "@stripe/stripe-js": "^9.16.0",
+    "axios": "^1.7.0",
+    "lucide-react": "^0.460.0",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.0",
+    "react-hot-toast": "^2.5.0",
+    "react-markdown": "^9.0.0",
+    "react-router-dom": "^7.18.4",
+    "socket.io-client": "^4.8.4",
+    "sockjs-client": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/sockjs-client": "^1.5.4",
+    "@vitejs/plugin-react": "^6.1.2",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^15.1.0",
+    "typescript": "^5.7.0",
+    "vite": "^8.3.5"
+  }
+}
