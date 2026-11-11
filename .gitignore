@@ -6,13 +6,19 @@ node_modules/
 # Production build artifacts
 dist/
 build/
+.next/
+*.tsbuildinfo
 
 # Environment variables & secrets
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
+
+# Temporary Scratch & Archives
+*.zip
+scratch/
+Untitled-1.py
+*_backup.*
 
 # Logs
 npm-debug.log*
