@@ -28,7 +28,7 @@ export default function Footer() {
 
           <div>
             <div className="footer-col-title">Shop & Catalog</div>
-            <Link to="/phones" className="footer-link">Smartphones (iPhone, Galaxy, Pixel)</Link>
+            <Link to="/ecosystem/apple" className="footer-link">Smartphones & Ecosystems</Link>
             <Link to="/accessories?category=Chargers" className="footer-link">GaN & MagSafe Chargers</Link>
             <Link to="/accessories?category=Cases" className="footer-link">Protective & Slim Cases</Link>
             <Link to="/accessories?category=Screen" className="footer-link">Tempered Glass Protectors</Link>
@@ -39,7 +39,7 @@ export default function Footer() {
             <div className="footer-col-title">Repair Services</div>
             <Link to="/repairs/book" className="footer-link">Book Walk-In Appointment</Link>
             <Link to="/repairs/book" className="footer-link">Mail-In Courier Repair</Link>
-            <Link to="/repairs/track" className="footer-link">Track Live Repair (REP-104)</Link>
+            <Link to="/repairs/book" className="footer-link">Schedule Service & Repair</Link>
             <Link to="/repairs/book" className="footer-link">Cracked Screen Replacement</Link>
             <Link to="/repairs/book" className="footer-link">Battery Health Replacement</Link>
           </div>

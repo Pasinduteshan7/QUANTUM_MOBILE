@@ -1,11 +1,20 @@
 import { Link } from 'react-router-dom';
 import { Star, ShoppingCart, MessageSquare } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
+
 export default function ProductCard({ product, onAddToCart }) {
+    const { addToCart } = useCart();
     const rating = product.avgRating ?? product.rating ?? 4.8;
     const reviews = product.reviewCount ?? 24;
     const discount = product.originalPrice && product.originalPrice > product.price
         ? Math.round((1 - product.price / product.originalPrice) * 100)
         : null;
+    const imageSrc = product.image || product.mainImage || (product.finishes && product.finishes[0]?.image) || '/iphone16pro.jpg';
+    const productId = product._id || product.id;
+    const formattedSpecs = Array.isArray(product.specs)
+        ? product.specs.map(s => s.desc || s.title).slice(0, 2).join(' • ')
+        : product.specs;
+
     const openChat = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -14,12 +23,12 @@ export default function ProductCard({ product, onAddToCart }) {
                 detail: {
                     name: product.name,
                     price: product.price,
-                    image: product.image
+                    image: imageSrc
                 }
             }));
         }
     };
-    const productUrl = `/phones/${product.id}`;
+    const productUrl = `/phones/${productId}`;
     return (<div className="product-card">
       {product.badge && <span className="product-badge">{product.badge}</span>}
       <span className="product-rating-badge">
@@ -29,7 +38,7 @@ export default function ProductCard({ product, onAddToCart }) {
 
       <Link to={productUrl} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div style={{ height: 190, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 14, background: '#f8fafc', borderBottom: '1px solid #f1f5f9' }}>
-          <img src={product.image} alt={product.name} style={{ maxHeight: '100%', objectFit: 'contain' }}/>
+          <img src={imageSrc} alt={product.name} style={{ maxHeight: '100%', objectFit: 'contain' }}/>
         </div>
       </Link>
 
@@ -38,7 +47,7 @@ export default function ProductCard({ product, onAddToCart }) {
         <Link to={productUrl} style={{ textDecoration: 'none', color: 'inherit' }}>
           <div className="product-name">{product.name}</div>
         </Link>
-        {product.specs && <div className="product-specs">{product.specs}</div>}
+        {formattedSpecs && <div className="product-specs">{formattedSpecs}</div>}
 
         <div className="product-price-row" style={{ marginTop: 'auto' }}>
           <span className="product-price">LKR {Number(product.price).toLocaleString()}</span>
@@ -48,16 +57,18 @@ export default function ProductCard({ product, onAddToCart }) {
 
         <div className="product-actions">
           <button className="btn-cart" onClick={() => {
-            if (onAddToCart)
+            if (onAddToCart) {
                 onAddToCart(product);
-            else {
-                if (typeof window !== 'undefined') {
-                    const stored = localStorage.getItem('quantum_cart');
-                    const list = stored ? JSON.parse(stored) : [];
-                    list.push({ ...product, quantity: 1, unitPrice: product.price });
-                    localStorage.setItem('quantum_cart', JSON.stringify(list));
-                    window.dispatchEvent(new Event('cart-updated'));
-                }
+            } else {
+                addToCart({
+                    id: productId,
+                    productId: productId,
+                    name: product.name,
+                    price: product.price,
+                    unitPrice: product.price,
+                    image: imageSrc,
+                    specs: formattedSpecs || 'Standard'
+                });
             }
         }}>
             <ShoppingCart size={14}/>

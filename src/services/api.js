@@ -51,7 +51,9 @@ api.interceptors.response.use((response) => response, (error) => {
             localStorage.removeItem('quantum_token');
             localStorage.removeItem('quantum_user');
             if (window.location.pathname.startsWith('/admin')) {
-                window.location.href = '/login?redirect=/admin';
+                window.location.href = '/admin';
+            } else if (window.location.pathname.startsWith('/super-admin') || window.location.pathname.startsWith('/superadmin')) {
+                window.location.href = '/super-admin';
             }
         }
     }

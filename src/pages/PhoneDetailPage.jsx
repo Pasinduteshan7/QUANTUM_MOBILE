@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { Star, ShoppingCart, MessageSquare, ShieldCheck, Truck, CheckCircle2, ArrowLeft, Check, Award } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
+import { products } from '@/lib/mockData';
 import toast from 'react-hot-toast';
 const mockProduct = {
     id: 'p1',
@@ -68,8 +69,44 @@ const initialReviews = [
     }
 ];
 export default function ProductDetailPage() {
+    const { id } = useParams();
     const { addToCart } = useCart();
     const { user } = useAuth();
+    
+    const activeProduct = useMemo(() => {
+        const found = products.find(p => p.id === id);
+        if (!found) return mockProduct;
+        return {
+            ...mockProduct,
+            id: found.id,
+            name: found.name,
+            brand: found.brand,
+            basePrice: found.price,
+            originalPrice: found.originalPrice || Math.round(found.price * 1.1),
+            image: found.image,
+            badge: found.badge || 'GENUINE',
+            specs: [
+                { label: 'Key Specifications', value: found.specs },
+                { label: 'Display & Glass', value: 'High-refresh HDR AMOLED / Super Retina with oleophobic coating' },
+                { label: 'Chassis & Build', value: 'Precision engineered aerospace aluminum / titanium body' },
+                { label: 'Battery & Charging', value: 'All-day endurance with fast Power Delivery support' },
+                { label: 'Official Warranty', value: '1-Year Manufacturer Warranty + 6-Mo Quantum Care' },
+            ],
+            variants: {
+                storage: [
+                    { size: found.storage || '128GB', extra: 0 },
+                    { size: '256GB', extra: 25000 },
+                    { size: '512GB', extra: 55000 },
+                ],
+                colors: [
+                    { name: found.colour || 'Default', hex: '#2b2b2b' },
+                    { name: 'Silver / White', hex: '#e3e4e5' },
+                    { name: 'Titanium Gray', hex: '#99958e' },
+                ]
+            }
+        };
+    }, [id]);
+
     const [selectedStorage, setSelectedStorage] = useState('256GB');
     const [selectedColor, setSelectedColor] = useState('Black Titanium');
     const [quantity, setQuantity] = useState(1);
@@ -77,28 +114,30 @@ export default function ProductDetailPage() {
     const [showReviewModal, setShowReviewModal] = useState(false);
     const [newRating, setNewRating] = useState(5);
     const [newComment, setNewComment] = useState('');
-    const currentStorageExtra = mockProduct.variants.storage.find(s => s.size === selectedStorage)?.extra || 0;
-    const currentPrice = mockProduct.basePrice + currentStorageExtra;
-    const handleAddToCart = () => {
-        addToCart({
-            id: `${mockProduct.id}-${selectedStorage}-${selectedColor}`,
-            productId: mockProduct.id,
-            itemCode: mockProduct.id,
-            name: `${mockProduct.name} (${selectedStorage}, ${selectedColor})`,
+    const currentStorageExtra = activeProduct.variants.storage.find(s => s.size === selectedStorage)?.extra || 0;
+    const currentPrice = activeProduct.basePrice + currentStorageExtra;
+    const handleAddToCart = async () => {
+        await addToCart({
+            id: `${activeProduct.id}-${selectedStorage}-${selectedColor}`,
+            productId: activeProduct.id,
+            itemCode: activeProduct.id,
+            name: `${activeProduct.name} (${selectedStorage}, ${selectedColor})`,
             price: currentPrice,
             unitPrice: currentPrice,
             quantity,
-            image: mockProduct.image
+            image: activeProduct.image
         });
-        toast.success(`Added ${quantity}x ${mockProduct.name} to cart!`);
     };
     const openChat = () => {
         if (typeof window !== 'undefined') {
             window.dispatchEvent(new CustomEvent('open-store-chat', {
                 detail: {
-                    name: `${mockProduct.name} (${selectedStorage}, ${selectedColor})`,
+                    id: activeProduct.id,
+                    name: `${activeProduct.name}`,
                     price: currentPrice,
-                    image: mockProduct.image
+                    image: activeProduct.image,
+                    finish: selectedColor,
+                    storage: selectedStorage
                 }
             }));
         }
@@ -125,8 +164,8 @@ export default function ProductDetailPage() {
       <div className="container">
         {/* Breadcrumb */}
         <div style={{ marginBottom: 20 }}>
-          <Link to="/phones" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#0284c7', fontWeight: 600, textDecoration: 'none' }}>
-            <ArrowLeft size={14}/> Back to Catalog
+          <Link to="/ecosystem/apple" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#0284c7', fontWeight: 600, textDecoration: 'none' }}>
+            <ArrowLeft size={14}/> Back to Ecosystem
           </Link>
         </div>
 
@@ -135,9 +174,9 @@ export default function ProductDetailPage() {
           {/* Left: Product Images Showcase */}
           <div style={{ background: '#f8fafc', borderRadius: 20, padding: 32, border: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 440 }}>
             <span style={{ alignSelf: 'flex-start', background: '#e0f2fe', color: '#0284c7', padding: '4px 10px', borderRadius: 6, fontSize: 11, fontWeight: 800 }}>
-              {mockProduct.badge}
+              {activeProduct.badge}
             </span>
-            <img src={mockProduct.image} alt={mockProduct.name} style={{ maxWidth: '85%', maxHeight: 340, objectFit: 'contain', filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.1))', margin: '20px 0' }}/>
+            <img src={activeProduct.image} alt={activeProduct.name} style={{ maxWidth: '85%', maxHeight: 340, objectFit: 'contain', filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.1))', margin: '20px 0' }}/>
             <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
               {[1, 2, 3].map(th => (<div key={th} style={{
                 width: 54,
@@ -150,7 +189,7 @@ export default function ProductDetailPage() {
                 justifyContent: 'center',
                 cursor: 'pointer'
             }}>
-                  <img src={mockProduct.image} alt="thumbnail" style={{ width: 38, height: 38, objectFit: 'contain' }}/>
+                  <img src={activeProduct.image} alt="thumbnail" style={{ width: 38, height: 38, objectFit: 'contain' }}/>
                 </div>))}
             </div>
           </div>
@@ -158,10 +197,10 @@ export default function ProductDetailPage() {
           {/* Right: Specs, Variants & Actions */}
           <div>
             <div style={{ fontSize: 12, color: '#0284c7', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {mockProduct.brand}
+              {activeProduct.brand}
             </div>
             <h1 style={{ fontSize: 32, fontWeight: 900, margin: '4px 0 10px', fontFamily: 'Outfit, sans-serif', color: '#0f172a' }}>
-              {mockProduct.name}
+              {activeProduct.name}
             </h1>
 
             {/* Rating Summary Header */}
@@ -184,10 +223,10 @@ export default function ProductDetailPage() {
                 LKR {currentPrice.toLocaleString()}
               </span>
               <span style={{ fontSize: 16, color: '#94a3b8', textDecoration: 'line-through' }}>
-                LKR {(mockProduct.originalPrice + currentStorageExtra).toLocaleString()}
+                LKR {(activeProduct.originalPrice + currentStorageExtra).toLocaleString()}
               </span>
               <span style={{ fontSize: 11, background: '#fef2f2', color: '#dc2626', border: '1px solid #fecaca', padding: '2px 8px', borderRadius: 4, fontWeight: 800 }}>
-                SAVE LKR 35,000
+                SAVE LKR {Math.max(0, (activeProduct.originalPrice - activeProduct.basePrice)).toLocaleString()}
               </span>
             </div>
 
@@ -197,7 +236,7 @@ export default function ProductDetailPage() {
                 Select Storage Capacity
               </label>
               <div style={{ display: 'flex', gap: 10 }}>
-                {mockProduct.variants.storage.map(st => (<button key={st.size} onClick={() => setSelectedStorage(st.size)} style={{
+                {activeProduct.variants.storage.map(st => (<button key={st.size} onClick={() => setSelectedStorage(st.size)} style={{
                 padding: '8px 16px',
                 borderRadius: 10,
                 border: selectedStorage === st.size ? '2px solid #0284c7' : '1px solid #cbd5e1',
@@ -218,7 +257,7 @@ export default function ProductDetailPage() {
                 Finish: <strong style={{ color: '#0f172a' }}>{selectedColor}</strong>
               </label>
               <div style={{ display: 'flex', gap: 10 }}>
-                {mockProduct.variants.colors.map(col => (<button key={col.name} onClick={() => setSelectedColor(col.name)} title={col.name} style={{
+                {activeProduct.variants.colors.map(col => (<button key={col.name} onClick={() => setSelectedColor(col.name)} title={col.name} style={{
                 width: 32,
                 height: 32,
                 borderRadius: '50%',
@@ -291,7 +330,7 @@ export default function ProductDetailPage() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#334155' }}>
                 <ShieldCheck size={16} color="#0284c7"/>
-                <span>{mockProduct.warranty}</span>
+                <span>{activeProduct.warranty}</span>
               </div>
             </div>
           </div>
@@ -303,7 +342,7 @@ export default function ProductDetailPage() {
             Technical Specifications
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
-            {mockProduct.specs.map((sp, i) => (<div key={i} style={{ display: 'flex', flexDirection: 'column', padding: '12px 16px', background: '#f8fafc', borderRadius: 10, border: '1px solid #e2e8f0' }}>
+            {activeProduct.specs.map((sp, i) => (<div key={i} style={{ display: 'flex', flexDirection: 'column', padding: '12px 16px', background: '#f8fafc', borderRadius: 10, border: '1px solid #e2e8f0' }}>
                 <span style={{ fontSize: 11, color: '#64748b', textTransform: 'uppercase', fontWeight: 800 }}>{sp.label}</span>
                 <span style={{ fontSize: 13, color: '#0f172a', fontWeight: 600, marginTop: 4 }}>{sp.value}</span>
               </div>))}
