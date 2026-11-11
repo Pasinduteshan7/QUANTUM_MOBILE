@@ -9,6 +9,15 @@ export const productService = {
             if (Array.isArray(response.data)) {
                 return { products: response.data, total: response.data.length };
             }
+            if (response.data?.data?.products) {
+                return { 
+                    products: response.data.data.products, 
+                    total: response.data.data.pagination?.total ?? response.data.data.products.length 
+                };
+            }
+            if (response.data?.products) {
+                return { products: response.data.products, total: response.data.total ?? response.data.products.length };
+            }
             return response.data;
         }
         catch (error) {
@@ -27,7 +36,7 @@ export const productService = {
                 result = result.filter((p) => p.name.toLowerCase().includes(query) ||
                     p.brand.toLowerCase().includes(query) ||
                     p.specs?.toLowerCase().includes(query) ||
-                    p.itemCode.toLowerCase().includes(query));
+                    (p.itemCode && p.itemCode.toLowerCase().includes(query)));
             }
             if (filters?.minPrice !== undefined) {
                 result = result.filter((p) => p.price >= filters.minPrice);
@@ -41,7 +50,7 @@ export const productService = {
                 if (filters.sort === 'price_desc')
                     result.sort((a, b) => b.price - a.price);
                 if (filters.sort === 'rating')
-                    result.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+                    result.sort((a, b) => (b.avgRating || b.rating || 0) - (a.avgRating || a.rating || 0));
             }
             return { products: result, total: result.length };
         }
@@ -49,7 +58,7 @@ export const productService = {
     getProductById: async (id) => {
         try {
             const response = await api.get(`/products/${id}`);
-            return response.data;
+            return response.data?.data ?? response.data;
         }
         catch {
             const found = MOCK_PRODUCTS.find((p) => String(p.id) === String(id) || p.itemCode === String(id));

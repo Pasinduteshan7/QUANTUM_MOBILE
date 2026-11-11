@@ -1,125 +1,10161 @@
+// Quantum Mobile Synchronized Product Catalog
+// Contains all 201 Official Products & Flagships swept from Public Assets
 export const products = [
-    {
-        id: "p1", name: "iPhone 16 Pro", brand: "Apple", category: "Phones",
-        storage: "256GB", colour: "Black Titanium", price: 425000,
-        originalPrice: 460000, avgRating: 4.8, reviewCount: 38,
-        image: "/iphone16pro.jpg",
-        specs: "A18 Pro chip, ProMotion OLED, 48MP ProRaw camera, titanium frame",
-        badge: "NEW"
-    },
-    {
-        id: "p2", name: "Galaxy S24 Ultra", brand: "Samsung", category: "Phones",
-        storage: "512GB", colour: "Titanium Gray", price: 449000,
-        originalPrice: 489000, avgRating: 4.7, reviewCount: 54,
-        image: "/samsung_s24.jpg",
-        specs: "Snapdragon 8 Gen 3, 200MP Quad camera, built-in S Pen, 5000mAh",
-        badge: "HOT"
-    },
-    {
-        id: "p3", name: "Pixel 9 Pro", brand: "Google", category: "Phones",
-        storage: "256GB", colour: "Obsidian", price: 275000,
-        originalPrice: 299000, avgRating: 4.6, reviewCount: 22,
-        image: "/pixel9pro.jpg",
-        specs: "Google Tensor G4, 7 years updates, 50MP camera, AI features",
-        badge: "NEW"
-    },
-    {
-        id: "p4", name: "Anker 65W GaN Charger", brand: "Anker", category: "Chargers",
-        storage: null, colour: "Black", price: 14500,
-        originalPrice: 18000, avgRating: 4.9, reviewCount: 112,
-        image: "/accessories.jpg",
-        specs: "USB-C PD 3.0, 65W max, folds flat, compatible with laptops",
-        badge: null
-    },
-    {
-        id: "p5", name: "Spigen Ultra Hybrid Case", brand: "Spigen", category: "Cases",
-        storage: null, colour: "Crystal Clear", price: 5500,
-        originalPrice: 7200, avgRating: 4.5, reviewCount: 89,
-        image: "/accessories.jpg",
-        specs: "Military-grade protection, scratch-resistant back, flexible bumper",
-        badge: null
-    },
-    {
-        id: "p6", name: "OnePlus 12", brand: "OnePlus", category: "Phones",
-        storage: "256GB", colour: "Silky Black", price: 218000,
-        originalPrice: 245000, avgRating: 4.6, reviewCount: 33,
-        image: "/pixel9pro.jpg",
-        specs: "Snapdragon 8 Gen 3, Hasselblad 50MP, 100W SUPERVOOC charging",
-        badge: "SALE"
-    },
-    {
-        id: "p7", name: "Samsung Galaxy A55", brand: "Samsung", category: "Phones",
-        storage: "128GB", colour: "Awesome Lilac", price: 89000,
-        originalPrice: null, avgRating: 4.3, reviewCount: 41,
-        image: "/samsung_s24.jpg",
-        specs: "Exynos 1480, 50MP OIS camera, 5000mAh, IP67 water resistant",
-        badge: null
-    },
-    {
-        id: "p8", name: "Belkin Screen Protector", brand: "Belkin", category: "Accessories",
-        storage: null, colour: null, price: 4200,
-        originalPrice: 5500, avgRating: 4.4, reviewCount: 67,
-        image: "/accessories.jpg",
-        specs: "Tempered glass, UltraGlass 2 technology, easy install tray",
-        badge: null
-    },
+  {
+    "id": "prod_1",
+    "name": "Apple USB-C Earpods",
+    "brand": "Apple",
+    "category": "Audio",
+    "price": 9900,
+    "originalPrice": 11880,
+    "stock": 18,
+    "avgRating": 4.7,
+    "reviewCount": 67,
+    "image": "/APPLE/apple_usb-c-earpods.jpg",
+    "images": [
+      "/APPLE/apple_usb-c-earpods.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Gloss White",
+        "hex": "#ffffff",
+        "image": "/APPLE/apple_usb-c-earpods.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple USB-C Earpods with TRCSL warranty.",
+    "description": "Genuine product   Unique appearance of the possession of great power   Provides a powerful bass for movies and music    12 Months Warranty"
+  },
+  {
+    "id": "prod_2",
+    "name": "Apple 20W USB-C Power Adapter, Charger",
+    "brand": "Apple",
+    "category": "Chargers",
+    "price": 7900,
+    "originalPrice": 9480,
+    "stock": 3,
+    "avgRating": 4.8,
+    "reviewCount": 70,
+    "image": "/APPLE/apple_20w-usb-c-power-adapter.webp",
+    "images": [
+      "/APPLE/apple_20w-usb-c-power-adapter.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Gloss White (UK 3-Pin)",
+        "hex": "#ffffff",
+        "image": "/APPLE/apple_20w-usb-c-power-adapter.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Chargers, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Chargers"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple 20W USB-C Power Adapter, Charger with TRCSL warranty.",
+    "description": "Short Description      USB-C  20W  Genuine Apple Accessory"
+  },
+  {
+    "id": "prod_3",
+    "name": "Apple iPhone 18 Pro 256GB",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 485000,
+    "originalPrice": 533500,
+    "stock": 4,
+    "avgRating": 4.7,
+    "reviewCount": 77,
+    "image": "/APPLE/apple_iphone-18-pro_silver.webp",
+    "images": [
+      "/APPLE/apple_iphone-18-pro_silver.webp",
+      "/APPLE/apple_iphone-18-pro-max_burgundy.webp",
+      "/APPLE/apple_iphone-18_blue.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Silver Titanium",
+        "hex": "#d1d5db",
+        "image": "/APPLE/apple_iphone-18-pro_silver.webp"
+      },
+      {
+        "name": "Deep Burgundy",
+        "hex": "#5b142b",
+        "image": "/APPLE/apple_iphone-18-pro-max_burgundy.webp"
+      },
+      {
+        "name": "Titanium Blue",
+        "hex": "#1e3a5f",
+        "image": "/APPLE/apple_iphone-18_blue.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 18 Pro 256GB with TRCSL warranty.",
+    "description": "Apple A20   12 GB RAM   48 MP Triple Rear Camera   48 MP Front Camera   4288 mAh   6.3 inches"
+  },
+  {
+    "id": "prod_4",
+    "name": "Apple iPhone 18 Pro Max 256GB",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 539000,
+    "originalPrice": 592900,
+    "stock": 3,
+    "avgRating": 4.6,
+    "reviewCount": 52,
+    "image": "/APPLE/apple_iphone-18-pro-max_burgundy.webp",
+    "images": [
+      "/APPLE/apple_iphone-18-pro-max_burgundy.webp",
+      "/APPLE/apple_iphone-18-pro_silver.webp",
+      "/APPLE/apple_iphone-18_blue.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Deep Burgundy",
+        "hex": "#5b142b",
+        "image": "/APPLE/apple_iphone-18-pro-max_burgundy.webp"
+      },
+      {
+        "name": "Silver Titanium",
+        "hex": "#d1d5db",
+        "image": "/APPLE/apple_iphone-18-pro_silver.webp"
+      },
+      {
+        "name": "Titanium Blue",
+        "hex": "#1e3a5f",
+        "image": "/APPLE/apple_iphone-18_blue.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 18 Pro Max 256GB with TRCSL warranty.",
+    "description": "Description  Not announced yet  Glass front (Ceramic Shield 2), aluminum frame, aluminum back/ glass back (Ceramic Shield)  LTPO Super Retina XDR OLED, 120Hz, HDR10, Dolby Vision  6.9 inches Display"
+  },
+  {
+    "id": "prod_5",
+    "name": "Apple iPhone 17 Pro Max 256GB",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 433000,
+    "originalPrice": 476300,
+    "stock": 8,
+    "avgRating": 4.6,
+    "reviewCount": 60,
+    "image": "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg",
+    "images": [
+      "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg",
+      "/APPLE/apple_iphone-17-pro_deep-blue.jpg",
+      "/APPLE/apple_iphone-17-pro_silver.jpg",
+      "/APPLE/apple_iphone-17-pro_black_300x300.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Cosmic Orange",
+        "hex": "#ea580c",
+        "image": "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg"
+      },
+      {
+        "name": "Deep Blue",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-17-pro_deep-blue.jpg"
+      },
+      {
+        "name": "Silver Titanium",
+        "hex": "#d1d5db",
+        "image": "/APPLE/apple_iphone-17-pro_silver.jpg"
+      },
+      {
+        "name": "Space Black",
+        "hex": "#1f2937",
+        "image": "/APPLE/apple_iphone-17-pro_black_300x300.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 17 Pro Max 256GB with TRCSL warranty.",
+    "description": "Apple iPhone 17 Pro Max 256GB: Processor: Apple A19 Pro (3 nm) Display: 6.9 inches. with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_6",
+    "name": "Apple iPhone 17 Pro 256GB",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 411900,
+    "originalPrice": 453090,
+    "stock": 25,
+    "avgRating": 4.6,
+    "reviewCount": 46,
+    "image": "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg",
+    "images": [
+      "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg",
+      "/APPLE/apple_iphone-17-pro_deep-blue.jpg",
+      "/APPLE/apple_iphone-17-pro_silver.jpg",
+      "/APPLE/apple_iphone-17-pro_black_300x300.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Cosmic Orange",
+        "hex": "#ea580c",
+        "image": "/APPLE/apple_iphone-17-pro_cosmic-orange.jpg"
+      },
+      {
+        "name": "Deep Blue",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-17-pro_deep-blue.jpg"
+      },
+      {
+        "name": "Silver Titanium",
+        "hex": "#d1d5db",
+        "image": "/APPLE/apple_iphone-17-pro_silver.jpg"
+      },
+      {
+        "name": "Space Black",
+        "hex": "#1f2937",
+        "image": "/APPLE/apple_iphone-17-pro_black_300x300.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 17 Pro 256GB with TRCSL warranty.",
+    "description": "Apple iPhone 17 Pro 256GB: Processor: Apple A19 Pro (3 nm) Display: 6.3 inches Battery:. Rs. 409,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_7",
+    "name": "Apple iPhone 17 (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 310900,
+    "originalPrice": 341990,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 26,
+    "image": "/APPLE/apple_iphone-17_black.jpg",
+    "images": [
+      "/APPLE/apple_iphone-17_black.jpg",
+      "/APPLE/apple_iphone-17_white.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Midnight Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-17_black.jpg"
+      },
+      {
+        "name": "Starlight White",
+        "hex": "#f8fafc",
+        "image": "/APPLE/apple_iphone-17_white.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 17 (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 17: Processor: Apple A19 (3 nm) Display: 6.3 inches Battery: Li-Ion 3692 mAh. Rs. 299,999 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_8",
+    "name": "Apple iPhone 16 Pro Max (512GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 395990,
+    "originalPrice": 435589,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 75,
+    "image": "/APPLE/apple_iphone-16-pro-max_desert-titanium.png",
+    "images": [
+      "/APPLE/apple_iphone-16-pro-max_desert-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_natural-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_white-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_black-titanium.png"
+    ],
+    "finishes": [
+      {
+        "name": "Desert Titanium",
+        "hex": "#cbb7a2",
+        "image": "/APPLE/apple_iphone-16-pro-max_desert-titanium.png"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-16-pro-max_natural-titanium.png"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f0f0f2",
+        "image": "/APPLE/apple_iphone-16-pro-max_white-titanium.png"
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2f3133",
+        "image": "/APPLE/apple_iphone-16-pro-max_black-titanium.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 16 Pro Max (512GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Pro Max: PRE ORDER NOW 6.7\u2033 Super Retina XDR display Titanium with textured. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_9",
+    "name": "Apple iPhone 16 Pro Max (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 395990,
+    "originalPrice": 435589,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 72,
+    "image": "/APPLE/apple_iphone-16-pro-max_desert-titanium.png",
+    "images": [
+      "/APPLE/apple_iphone-16-pro-max_desert-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_natural-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_white-titanium.png",
+      "/APPLE/apple_iphone-16-pro-max_black-titanium.png"
+    ],
+    "finishes": [
+      {
+        "name": "Desert Titanium",
+        "hex": "#cbb7a2",
+        "image": "/APPLE/apple_iphone-16-pro-max_desert-titanium.png"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-16-pro-max_natural-titanium.png"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f0f0f2",
+        "image": "/APPLE/apple_iphone-16-pro-max_white-titanium.png"
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2f3133",
+        "image": "/APPLE/apple_iphone-16-pro-max_black-titanium.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 16 Pro Max (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Pro Max: PRE ORDER NOW 6.7\u2033 Super Retina XDR display Titanium with. Rs. 374,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_10",
+    "name": "Apple iPhone 16 Pro (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 301990,
+    "originalPrice": 332189,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 63,
+    "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+    "images": [
+      "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+      "/APPLE/apple_iphone-16-pro_natural-titanium.png",
+      "/APPLE/apple_iphone-16-pro_white-titanium.png",
+      "/APPLE/apple_iphone-16-pro_black-titanium.png"
+    ],
+    "finishes": [
+      {
+        "name": "Desert Titanium",
+        "hex": "#cbb7a2",
+        "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-16-pro_natural-titanium.png"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f0f0f2",
+        "image": "/APPLE/apple_iphone-16-pro_white-titanium.png"
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2f3133",
+        "image": "/APPLE/apple_iphone-16-pro_black-titanium.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 16 Pro (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Pro: PRE ORDER NOW 6.3\u2033 Super Retina XDR display Titanium with textured. Rs. 320,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_11",
+    "name": "Apple iPhone 16 Pro 512GB",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 345000,
+    "originalPrice": 379500,
+    "stock": 2,
+    "avgRating": 4.8,
+    "reviewCount": 39,
+    "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+    "images": [
+      "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+      "/APPLE/apple_iphone-16-pro_natural-titanium.png",
+      "/APPLE/apple_iphone-16-pro_white-titanium.png",
+      "/APPLE/apple_iphone-16-pro_black-titanium.png"
+    ],
+    "finishes": [
+      {
+        "name": "Desert Titanium",
+        "hex": "#cbb7a2",
+        "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-16-pro_natural-titanium.png"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f0f0f2",
+        "image": "/APPLE/apple_iphone-16-pro_white-titanium.png"
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2f3133",
+        "image": "/APPLE/apple_iphone-16-pro_black-titanium.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 16 Pro 512GB with TRCSL warranty.",
+    "description": "Apple iPhone 16 Pro 512GB: PRE ORDER NOW 6.3\u2033 Super Retina XDR display Titanium with. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_12",
+    "name": "Apple iPhone 16 Pro (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 389990,
+    "originalPrice": 428989,
+    "stock": 25,
+    "avgRating": 4.9,
+    "reviewCount": 41,
+    "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+    "images": [
+      "/APPLE/apple_iphone-16-pro_desert-titanium.png",
+      "/APPLE/apple_iphone-16-pro_natural-titanium.png",
+      "/APPLE/apple_iphone-16-pro_white-titanium.png",
+      "/APPLE/apple_iphone-16-pro_black-titanium.png"
+    ],
+    "finishes": [
+      {
+        "name": "Desert Titanium",
+        "hex": "#cbb7a2",
+        "image": "/APPLE/apple_iphone-16-pro_desert-titanium.png"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-16-pro_natural-titanium.png"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f0f0f2",
+        "image": "/APPLE/apple_iphone-16-pro_white-titanium.png"
+      },
+      {
+        "name": "Black Titanium",
+        "hex": "#2f3133",
+        "image": "/APPLE/apple_iphone-16-pro_black-titanium.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 16 Pro (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Pro: PRE ORDER NOW 6.3\u2033 Super Retina XDR display Titanium with textured. Rs. 408,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_13",
+    "name": "Apple iPhone 16 Plus (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 265900,
+    "originalPrice": 292490,
+    "stock": 22,
+    "avgRating": 4.9,
+    "reviewCount": 54,
+    "image": "/APPLE/apple_iphone-16_ultramarine.webp",
+    "images": [
+      "/APPLE/apple_iphone-16_ultramarine.webp",
+      "/APPLE/apple_iphone-16_pink.webp",
+      "/APPLE/apple_iphone-16_black.png"
+    ],
+    "finishes": [
+      {
+        "name": "Ultramarine",
+        "hex": "#4338ca",
+        "image": "/APPLE/apple_iphone-16_ultramarine.webp"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-16_pink.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-16_black.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 16 Plus (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Plus: PRE ORDER NOW 6.7\u2033 Super Retina XDR display Apple Intelligence A18. Rs. 270,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_14",
+    "name": "Apple iPhone 16 Plus (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 299000,
+    "originalPrice": 328900,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 15,
+    "image": "/APPLE/apple_iphone-16_ultramarine.webp",
+    "images": [
+      "/APPLE/apple_iphone-16_ultramarine.webp",
+      "/APPLE/apple_iphone-16_pink.webp",
+      "/APPLE/apple_iphone-16_black.png"
+    ],
+    "finishes": [
+      {
+        "name": "Ultramarine",
+        "hex": "#4338ca",
+        "image": "/APPLE/apple_iphone-16_ultramarine.webp"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-16_pink.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-16_black.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 16 Plus (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16 Plus: PRE ORDER NOW 6.7\u2033 Super Retina XDR display Apple Intelligence A18. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_15",
+    "name": "Apple iPhone 16 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 259000,
+    "originalPrice": 284900,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 83,
+    "image": "/APPLE/apple_iphone-16_ultramarine.webp",
+    "images": [
+      "/APPLE/apple_iphone-16_ultramarine.webp",
+      "/APPLE/apple_iphone-16_pink.webp",
+      "/APPLE/apple_iphone-16_black.png"
+    ],
+    "finishes": [
+      {
+        "name": "Ultramarine",
+        "hex": "#4338ca",
+        "image": "/APPLE/apple_iphone-16_ultramarine.webp"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-16_pink.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-16_black.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 16 (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16: PRE ORDER NOW 6.1\u2033 Super Retina XDR display Apple Intelligence A18 chip. Rs. 241,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_16",
+    "name": "Apple iPhone 16 (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 288900,
+    "originalPrice": 317790,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 59,
+    "image": "/APPLE/apple_iphone-16_ultramarine.webp",
+    "images": [
+      "/APPLE/apple_iphone-16_ultramarine.webp",
+      "/APPLE/apple_iphone-16_pink.webp",
+      "/APPLE/apple_iphone-16_black.png"
+    ],
+    "finishes": [
+      {
+        "name": "Ultramarine",
+        "hex": "#4338ca",
+        "image": "/APPLE/apple_iphone-16_ultramarine.webp"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-16_pink.webp"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-16_black.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 16 (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 16: PRE ORDER NOW 6.1\u2033 Super Retina XDR display Apple Intelligence A18 chip. Rs. 270,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_17",
+    "name": "Apple iPhone 15 Plus (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 259900,
+    "originalPrice": 285890,
+    "stock": 8,
+    "avgRating": 4.6,
+    "reviewCount": 56,
+    "image": "/APPLE/apple_iphone-15-plus_pink.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-plus_pink.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Pink",
+        "hex": "#fbcfe8",
+        "image": "/APPLE/apple_iphone-15-plus_pink.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 15 Plus (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15 Plus: 1 Year Apple Care Warranty Dynamic Island stays on top of it all. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_18",
+    "name": "iPhone 15 Plus (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 264000,
+    "originalPrice": 290400,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 17,
+    "image": "/APPLE/apple_iphone-15-plus_pink.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-plus_pink.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Pink",
+        "hex": "#fbcfe8",
+        "image": "/APPLE/apple_iphone-15-plus_pink.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official iPhone 15 Plus (128GB) with TRCSL warranty.",
+    "description": "iPhone 15 Plus: 1 Year Apple Care Warranty Dynamic Island stays on top of it all. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_19",
+    "name": "Apple iPhone 15 (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 196500,
+    "originalPrice": 216150,
+    "stock": 25,
+    "avgRating": 4.6,
+    "reviewCount": 34,
+    "image": "/APPLE/apple_iphone-15_blue.png",
+    "images": [
+      "/APPLE/apple_iphone-15_blue.png",
+      "/APPLE/apple_iphone-15_black_300x300.png",
+      "/APPLE/apple_iphone-15_pink_100x100.png",
+      "/APPLE/apple_iphone-15_green_100x100.png"
+    ],
+    "finishes": [
+      {
+        "name": "Blue",
+        "hex": "#93c5fd",
+        "image": "/APPLE/apple_iphone-15_blue.png"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-15_black_300x300.png"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-15_pink_100x100.png"
+      },
+      {
+        "name": "Green",
+        "hex": "#86efac",
+        "image": "/APPLE/apple_iphone-15_green_100x100.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 15 (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15: 1 Year Apple Care Warranty Dynamic Island stays on top of it all. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_20",
+    "name": "Apple iPhone 15 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 227500,
+    "originalPrice": 250250,
+    "stock": 5,
+    "avgRating": 4.9,
+    "reviewCount": 20,
+    "image": "/APPLE/apple_iphone-15_blue.png",
+    "images": [
+      "/APPLE/apple_iphone-15_blue.png",
+      "/APPLE/apple_iphone-15_black_300x300.png",
+      "/APPLE/apple_iphone-15_pink_100x100.png",
+      "/APPLE/apple_iphone-15_green_100x100.png"
+    ],
+    "finishes": [
+      {
+        "name": "Blue",
+        "hex": "#93c5fd",
+        "image": "/APPLE/apple_iphone-15_blue.png"
+      },
+      {
+        "name": "Black",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-15_black_300x300.png"
+      },
+      {
+        "name": "Pink",
+        "hex": "#f472b6",
+        "image": "/APPLE/apple_iphone-15_pink_100x100.png"
+      },
+      {
+        "name": "Green",
+        "hex": "#86efac",
+        "image": "/APPLE/apple_iphone-15_green_100x100.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 15 (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15: 1 Year Apple Care Warranty Dynamic Island stays on top of it all. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_21",
+    "name": "Apple iPhone 15 Pro Max (512GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 440000,
+    "originalPrice": 484000,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 66,
+    "image": "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_blue-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_white-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_starlight.jpg",
+      "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Black Titanium",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg"
+      },
+      {
+        "name": "Blue Titanium",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-15-pro-max_blue-titanium.jpg"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f8fafc",
+        "image": "/APPLE/apple_iphone-15-pro-max_white-titanium.jpg"
+      },
+      {
+        "name": "Starlight",
+        "hex": "#f1f5f9",
+        "image": "/APPLE/apple_iphone-15-pro-max_starlight.jpg"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 15 Pro Max (512GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15 Pro Max: 1 Year Apple Care Warranty Processor: Apple A17 Pro Display: 6.7. Rs. 440,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_22",
+    "name": "Apple iPhone 15 Pro Max (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 339900,
+    "originalPrice": 373890,
+    "stock": 12,
+    "avgRating": 4.8,
+    "reviewCount": 74,
+    "image": "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_blue-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_white-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro-max_starlight.jpg",
+      "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Black Titanium",
+        "hex": "#18181b",
+        "image": "/APPLE/apple_iphone-15-pro-max_black-titanium.jpg"
+      },
+      {
+        "name": "Blue Titanium",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-15-pro-max_blue-titanium.jpg"
+      },
+      {
+        "name": "White Titanium",
+        "hex": "#f8fafc",
+        "image": "/APPLE/apple_iphone-15-pro-max_white-titanium.jpg"
+      },
+      {
+        "name": "Starlight",
+        "hex": "#f1f5f9",
+        "image": "/APPLE/apple_iphone-15-pro-max_starlight.jpg"
+      },
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 15 Pro Max (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15 Pro Max: 1 Year Apple Care Warranty Dynamic Island stays on top of it all. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_23",
+    "name": "Apple iPhone 15 Pro (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 297000,
+    "originalPrice": 326700,
+    "stock": 22,
+    "avgRating": 4.9,
+    "reviewCount": 47,
+    "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-pro_natural-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro_blue-titanium.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+      },
+      {
+        "name": "Blue Titanium",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-15-pro_blue-titanium.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 15 Pro (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15 Pro: 1 Year Apple Care Warranty Dynamic Island stays on top of it all 8GB. Rs. 297,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_24",
+    "name": "Apple iPhone 15 Pro (256GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 331900,
+    "originalPrice": 365090,
+    "stock": 4,
+    "avgRating": 5.0,
+    "reviewCount": 30,
+    "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg",
+    "images": [
+      "/APPLE/apple_iphone-15-pro_natural-titanium.jpg",
+      "/APPLE/apple_iphone-15-pro_blue-titanium.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Natural Titanium",
+        "hex": "#9e9893",
+        "image": "/APPLE/apple_iphone-15-pro_natural-titanium.jpg"
+      },
+      {
+        "name": "Blue Titanium",
+        "hex": "#1e3a8a",
+        "image": "/APPLE/apple_iphone-15-pro_blue-titanium.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple iPhone 15 Pro (256GB) with TRCSL warranty.",
+    "description": "Apple iPhone 15 Pro: 1 Year Apple Care Warranty Dynamic Island stays on top of it all 8GB. Rs. 339,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_25",
+    "name": "Apple iPhone 12 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 135900,
+    "originalPrice": 149490,
+    "stock": 18,
+    "avgRating": 4.7,
+    "reviewCount": 79,
+    "image": "/store_export_iphone/images/apple-iphone-12-128gb-srilanka/01.jpg",
+    "images": [
+      "/store_export_iphone/images/apple-iphone-12-128gb-srilanka/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_iphone/images/apple-iphone-12-128gb-srilanka/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 12 (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 12: Released 2020, October 23 164g, 7.4mm thickness iOS 14.1. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_26",
+    "name": "iPhone 14 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 160900,
+    "originalPrice": 176990,
+    "stock": 25,
+    "avgRating": 4.7,
+    "reviewCount": 28,
+    "image": "/APPLE/apple_iphone-14_blue.jpg",
+    "images": [
+      "/APPLE/apple_iphone-14_blue.jpg",
+      "/APPLE/apple_iphone-14_product-red.jpg",
+      "/APPLE/apple_iphone-14_purple.jpg",
+      "/APPLE/apple_iphone-14_starlight.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Blue",
+        "hex": "#60a5fa",
+        "image": "/APPLE/apple_iphone-14_blue.jpg"
+      },
+      {
+        "name": "(PRODUCT)RED",
+        "hex": "#dc2626",
+        "image": "/APPLE/apple_iphone-14_product-red.jpg"
+      },
+      {
+        "name": "Purple",
+        "hex": "#c084fc",
+        "image": "/APPLE/apple_iphone-14_purple.jpg"
+      },
+      {
+        "name": "Starlight",
+        "hex": "#f8fafc",
+        "image": "/APPLE/apple_iphone-14_starlight.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official iPhone 14 (128GB) with TRCSL warranty.",
+    "description": "iPhone 14: Exp. release 2022, September 16 172g, 7.8mm thickness iOS 16 1 Year Apple Care. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_27",
+    "name": "Apple iPhone 13 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 183900,
+    "originalPrice": 202290,
+    "stock": 18,
+    "avgRating": 4.7,
+    "reviewCount": 36,
+    "image": "/store_export_iphone/images/apple-iphone-13-128-gb/01.jpg",
+    "images": [
+      "/store_export_iphone/images/apple-iphone-13-128-gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_iphone/images/apple-iphone-13-128-gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 13 (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 13: Released 2021, September 24 174g, 7.7mm thickness iOS 15. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_28",
+    "name": "Apple iPhone 11 (128GB)",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 138000,
+    "originalPrice": 151800,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 35,
+    "image": "/store_export_iphone/images/apple-iphone-11-128-gb-2/01.jpg",
+    "images": [
+      "/store_export_iphone/images/apple-iphone-11-128-gb-2/01.jpg",
+      "/store_export_iphone/images/apple-iphone-11-128-gb-2/02.jpg",
+      "/store_export_iphone/images/apple-iphone-11-128-gb-2/03.jpg",
+      "/store_export_iphone/images/apple-iphone-11-128-gb-2/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Black",
+        "hex": "#1f2022",
+        "image": "/store_export_iphone/images/apple-iphone-11-128-gb-2/01.jpg"
+      },
+      {
+        "name": "White",
+        "hex": "#f9f6ef",
+        "image": "/store_export_iphone/images/apple-iphone-11-128-gb-2/02.jpg"
+      },
+      {
+        "name": "Purple",
+        "hex": "#d1cdda",
+        "image": "/store_export_iphone/images/apple-iphone-11-128-gb-2/03.jpg"
+      },
+      {
+        "name": "Green",
+        "hex": "#c7d9c6",
+        "image": "/store_export_iphone/images/apple-iphone-11-128-gb-2/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple iPhone 11 (128GB) with TRCSL warranty.",
+    "description": "Apple iPhone 11: Released 2019, September 20 194g, 8.3mm thickness iOS 13. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_29",
+    "name": "Samsung Galaxy Tab S10 FE 5G 8GB - 128GB WIFI",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 129900,
+    "originalPrice": 142890,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 45,
+    "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/01.jpg",
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/02.jpg",
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Moonstone Gray",
+        "hex": "#64748b",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/01.jpg"
+      },
+      {
+        "name": "Platinum Silver",
+        "hex": "#e2e8f0",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/02.jpg"
+      },
+      {
+        "name": "Moonstone Gray Edition 3",
+        "hex": "#64748b",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-wifi/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Tab S10 FE 5G 8GB - 128GB WIFI with TRCSL warranty.",
+    "description": "The Galaxy Tab S10 FE lets you do it all. It\u2019s got a brilliant\u00a0 Quad HD+ display \u00a0with a 90 Hz refresh rate. That\u2019s perfect for binge-watching shows or blowing off steam with your favourite game. You can sketch your ideas, create digital masterpieces or just sign a PDF. Whatever you do, the Galaxy Tab won\u2019t hold you back. The\u00a0 Exynos 1580 processor"
+  },
+  {
+    "id": "prod_30",
+    "name": "Xiaomi Mi TV Box S (3rd Gen)",
+    "brand": "Xiaomi",
+    "category": "Accessories",
+    "price": 24990,
+    "originalPrice": 27489,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 70,
+    "image": "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/01.webp",
+    "images": [
+      "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/01.webp",
+      "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/02.webp",
+      "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/xiaomi-mi-tv-box-s-3rd-gen/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Mi TV Box S (3rd Gen) with TRCSL warranty.",
+    "description": "Dolby Vision  4K UHD image quality  Dolby Atmos & DTS:X  2GB + 32GB Large Memory  Wi-Fi 6 Internet Connection  GoogleTV"
+  },
+  {
+    "id": "prod_31",
+    "name": "Xiaomi TV Stick 4k (2nd Gen)",
+    "brand": "Xiaomi",
+    "category": "Accessories",
+    "price": 17500,
+    "originalPrice": 19250,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 66,
+    "image": "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/01.webp",
+    "images": [
+      "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/01.webp",
+      "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/02.webp",
+      "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/xiaomi-tv-stick-4k-2nd-gen/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Xiaomi TV Stick 4k (2nd Gen) with TRCSL warranty.",
+    "description": "2GB RAM 8GB ROM  Portable 4K Streaming  MediaDolby Atmos\u2122 and Dolby Vision\u00ae supported  Powered by Android TV\u2122 11  Google Assistant* built-in"
+  },
+  {
+    "id": "prod_32",
+    "name": "Samsung Buds 4 Pro",
+    "brand": "Samsung",
+    "category": "Audio",
+    "price": 52590,
+    "originalPrice": 57849,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 68,
+    "image": "/store_export_android/images/samsung-buds-4-pro/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-buds-4-pro/01.jpg",
+      "/store_export_android/images/samsung-buds-4-pro/02.jpg",
+      "/store_export_android/images/samsung-buds-4-pro/03.jpg",
+      "/store_export_android/images/samsung-buds-4-pro/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Silver",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-buds-4-pro/01.jpg"
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "image": "/store_export_android/images/samsung-buds-4-pro/02.jpg"
+      },
+      {
+        "name": "Graphite Black",
+        "hex": "#18181b",
+        "image": "/store_export_android/images/samsung-buds-4-pro/03.jpg"
+      },
+      {
+        "name": "Violet",
+        "hex": "#8b5cf6",
+        "image": "/store_export_android/images/samsung-buds-4-pro/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Buds 4 Pro with TRCSL warranty.",
+    "description": "Description               Audio: \u00a0 24-bit / 96kHz Hi-Fi sound ,\u00a0 2-way speaker (Super Wide Woofer + Tweeter) ,\u00a0 Adaptive Active Noise Cancellation 2.0 ,\u00a0 360 Audio with Head Tracking         Battery: \u00a0 61mAh earbuds ,\u00a0 530mAh charging case , up to\u00a0 30 hours total playback (ANC off)         Connectivity: \u00a0 Bluetooth\u00ae 6.1 (LE Audio Ready) ,\u00a0 Auto Swi"
+  },
+  {
+    "id": "prod_33",
+    "name": "Samsung Galaxy Buds 4",
+    "brand": "Samsung",
+    "category": "Audio",
+    "price": 38900,
+    "originalPrice": 42790,
+    "stock": 4,
+    "avgRating": 4.7,
+    "reviewCount": 75,
+    "image": "/store_export_android/images/samsung-buds-4/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-buds-4/01.jpg",
+      "/store_export_android/images/samsung-buds-4/02.jpg",
+      "/store_export_android/images/samsung-buds-4/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Silver",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-buds-4/01.jpg"
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "image": "/store_export_android/images/samsung-buds-4/02.jpg"
+      },
+      {
+        "name": "Graphite",
+        "hex": "#334155",
+        "image": "/store_export_android/images/samsung-buds-4/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Buds 4 with TRCSL warranty.",
+    "description": "Description              Audio & Features:\u00a024-bit / 96kHz Hi-Fi sound,\u00a0Adaptive Active Noise Cancellation,\u00a0Adaptive EQ 2.0,\u00a0360 Audio with Head Tracking       Battery:\u00a045mAh buds,\u00a0515mAh charging case, up to\u00a030 hours total playback (ANC off)       Connectivity:\u00a0Bluetooth\u00ae 6.1 (LE Audio Ready),\u00a0Auto Switch,\u00a0Auracast\u00a0support       Calls & Controls:\u00a0S"
+  },
+  {
+    "id": "prod_34",
+    "name": "Samsung Galaxy Buds 3",
+    "brand": "Samsung",
+    "category": "Audio",
+    "price": 29990,
+    "originalPrice": 32989,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 78,
+    "image": "/store_export_android/images/samsung-galaxy-buds-3/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-buds-3/01.webp",
+      "/store_export_android/images/samsung-galaxy-buds-3/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Silver",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-buds-3/01.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "image": "/store_export_android/images/samsung-galaxy-buds-3/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Buds 3 with TRCSL warranty.",
+    "description": "Adaptive Equalizer  Bluetooth\u00ae 5.4 (LE Audio Ready)  3 mics + VPU (DNN + Personalized Beamforming)  Touch controls with a personal touch"
+  },
+  {
+    "id": "prod_35",
+    "name": "Samsung Galaxy Buds 3 FE",
+    "brand": "Samsung",
+    "category": "Audio",
+    "price": 27900,
+    "originalPrice": 30690,
+    "stock": 12,
+    "avgRating": 4.8,
+    "reviewCount": 48,
+    "image": "/store_export_android/images/samsung-galaxy-buds-3-fe/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-buds-3-fe/01.webp",
+      "/store_export_android/images/samsung-galaxy-buds-3-fe/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Silver",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-buds-3-fe/01.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#ffffff",
+        "image": "/store_export_android/images/samsung-galaxy-buds-3-fe/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Buds 3 FE with TRCSL warranty.",
+    "description": "Active Noise Cancellation (ANC).  Sleek finishes in timeless colors add a minimalistic charm that\u2019s always in fashion.  Fill your space with deep, multidirectional sound. 360 Audio creates a spatial audio experience, simulating surround sound for a truly captivating listening experience."
+  },
+  {
+    "id": "prod_36",
+    "name": "Samsung Galaxy Watch Ultra 47MM Titanium White",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 101900,
+    "originalPrice": 112090,
+    "stock": 8,
+    "avgRating": 4.6,
+    "reviewCount": 68,
+    "image": "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-titanium-white/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-titanium-white/01.jpg",
+      "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-titanium-white/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium White",
+        "hex": "#f8fafc",
+        "image": "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-titanium-white/01.jpg"
+      },
+      {
+        "name": "Titanium Gray",
+        "hex": "#64748b",
+        "image": "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-titanium-white/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch Ultra 47MM Titanium White with TRCSL warranty.",
+    "description": "Rugged, reliable, and ready for anything,the Samsung Galaxy Watch Ultra is designed for those who push boundaries.    6 Months Warranty"
+  },
+  {
+    "id": "prod_37",
+    "name": "Samsung Galaxy Watch 9 44MM - Graphite",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 100900,
+    "originalPrice": 110990,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 21,
+    "image": "/store_export_android/images/samsung-galaxy-watch-9-44mm-graphite/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-9-44mm-graphite/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Graphite",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-watch-9-44mm-graphite/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch 9 44MM - Graphite with TRCSL warranty.",
+    "description": "Dimensions & Weight: \u00a040mm case width, 8.6 mm thickness, and a light 31.5-gram weight.      Display: \u00a01.47-inch Super AMOLED touchscreen shielded by scratch-resistant Sapphire Crystal.      Peak Brightness: \u00a0Outdoor-readable display reaching up to an ultra-bright 3,000 nits.      Processor: \u00a03nm Qualcomm Snapdragon Wear Elite (SW6100) featuring a d"
+  },
+  {
+    "id": "prod_38",
+    "name": "Samsung Galaxy Watch 9 L340 40MM - Graphite",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 92500,
+    "originalPrice": 105000,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 60,
+    "image": "/store_export_android/images/samsung-galaxy-watch-9-l340-40mm-graphite/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-9-l340-40mm-graphite/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Graphite",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-watch-9-l340-40mm-graphite/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch 9 L340 40MM - Graphite with TRCSL warranty.",
+    "description": "Dimensions & Weight: \u00a040mm case width, 8.6 mm thickness, and a light 31.5-gram weight.      Display: \u00a01.47-inch Super AMOLED touchscreen shielded by scratch-resistant Sapphire Crystal.      Peak Brightness: \u00a0Outdoor-readable display reaching up to an ultra-bright 3,000 nits.      Processor: \u00a03nm Qualcomm Snapdragon Wear Elite (SW6100) featuring a d"
+  },
+  {
+    "id": "prod_39",
+    "name": "Huawei Band 11 Smartwatch",
+    "brand": "Huawei",
+    "category": "Watch",
+    "price": 14990,
+    "originalPrice": 17988,
+    "stock": 25,
+    "avgRating": 4.6,
+    "reviewCount": 12,
+    "image": "/store_export_android/images/huawei-band-11-smartwatch/01.webp",
+    "images": [
+      "/store_export_android/images/huawei-band-11-smartwatch/01.webp",
+      "/store_export_android/images/huawei-band-11-smartwatch/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/huawei-band-11-smartwatch/01.webp"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/huawei-band-11-smartwatch/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Huawei, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Huawei"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Huawei Band 11 Smartwatch with TRCSL warranty.",
+    "description": "Short Description      1.62-Inch High-Brightness Display  Enhanced Sleep Tracking  Ultra-Slim and Comfort Wear  Multi-Dimensional Emotional Wellbeing"
+  },
+  {
+    "id": "prod_40",
+    "name": "Samsung Galaxy Fit 3 Smartwatch",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 13900,
+    "originalPrice": 16680,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 84,
+    "image": "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/01.webp",
+      "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/02.webp",
+      "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/01.webp"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/02.webp"
+      },
+      {
+        "name": "Silver Steel",
+        "hex": "#f8fafc",
+        "image": "/store_export_android/images/samsung-galaxy-fit-3-smartwatch/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Fit 3 Smartwatch with TRCSL warranty.",
+    "description": "1.6\u2033 large AMOLED display  Up to 13 days on a single charge*  Tracking sleep and over 100 exercises  Instant notifications and media controls  * Incompatible with iOS *"
+  },
+  {
+    "id": "prod_41",
+    "name": "Samsung Galaxy A57 5G 8GB 128GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 111500,
+    "originalPrice": 122650,
+    "stock": 4,
+    "avgRating": 4.8,
+    "reviewCount": 32,
+    "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-128gb-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A57 5G 8GB 128GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1680 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_42",
+    "name": "Samsung Galaxy A57 5G 8GB 256GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 129900,
+    "originalPrice": 142890,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 38,
+    "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-8gb-256gb-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A57 5G 8GB 256GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1680 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_43",
+    "name": "Samsung Galaxy A57 5G 12GB - 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 147500,
+    "originalPrice": 162250,
+    "stock": 3,
+    "avgRating": 4.7,
+    "reviewCount": 77,
+    "image": "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a57-5g-12gb-256gb-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A57 5G 12GB - 256GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1680 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_44",
+    "name": "Samsung Galaxy A37 5G 12GB - 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 112900,
+    "originalPrice": 124190,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 19,
+    "image": "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-12gb-256gb-price-in-srilanka-copy/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A37 5G 12GB - 256GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1480 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_45",
+    "name": "Samsung Galaxy A37 5G 8GB 256GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 109900,
+    "originalPrice": 120890,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 35,
+    "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-256gb-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A37 5G 8GB 256GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1480 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_46",
+    "name": "Samsung Galaxy A37 5G 8GB - 128GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 99500,
+    "originalPrice": 109450,
+    "stock": 5,
+    "avgRating": 4.8,
+    "reviewCount": 60,
+    "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a37-5g-8gb-128gb-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A37 5G 8GB - 128GB with TRCSL warranty.",
+    "description": "Processor: Exynos 1480 (4 nm) chipset   Display: 6.7 inches   Camera: Triple Camera   Battery: 5000mAh"
+  },
+  {
+    "id": "prod_47",
+    "name": "Samsung Galaxy A27 6GB 128GB 5G",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 91000,
+    "originalPrice": 100100,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 82,
+    "image": "/store_export_android/images/samsung-galaxy-a27-6gb-128gb-5g-price-in-srilanka/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a27-6gb-128gb-5g-price-in-srilanka/01.webp",
+      "/store_export_android/images/samsung-galaxy-a27-6gb-128gb-5g-price-in-srilanka/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a27-6gb-128gb-5g-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a27-6gb-128gb-5g-price-in-srilanka/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A27 6GB 128GB 5G with TRCSL warranty.",
+    "description": "Qualcomm Snapdragon 6 Gen 3 (4nm) processor for elite efficiency   6GB RAM for flawless heavy multitasking and app switching   Massive 128GB internal storage (Expandable up to 2TB via MicroSD)   Expansive 6.7-inch Super AMOLED display with a 120Hz refresh rate   50MP primary rear camera equipped with Optical Image Stabilization (OIS)   Long-lasting"
+  },
+  {
+    "id": "prod_48",
+    "name": "Samsung Galaxy A27 8GB 256 5G",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 99500,
+    "originalPrice": 109450,
+    "stock": 3,
+    "avgRating": 4.7,
+    "reviewCount": 19,
+    "image": "/store_export_android/images/samsung-galaxy-a27-8gb-256-5g-price-in-srilanka/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a27-8gb-256-5g-price-in-srilanka/01.webp",
+      "/store_export_android/images/samsung-galaxy-a27-8gb-256-5g-price-in-srilanka/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a27-8gb-256-5g-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a27-8gb-256-5g-price-in-srilanka/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A27 8GB 256 5G with TRCSL warranty.",
+    "description": "Qualcomm Snapdragon 6 Gen 3 (4nm) processor for elite efficiency   8GB RAM for flawless heavy multitasking and app switching   Massive 256GB internal storage (Expandable up to 2TB via MicroSD)   Expansive 6.7-inch Super AMOLED display with a 120Hz refresh rate   50MP primary rear camera equipped with Optical Image Stabilization (OIS)   Long-lasting"
+  },
+  {
+    "id": "prod_49",
+    "name": "Samsung Galaxy A17 4G 4GB RAM 128GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 60900,
+    "originalPrice": 66990,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 41,
+    "image": "/store_export_android/images/samsung-galaxy-a17-4g-4gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a17-4g-4gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a17-4g-4gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-4gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-4gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A17 4G 4GB RAM 128GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A17 4G 4GB RAM 128GB: Processor: Mediatek Helio G99 (6 nm) Display: 6.7. Rs. 58,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_50",
+    "name": "Samsung A07 4GB 64GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 44000,
+    "originalPrice": 48400,
+    "stock": 3,
+    "avgRating": 5.0,
+    "reviewCount": 12,
+    "image": "/store_export_android/images/samsung-a07-4gb-64gb-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-a07-4gb-64gb-price-in-srilanka/01.jpg",
+      "/store_export_android/images/samsung-a07-4gb-64gb-price-in-srilanka/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-a07-4gb-64gb-price-in-srilanka/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-a07-4gb-64gb-price-in-srilanka/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung A07 4GB 64GB with TRCSL warranty.",
+    "description": "Samsung A07 4GB 64GB: Processor  Mediatek Helio G99 (6 nm)  Display: 6.7 inches Camera  With warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_51",
+    "name": "Samsung Galaxy Watch Ultra 47MM (2025)",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 103900,
+    "originalPrice": 114290,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 17,
+    "image": "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-2025/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-2025/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium White",
+        "hex": "#f8fafc",
+        "image": "/store_export_android/images/samsung-galaxy-watch-ultra-47mm-2025/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch Ultra 47MM (2025) with TRCSL warranty.",
+    "description": "Rugged, reliable,ready for anything, the Samsung Galaxy Watch Ultra is designed for those who push boundaries.    6 Months Warranty"
+  },
+  {
+    "id": "prod_52",
+    "name": "Samsung Galaxy Watch8 Classic (Watch 8) 46mm",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 89000,
+    "originalPrice": 97900,
+    "stock": 8,
+    "avgRating": 4.6,
+    "reviewCount": 81,
+    "image": "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/01.webp",
+      "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/02.jpg",
+      "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/02.jpg"
+      },
+      {
+        "name": "Silver Steel",
+        "hex": "#f8fafc",
+        "image": "/store_export_android/images/samsung-galaxy-watch8-classic-watch-8-46mm-price-in-srilanka/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch8 Classic (Watch 8) 46mm with TRCSL warranty.",
+    "description": "Short Description      46MM  Stainless Steel Material  Display Brightness up to 3000 nits  5 ATM + IP68 Resistant  445 mAh Battery  Google Gemini"
+  },
+  {
+    "id": "prod_53",
+    "name": "Samsung Galaxy Watch 8 44mm",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 67900,
+    "originalPrice": 74690,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 29,
+    "image": "/store_export_android/images/samsung-galaxy-watch-8-44mm-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-8-44mm-price-in-srilanka/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-galaxy-watch-8-44mm-price-in-srilanka/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch 8 44mm with TRCSL warranty.",
+    "description": "A new and improved BioActive sensor   Superior build quality with Armor Aluminum 2 frame.   A new squircle Cushion Design.   A modern Dynamic Lug system for easy wrist strap removal/replacement.   Thinner display bezels"
+  },
+  {
+    "id": "prod_54",
+    "name": "Samsung Galaxy Watch 8 40mm Black",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 61900,
+    "originalPrice": 68090,
+    "stock": 22,
+    "avgRating": 4.9,
+    "reviewCount": 73,
+    "image": "/store_export_android/images/samsung-galaxy-watch-8-40mm-price-in-srilanka/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-watch-8-40mm-price-in-srilanka/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/samsung-galaxy-watch-8-40mm-price-in-srilanka/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Watch 8 40mm Black with TRCSL warranty.",
+    "description": "A new and improved BioActive sensor   Superior build quality with Armor Aluminum 2 frame.   A new squircle Cushion Design.   A modern Dynamic Lug system for easy wrist strap removal/replacement.   Thinner display bezels"
+  },
+  {
+    "id": "prod_55",
+    "name": "Samsung Galaxy Tab S10 FE 5G 8GB - 128GB SIM",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 183900,
+    "originalPrice": 202290,
+    "stock": 4,
+    "avgRating": 5.0,
+    "reviewCount": 20,
+    "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/01.jpg",
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/02.jpg",
+      "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Moonstone Gray",
+        "hex": "#64748b",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/01.jpg"
+      },
+      {
+        "name": "Platinum Silver",
+        "hex": "#e2e8f0",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/02.jpg"
+      },
+      {
+        "name": "Moonstone Gray Edition 3",
+        "hex": "#64748b",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s10-fe-5g-8gb-128gb-sim/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Tab S10 FE 5G 8GB - 128GB SIM with TRCSL warranty.",
+    "description": "The Galaxy Tab S10 FE lets you do it all. It\u2019s got a brilliant\u00a0 Quad HD+ display \u00a0with a 90 Hz refresh rate. That\u2019s perfect for binge-watching shows or blowing off steam with your favourite game. You can sketch your ideas, create digital masterpieces or just sign a PDF. Whatever you do, the Galaxy Tab won\u2019t hold you back. The\u00a0 Exynos 1580 processor"
+  },
+  {
+    "id": "prod_56",
+    "name": "Samsung Galaxy A11 Tab 8GB 128GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 65500,
+    "originalPrice": 72050,
+    "stock": 5,
+    "avgRating": 4.8,
+    "reviewCount": 52,
+    "image": "/store_export_android/images/samsung-galaxy-a11-tab-8gb-128gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a11-tab-8gb-128gb/01.png",
+      "/store_export_android/images/samsung-galaxy-a11-tab-8gb-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a11-tab-8gb-128gb/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a11-tab-8gb-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A11 Tab 8GB 128GB with TRCSL warranty.",
+    "description": "Released 2025, September        335g or 337g, 8mm thickness        Android 15, up to 16, One UI 8        64GB storage, microSDXC"
+  },
+  {
+    "id": "prod_57",
+    "name": "Samsung Galaxy Tab A11 4GB - 64GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 48590,
+    "originalPrice": 53449,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 36,
+    "image": "/store_export_android/images/samsung-galaxy-tab-a11-4gb-64gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-a11-4gb-64gb/01.png",
+      "/store_export_android/images/samsung-galaxy-tab-a11-4gb-64gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-a11-4gb-64gb/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-tab-a11-4gb-64gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Tab A11 4GB - 64GB with TRCSL warranty.",
+    "description": "Released 2025, September        335g or 337g, 8mm thickness        Android 15, up to 16, One UI 8        64GB storage, microSDXC"
+  },
+  {
+    "id": "prod_58",
+    "name": "CMF by Nothing Watch Pro 2 Calling Smartwatch",
+    "brand": "Nothing",
+    "category": "Watch",
+    "price": 17900,
+    "originalPrice": 19690,
+    "stock": 3,
+    "avgRating": 4.7,
+    "reviewCount": 17,
+    "image": "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/01.webp",
+    "images": [
+      "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/01.webp",
+      "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/02.webp",
+      "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/01.webp"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/02.webp"
+      },
+      {
+        "name": "Silver Steel",
+        "hex": "#f8fafc",
+        "image": "/store_export_android/images/cmf-by-nothing-watch-pro-2-calling-smartwatch/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Nothing, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Nothing"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official CMF by Nothing Watch Pro 2 Calling Smartwatch with TRCSL warranty.",
+    "description": "1.32\u201d AMOLED display with auto-brightness  120 Sports Modes  Heart rate, sleep, stress and SpO\u2082 monitors  Built-in multi-system GPS  Bluetooth Calls with AI Noise Reduction"
+  },
+  {
+    "id": "prod_59",
+    "name": "CMF by Nothing Buds Pro 2 Wireless Earbuds",
+    "brand": "Nothing",
+    "category": "Audio",
+    "price": 16490,
+    "originalPrice": 18139,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/01.webp",
+    "images": [
+      "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/01.webp",
+      "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/02.webp",
+      "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Dark Grey",
+        "hex": "#1f2937",
+        "image": "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/01.webp"
+      },
+      {
+        "name": "Light Grey",
+        "hex": "#f3f4f6",
+        "image": "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/02.webp"
+      },
+      {
+        "name": "Orange",
+        "hex": "#ea580c",
+        "image": "/store_export_android/images/cmf-by-nothing-buds-pro-2-wireless-earbuds/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Nothing, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Nothing"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official CMF by Nothing Buds Pro 2 Wireless Earbuds with TRCSL warranty.",
+    "description": "Short Description      Al-Enhanced Clear Calls  Lightweight and Comfortable  Long Playtime and Fast Charging"
+  },
+  {
+    "id": "prod_60",
+    "name": "CMF by Nothing Buds 2 Plus Wireless Earbuds",
+    "brand": "Nothing",
+    "category": "Audio",
+    "price": 13490,
+    "originalPrice": 16188,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 15,
+    "image": "/store_export_android/images/cmf-by-nothing-buds-2-plus-wireless-earbuds/01.webp",
+    "images": [
+      "/store_export_android/images/cmf-by-nothing-buds-2-plus-wireless-earbuds/01.webp",
+      "/store_export_android/images/cmf-by-nothing-buds-2-plus-wireless-earbuds/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Graphite Silver",
+        "hex": "#71717a",
+        "image": "/store_export_android/images/cmf-by-nothing-buds-2-plus-wireless-earbuds/01.webp"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#ffffff",
+        "image": "/store_export_android/images/cmf-by-nothing-buds-2-plus-wireless-earbuds/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Nothing, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Nothing"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official CMF by Nothing Buds 2 Plus Wireless Earbuds with TRCSL warranty.",
+    "description": "12 mm LCP driver  50 dB hybrid ANC  Hi-Res Audio with LDAC  IP55 Water rating  Spatial Audio"
+  },
+  {
+    "id": "prod_61",
+    "name": "Samsung 65W Trio Charger Power Adapter",
+    "brand": "Samsung",
+    "category": "Chargers",
+    "price": 9990,
+    "originalPrice": 11988,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 15,
+    "image": "/APPLE/apple_20w-usb-c-power-adapter.webp",
+    "images": [
+      "/APPLE/apple_20w-usb-c-power-adapter.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Gloss White (UK 3-Pin)",
+        "hex": "#ffffff",
+        "image": "/APPLE/apple_20w-usb-c-power-adapter.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Chargers, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Chargers"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung 65W Trio Charger Power Adapter with TRCSL warranty.",
+    "description": "Charge 3 devices simultaneously at up to 65W \u2014 genuine Samsung Trio charger   with 2 USB-C ports and 1 USB-A port. 6 month warranty."
+  },
+  {
+    "id": "prod_62",
+    "name": "Samsung Galaxy A07 5G 8GB - 256GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 72000,
+    "originalPrice": 79200,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 36,
+    "image": "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/01.png",
+      "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/02.png",
+      "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a07-4g-8gb-256gb/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A07 5G 8GB - 256GB with TRCSL warranty.",
+    "description": "6.7\u2033 HD+ Display with 90Hz Refresh Rate   MediaTek Helio G99 Processor   5,000mAh Battery with 15W Charging   50MP Dual Rear Camera + 8MP Front Camera   6 Years of Android & Security Updates"
+  },
+  {
+    "id": "prod_63",
+    "name": "Samsung Galaxy A56 5G 12GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 129900,
+    "originalPrice": 142890,
+    "stock": 5,
+    "avgRating": 4.9,
+    "reviewCount": 50,
+    "image": "/store_export_android/images/samsung-galaxy-a56-5g-12gb-ram-256gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a56-5g-12gb-ram-256gb-2/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a56-5g-12gb-ram-256gb-2/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a56-5g-12gb-ram-256gb-2/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a56-5g-12gb-ram-256gb-2/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A56 5G 12GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A56 5G 12GB RAM 256GB: Processor: Exynos 1580 (4 nm) Display: 6.7 inches. Rs. 125,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_64",
+    "name": "Samsung Galaxy A36 5G 12GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 105900,
+    "originalPrice": 116490,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 45,
+    "image": "/store_export_android/images/samsung-galaxy-a36-5g-12gb-ram-256gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a36-5g-12gb-ram-256gb/01.png",
+      "/store_export_android/images/samsung-galaxy-a36-5g-12gb-ram-256gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a36-5g-12gb-ram-256gb/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a36-5g-12gb-ram-256gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A36 5G 12GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A36 5G 12GB RAM 256GB: Processor: Qualcomm SM6475-AB Snapdragon 6 Gen 3. Rs. 105,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_65",
+    "name": "Samsung Galaxy A26 5G 8GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 89500,
+    "originalPrice": 98450,
+    "stock": 5,
+    "avgRating": 4.8,
+    "reviewCount": 43,
+    "image": "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb-2/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb-2/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb-2/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb-2/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A26 5G 8GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A26 5G 8GB RAM 256GB: Processor: Exynos 1380 (5 nm). Rs. 82,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_66",
+    "name": "Samsung Galaxy A17 5G 8GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 85500,
+    "originalPrice": 94050,
+    "stock": 22,
+    "avgRating": 4.7,
+    "reviewCount": 49,
+    "image": "/store_export_android/images/samsung-galaxy-a17-5g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a17-5g-8gb-ram-256gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a17-5g-8gb-ram-256gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a17-5g-8gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a17-5g-8gb-ram-256gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A17 5G 8GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A17 5G 8GB RAM 256GB: Processor: Mali-G68 MP2 Display: 6.7 inches Camera:. Rs. 69,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_67",
+    "name": "Samsung Galaxy A17 5G 6GB RAM 128GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 75900,
+    "originalPrice": 83490,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 17,
+    "image": "/store_export_android/images/samsung-galaxy-a17-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a17-5g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a17-5g-6gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a17-5g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a17-5g-6gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A17 5G 6GB RAM 128GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A17 5G 6GB RAM 128GB: Processor: Mali-G68 MP2 Display: 6.7 inches Camera:. Rs. 69,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_68",
+    "name": "Samsung Galaxy A17 4G 8GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 79500,
+    "originalPrice": 87450,
+    "stock": 22,
+    "avgRating": 4.8,
+    "reviewCount": 55,
+    "image": "/store_export_android/images/samsung-galaxy-a17-4g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a17-4g-8gb-ram-256gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a17-4g-8gb-ram-256gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-8gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-8gb-ram-256gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A17 4G 8GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A17 4G 8GB RAM 256GB: Processor: Mediatek Helio G99 (6 nm) Display: 6.7. Rs. 63,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_69",
+    "name": "Samsung Galaxy A17 4G 6GB RAM 128GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 65500,
+    "originalPrice": 72050,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 68,
+    "image": "/store_export_android/images/samsung-galaxy-a17-4g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a17-4g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a17-4g-6gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a17-4g-6gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A17 4G 6GB RAM 128GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A17 4G 6GB RAM 128GB: Processor: Mediatek Helio G99 (6 nm) Display: 6.7. Rs. 57,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_70",
+    "name": "Samsung A07 6GB 128GB-Price in Sri Lanka",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 57500,
+    "originalPrice": 63250,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 72,
+    "image": "/store_export_android/images/samsung-a07-6gb-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-a07-6gb-128gb/01.jpg",
+      "/store_export_android/images/samsung-a07-6gb-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-a07-6gb-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-a07-6gb-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung A07 6GB 128GB-Price in Sri Lanka with TRCSL warranty.",
+    "description": "Samsung A07 6GB 128GB: Processor: Mediatek Helio G99 (6 nm) Display: 6.7 inches Camera:. Rs. 39,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_71",
+    "name": "Samsung A07 4GB 128GB-Price in Sri Lanka",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 48500,
+    "originalPrice": 53350,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 79,
+    "image": "/store_export_android/images/samsung-a07-4gb-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-a07-4gb-128gb/01.jpg",
+      "/store_export_android/images/samsung-a07-4gb-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-a07-4gb-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-a07-4gb-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung A07 4GB 128GB-Price in Sri Lanka with TRCSL warranty.",
+    "description": "Samsung A07 4GB 128GB: Processor: Mediatek Helio G99 (6 nm) Display: 6.7 inches Camera:. Rs. 38,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_72",
+    "name": "OnePlus 13R (12GB RAM/256GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 158900,
+    "originalPrice": 174790,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 80,
+    "image": "/store_export_android/images/oneplus-13r-12gb-ram-256gb/01.png",
+    "images": [
+      "/store_export_android/images/oneplus-13r-12gb-ram-256gb/01.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-13r-12gb-ram-256gb/01.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official OnePlus 13R (12GB RAM/256GB) with TRCSL warranty.",
+    "description": "OnePlus 13R: Powerful Snapdragon 8 Gen 3 chip for fast performance. Rs. 149,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_73",
+    "name": "OnePlus Nord CE5 5G (8GB RAM / 256GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 112000,
+    "originalPrice": 123200,
+    "stock": 18,
+    "avgRating": 4.6,
+    "reviewCount": 63,
+    "image": "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official OnePlus Nord CE5 5G (8GB RAM / 256GB) with TRCSL warranty.",
+    "description": "OnePlus Nord CE5 5G: 8GB LPDDR5X RAM + 256GB UFS 3.1 Storage MediaTek Dimensity 8350 Apex. Rs. 104,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_74",
+    "name": "OnePlus Nord CE5 5G (8GB RAM/128GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 96500,
+    "originalPrice": 106150,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 41,
+    "image": "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-nord-ce5-5g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus Nord CE5 5G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "OnePlus Nord CE5 5G: Storage: 8 GB RAM, 128 GB Internal Memory Display: 17.19 cm. Rs. 96,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_75",
+    "name": "OnePlus Nord CE4 Lite (8GB RAM/256GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 88000,
+    "originalPrice": 96800,
+    "stock": 3,
+    "avgRating": 5.0,
+    "reviewCount": 80,
+    "image": "/store_export_android/images/oneplus-nord-ce4-lite-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-nord-ce4-lite-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-nord-ce4-lite-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus Nord CE4 Lite (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "OnePlus Nord CE4 Lite: 8 GB RAM | 128 GB ROM 6.67-inch AMOLED Display with 120Hz Refresh. Rs. 72,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_76",
+    "name": "OnePlus Nord CE4 8GB (RAM/256GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 126000,
+    "originalPrice": 138600,
+    "stock": 5,
+    "avgRating": 4.9,
+    "reviewCount": 75,
+    "image": "/store_export_android/images/oneplus-nord-ce4-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-nord-ce4-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Standard Black",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-nord-ce4-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus Nord CE4 8GB (RAM/256GB) with TRCSL warranty.",
+    "description": "OnePlus Nord CE4 8GB: 8GB RAM | 256GB ROM 17.02 cm (6.7 inch) Display 50MP Rear Camera. Rs. 92,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_77",
+    "name": "OnePlus 13S 5G 12GB (RAM/512GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 207500,
+    "originalPrice": 228250,
+    "stock": 4,
+    "avgRating": 4.7,
+    "reviewCount": 51,
+    "image": "/store_export_android/images/oneplus-13s-5g-12gb-ram-512gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-13s-5g-12gb-ram-512gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-13s-5g-12gb-ram-512gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus 13S 5G 12GB (RAM/512GB) with TRCSL warranty.",
+    "description": "OnePlus 13S 5G 12GB: Qualcomm Qualcomm SM8750-AB Snapdragon 8 Elite (3 nm) Display : 6.32. Rs. 187,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_78",
+    "name": "OnePlus 13R 16GB (RAM/512GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 155000,
+    "originalPrice": 170500,
+    "stock": 3,
+    "avgRating": 4.8,
+    "reviewCount": 30,
+    "image": "/store_export_android/images/oneplus-13r-16gb-ram-512gb/01.webp",
+    "images": [
+      "/store_export_android/images/oneplus-13r-16gb-ram-512gb/01.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-13r-16gb-ram-512gb/01.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus 13R 16GB (RAM/512GB) with TRCSL warranty.",
+    "description": "OnePlus 13R 16GB: Powerful Snapdragon 8 Gen 3 chip for fast performance. Rs. 155,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_79",
+    "name": "OnePlus 13 5G (16GB RAM/512GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 255000,
+    "originalPrice": 280500,
+    "stock": 2,
+    "avgRating": 4.9,
+    "reviewCount": 21,
+    "image": "/store_export_android/images/oneplus-13-5g-16gb-ram-512gb/01.jpg",
+    "images": [
+      "/store_export_android/images/oneplus-13-5g-16gb-ram-512gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/oneplus-13-5g-16gb-ram-512gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: OnePlus, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "OnePlus"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official OnePlus 13 5G (16GB RAM/512GB) with TRCSL warranty.",
+    "description": "OnePlus 13 5G: Snapdragon\u00ae 8 Elite for powerful performance. Rs. 230,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_80",
+    "name": "Google Pixel 9 (12GB RAM/128GB",
+    "brand": "Google",
+    "category": "Watch",
+    "price": 189000,
+    "originalPrice": 207900,
+    "stock": 25,
+    "avgRating": 5.0,
+    "reviewCount": 24,
+    "image": "/store_export_android/images/google-pixel-9-12gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/google-pixel-9-12gb-ram-128gb/01.jpg",
+      "/store_export_android/images/google-pixel-9-12gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Obsidian",
+        "hex": "#1a1c1e",
+        "image": "/store_export_android/images/google-pixel-9-12gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Porcelain",
+        "hex": "#f3f0ec",
+        "image": "/store_export_android/images/google-pixel-9-12gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Google, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Google"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Google Pixel 9 (12GB RAM/128GB with TRCSL warranty.",
+    "description": "Google Pixel 9. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_81",
+    "name": "Google Pixel 8 Pro (12GB RAM/128GB)",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 156000,
+    "originalPrice": 171600,
+    "stock": 18,
+    "avgRating": 4.6,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/google-pixel-8-pro-12gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/google-pixel-8-pro-12gb-ram-128gb/01.jpg",
+      "/store_export_android/images/google-pixel-8-pro-12gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Bay Blue",
+        "hex": "#7fa2c4",
+        "image": "/store_export_android/images/google-pixel-8-pro-12gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Obsidian",
+        "hex": "#1a1c1e",
+        "image": "/store_export_android/images/google-pixel-8-pro-12gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Google, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Google"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Google Pixel 8 Pro (12GB RAM/128GB) with TRCSL warranty.",
+    "description": "Google Pixel 8 Pro: Processor: Google Tensor G3 Display: 6.7 inches Camera: 50 MP + 64 MP +. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_82",
+    "name": "Google Pixel 8 (8GB RAM/256GB)",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 151900,
+    "originalPrice": 167090,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 83,
+    "image": "/store_export_android/images/google-pixel-8-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/google-pixel-8-8gb-ram-256gb/01.jpg",
+      "/store_export_android/images/google-pixel-8-8gb-ram-256gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Obsidian",
+        "hex": "#1a1c1e",
+        "image": "/store_export_android/images/google-pixel-8-8gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Hazel",
+        "hex": "#696e65",
+        "image": "/store_export_android/images/google-pixel-8-8gb-ram-256gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Google, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Google"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Google Pixel 8 (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Google Pixel 8: Processor: Google Tensor G Display: 6.17 inches Camera: 50 MP + 12 MP. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_83",
+    "name": "Google Pixel 7 (8GB RAM/128GB)",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 145000,
+    "originalPrice": 165000,
+    "stock": 4,
+    "avgRating": 4.8,
+    "reviewCount": 51,
+    "image": "/store_export_android/images/7907/01.png",
+    "images": [
+      "/store_export_android/images/7907/01.png",
+      "/store_export_android/images/7907/02.png",
+      "/store_export_android/images/7907/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Obsidian",
+        "hex": "#1a1c1e",
+        "image": "/store_export_android/images/7907/01.png"
+      },
+      {
+        "name": "Snow",
+        "hex": "#f5f5f7",
+        "image": "/store_export_android/images/7907/02.png"
+      },
+      {
+        "name": "Lemongrass",
+        "hex": "#dce1ba",
+        "image": "/store_export_android/images/7907/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Google, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Google"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Google Pixel 7 (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Google Pixel 7: Processor: Google Tensor G2 Display: 6.3 inches Camera: Dual Camera. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_84",
+    "name": "Samsung Galaxy S25 Ultra (12GB RAM/512GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 300900,
+    "originalPrice": 330990,
+    "stock": 2,
+    "avgRating": 5.0,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/03.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Silver Blue",
+        "hex": "#a3b8cc",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/01.jpg"
+      },
+      {
+        "name": "Titanium Black",
+        "hex": "#2c2d30",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/02.jpg"
+      },
+      {
+        "name": "Titanium Gray",
+        "hex": "#6d7075",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/03.jpg"
+      },
+      {
+        "name": "Titanium Silver",
+        "hex": "#d8dce2",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-512gb/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy S25 Ultra (12GB RAM/512GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S25 Ultra: 12GB RAM | 512GB ROM 17.53 cm (6.9 inch) Quad HD+ Display 200MP +. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_85",
+    "name": "Samsung Galaxy S25 Ultra 5G (12GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 258900,
+    "originalPrice": 284790,
+    "stock": 5,
+    "avgRating": 4.7,
+    "reviewCount": 50,
+    "image": "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/03.jpg",
+      "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Silver Blue",
+        "hex": "#a3b8cc",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Titanium Black",
+        "hex": "#2c2d30",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/02.jpg"
+      },
+      {
+        "name": "Titanium Gray",
+        "hex": "#6d7075",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/03.jpg"
+      },
+      {
+        "name": "Titanium Silver",
+        "hex": "#d8dce2",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-5g-12gb-ram-256gb/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy S25 Ultra 5G (12GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S25 Ultra 5G: 12GB RAM | 256GB ROM 17.53 cm (6.9 inch) Quad HD+ Display. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_86",
+    "name": "Samsung Galaxy Z Fold 7 (12GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 398000,
+    "originalPrice": 437800,
+    "stock": 22,
+    "avgRating": 4.9,
+    "reviewCount": 44,
+    "image": "/store_export_android/images/samsung-galaxy-z-fold-7-12gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-z-fold-7-12gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-z-fold-7-12gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Z Fold 7 (12GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Z Fold 7: Display: 8.0\u2033 Foldable AMOLED + 6.5\u2033 Cover. Rs. 570,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_87",
+    "name": "Samsung Galaxy Z Fold 6 (12GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 365000,
+    "originalPrice": 401500,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 57,
+    "image": "/store_export_android/images/samsung-galaxy-z-fold-6-12gb-ram-256gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-z-fold-6-12gb-ram-256gb/01.png",
+      "/store_export_android/images/samsung-galaxy-z-fold-6-12gb-ram-256gb/02.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-z-fold-6-12gb-ram-256gb/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-z-fold-6-12gb-ram-256gb/02.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Z Fold 6 (12GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Z Fold 6: 12 GB RAM | 256 GB ROM 19.3 cm (7.6 inch) QXGA+ Display 50MP +. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_88",
+    "name": "Samsung Galaxy S25 Ultra 12GB RAM 1TB",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 352000,
+    "originalPrice": 387200,
+    "stock": 25,
+    "avgRating": 4.6,
+    "reviewCount": 69,
+    "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-1tb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-1tb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Silver Blue",
+        "hex": "#a3b8cc",
+        "image": "/store_export_android/images/samsung-galaxy-s25-ultra-12gb-ram-1tb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy S25 Ultra 12GB RAM 1TB with TRCSL warranty.",
+    "description": "Samsung Galaxy S25 Ultra 12GB RAM 1TB: 12GB RAM | 1TB ROM 17.53 cm (6.9 inch) Quad HD+. Rs. 352,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_89",
+    "name": "Samsung Galaxy S24 Ultra (12GB RAM/512GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 258000,
+    "originalPrice": 283800,
+    "stock": 4,
+    "avgRating": 4.7,
+    "reviewCount": 64,
+    "image": "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-512gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-512gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#717376",
+        "image": "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-512gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy S24 Ultra (12GB RAM/512GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S24 Ultra: 12GB RAM | 512GB ROM 6.8 -inch Dynamic LTPO AMOLED 2X screen. Rs. 258,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_90",
+    "name": "Samsung Galaxy S24 Ultra (12GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 239000,
+    "originalPrice": 262900,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 41,
+    "image": "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#717376",
+        "image": "/store_export_android/images/samsung-galaxy-s24-ultra-12gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy S24 Ultra (12GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S24 Ultra: 12GB RAM | 256GB ROM 6.8 -inch Dynamic LTPO AMOLED 2X screen. Rs. 253,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_91",
+    "name": "Samsung Galaxy S24 8GB (RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 153900,
+    "originalPrice": 169290,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 42,
+    "image": "/store_export_android/images/samsung-galaxy-s24-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s24-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Onyx Black",
+        "hex": "#22252a",
+        "image": "/store_export_android/images/samsung-galaxy-s24-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy S24 8GB (RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S24 8GB: Aesthetic and Trendy Design High Quality Camera 4000 mAh with. Rs. 157,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_92",
+    "name": "Samsung Galaxy S24 FE (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 126900,
+    "originalPrice": 139590,
+    "stock": 4,
+    "avgRating": 4.8,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Blue",
+        "hex": "#93c5fd",
+        "image": "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Graphite",
+        "hex": "#374151",
+        "image": "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/02.jpg"
+      },
+      {
+        "name": "Gray",
+        "hex": "#9ca3af",
+        "image": "/store_export_android/images/samsung-galaxy-s24-fe-8gb-ram-256gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy S24 FE (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy S24 FE: Stylish and Durable Design AI-Powered Photo Editing ProVisual Engine. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_93",
+    "name": "Samsung Galaxy A56 8GB RAM 256GB",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 116900,
+    "originalPrice": 128590,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 32,
+    "image": "/store_export_android/images/samsung-galaxy-a56-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a56-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a56-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A56 8GB RAM 256GB with TRCSL warranty.",
+    "description": "Samsung Galaxy A56 8GB RAM 256GB: Sleek Design: 4mm thin, 198g, stylish linear camera. Rs. 100,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_94",
+    "name": "Samsung Galaxy A56 5G (8GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 107500,
+    "originalPrice": 118250,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/samsung-galaxy-a56-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a56-5g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a56-5g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A56 5G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A56 5G: Processor: Exynos 1580 (4 nm) Display: 6.7 inches Camera: Triple. Rs. 91,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_95",
+    "name": "Samsung Galaxy A36 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 99500,
+    "originalPrice": 109450,
+    "stock": 4,
+    "avgRating": 4.6,
+    "reviewCount": 42,
+    "image": "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A36 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A36 5G: Sleek Design: Glass back, slim bezels. Rs. 82,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_96",
+    "name": "Samsung Galaxy A36 5G (8GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 90500,
+    "originalPrice": 99550,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 49,
+    "image": "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a36-5g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A36 5G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A36 5G: Sleek Design: Glass back, slim bezels. Rs. 74,100 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_97",
+    "name": "Samsung Galaxy A26 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 89500,
+    "originalPrice": 98450,
+    "stock": 4,
+    "avgRating": 4.8,
+    "reviewCount": 59,
+    "image": "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a26-5g-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A26 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A26 5G: Processor: Exynos 1380 (5 nm) \u2013 Global Display: 6.7 inches Camera:. Rs. 65,400 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_98",
+    "name": "Samsung Galaxy A26 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 75500,
+    "originalPrice": 83050,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 80,
+    "image": "/store_export_android/images/samsung-galaxy-a26-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a26-5g-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a26-5g-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A26 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A26 5G: Display : 6.5-inch PLS LCD, FHD+ resolution (1080 x 2400 pixels). Rs. 59,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_99",
+    "name": "Samsung Galaxy A16 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 55500,
+    "originalPrice": 61050,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 70,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A16 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 5G: 8GB RAM | 128GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP +. Rs. 55,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_100",
+    "name": "Samsung Galaxy A16 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 46500,
+    "originalPrice": 51150,
+    "stock": 25,
+    "avgRating": 4.9,
+    "reviewCount": 84,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 5G: 6.7\u2033 HD+ LCD Display, 90Hz MediaTek Dimensity 6100+ Processor 6GB. Rs. 46,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_101",
+    "name": "Samsung Galaxy A16 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 49700,
+    "originalPrice": 54670,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 42,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 5G: 8GB RAM | 256GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP +. Rs. 49,700 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_102",
+    "name": "Samsung Galaxy A16 4G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 42500,
+    "originalPrice": 46750,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 65,
+    "image": "/store_export_android/images/samsung-galaxy-a16-4g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-4g-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-4g-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 4G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 4G: Processor : Mediatek Helio G99 Display : 6.7 inches Camera : Triple. Rs. 43,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_103",
+    "name": "Samsung Galaxy A16 (4GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 38700,
+    "originalPrice": 42570,
+    "stock": 15,
+    "avgRating": 5.0,
+    "reviewCount": 48,
+    "image": "/store_export_android/images/samsung-galaxy-a16-4gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-4gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-4gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 (4GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16: 6.7\u2033 Super AMOLED FHD+ Display, 90Hz MediaTek Helio G99 Processor 4GB. Rs. 38,700 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_104",
+    "name": "Samsung Galaxy A05s (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 39200,
+    "originalPrice": 43120,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 60,
+    "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A05s (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A05s: 6GB RAM | 128GB ROM 6.7 inches FHD + 90Hz Display 50MP Triple Camera. Rs. 39,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_105",
+    "name": "Samsung Galaxy A05s (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 33500,
+    "originalPrice": 36850,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 24,
+    "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A05s (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A05s: Processor: Qualcomm SM6225 Snapdragon 680 4G Display: 6.7 inches. Rs. 33,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_106",
+    "name": "Samsung Galaxy M16 5G (8GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 48400,
+    "originalPrice": 53240,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 40,
+    "image": "/store_export_android/images/samsung-galaxy-m16-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-m16-5g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-m16-5g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy M16 5G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy M16 5G: 8GB RAM | 128 GB ROM 17.02 cm (6.7 inch) Display 50MP Rear Camera. Rs. 48,400 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_107",
+    "name": "Samsung Galaxy M16 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 43500,
+    "originalPrice": 47850,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 29,
+    "image": "/store_export_android/images/samsung-galaxy-m16-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-m16-5g-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-m16-5g-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy M16 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy M16 5G: Processor: Mediatek Dimensity 6300 (6 nm) Display: 6.7 inches. Rs. 43,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_108",
+    "name": "Samsung Galaxy A06 (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 31500,
+    "originalPrice": 34650,
+    "stock": 25,
+    "avgRating": 4.7,
+    "reviewCount": 16,
+    "image": "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A06 (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A06: Processor : Mediatek Helio G85 Display :\u00a06.7 inches Camera :\u00a0Dual. Rs. 31,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_109",
+    "name": "Samsung Galaxy A06 (4GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 30600,
+    "originalPrice": 33660,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 71,
+    "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a06-4gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A06 (4GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A06: Processor : Mediatek Helio G85 Display :\u00a06.7 inches Camera :\u00a0Dual. Rs. 30,600 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_110",
+    "name": "Samsung Galaxy A06 (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 26300,
+    "originalPrice": 28930,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 37,
+    "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb-2/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb-2/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A06 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A06: Processor : Mediatek Helio G85 Display :\u00a06.7 inches Camera :\u00a0Dual. Rs. 26,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_111",
+    "name": "Samsung Galaxy F16 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 44000,
+    "originalPrice": 48400,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 75,
+    "image": "/store_export_android/images/samsung-galaxy-f16-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f16-5g-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f16-5g-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy F16 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F16 5G: Processor: Mediatek Dimensity 6300 (6 nm) Display: 6.7 inches. Rs. 44,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_112",
+    "name": "Samsung Galaxy F06 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 37300,
+    "originalPrice": 41030,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 45,
+    "image": "/store_export_android/images/samsung-galaxy-f06-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f06-5g-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f06-5g-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy F06 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F06 5G: Processor: Mediatek Dimensity 6300 (6 nm) Display: 6.7 inches. Rs. 37,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_113",
+    "name": "Samsung Galaxy F06 5G (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 34900,
+    "originalPrice": 38390,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 41,
+    "image": "/store_export_android/images/samsung-galaxy-f06-5g-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f06-5g-4gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f06-5g-4gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy F06 5G (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F06 5G: 6.5\u2033 HD+ PLS LCD, 90Hz MediaTek Dimensity 6100+ (6nm) 5000mAh. Rs. 34,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_114",
+    "name": "Samsung Galaxy F05 (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 27500,
+    "originalPrice": 30250,
+    "stock": 25,
+    "avgRating": 4.7,
+    "reviewCount": 41,
+    "image": "/store_export_android/images/samsung-galaxy-f05-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f05-4gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f05-4gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy F05 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F05: Processor: Mediatek Helio G85 (12 nm) Display: 6.7 inches Camera: Dual. Rs. 27,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_115",
+    "name": "Xiaomi Redmi Note 14 Pro Plus 5G (12GB RAM/512GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 103500,
+    "originalPrice": 113850,
+    "stock": 2,
+    "avgRating": 4.6,
+    "reviewCount": 34,
+    "image": "/store_export_android/images/xiaomi-redmi-note-14-pro-plus-5g-12gb-ram-512gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-note-14-pro-plus-5g-12gb-ram-512gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-note-14-pro-plus-5g-12gb-ram-512gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Xiaomi Redmi Note 14 Pro Plus 5G (12GB RAM/512GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi Note 14 Pro Plus 5G: Processor: Qualcomm SM7635 Snapdragon 7s Gen 3 (4 nm). Rs. 103,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_116",
+    "name": "Xiaomi Redmi Note 14 Pro (8GB RAM/256GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 63100,
+    "originalPrice": 69410,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 76,
+    "image": "/store_export_android/images/xiaomi-redmi-note-14-pro-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-note-14-pro-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-note-14-pro-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Redmi Note 14 Pro (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi Note 14 Pro: Stunning 6.67\u2033 AMOLED Display with 120Hz Refresh Rate Powerful. Rs. 63,100 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_117",
+    "name": "Xiaomi Redmi Note 14 (8GB RAM/256GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 48700,
+    "originalPrice": 53570,
+    "stock": 15,
+    "avgRating": 4.9,
+    "reviewCount": 43,
+    "image": "/store_export_android/images/xiaomi-redmi-note-14-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-note-14-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-note-14-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Redmi Note 14 (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi Note 14: 8GB RAM + 256GB ROM 6.67\u2033 AMOLED FHD+ Display Snapdragon Processor. Rs. 48,700 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_118",
+    "name": "Xiaomi Redmi 14C (8GB RAM/256GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 34650,
+    "originalPrice": 38115,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 26,
+    "image": "/store_export_android/images/xiaomi-redmi-14c-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-14c-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-14c-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Redmi 14C (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi 14C: Processor: Mediatek Helio G81 Ultra Display:\u00a06.88 inches Camera:\u00a0Triple. Rs. 34,650 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_119",
+    "name": "Xiaomi Redmi 14C (6GB RAM/128GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 29700,
+    "originalPrice": 32670,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 56,
+    "image": "/store_export_android/images/xiaomi-redmi-14c-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-14c-6gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-14c-6gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Xiaomi Redmi 14C (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi 14C: Processor: Mediatek Helio G81 Ultra Display:\u00a06.88 inches Camera:\u00a0Triple. Rs. 29,700 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_120",
+    "name": "Xiaomi Redmi 13 4G (8GB RAM/256GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 36500,
+    "originalPrice": 40150,
+    "stock": 3,
+    "avgRating": 4.8,
+    "reviewCount": 33,
+    "image": "/store_export_android/images/xiaomi-redmi-13-4g-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-13-4g-8gb-ram-256gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-13-4g-8gb-ram-256gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Xiaomi Redmi 13 4G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi 13 4G: 108MP super-clear camera Immersive 6.79\u2033 FHD+ display MediaTek Helio. Rs. 36,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_121",
+    "name": "Xiaomi Redmi 10 (4GB RAM/64GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 26300,
+    "originalPrice": 28930,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 23,
+    "image": "/store_export_android/images/xiaomi-redmi-10-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-10-4gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-10-4gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Redmi 10 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi 10: Processor: MediaTek Helio G88 (12nm) Display: 6.5 inches Camera:\u00a0Quad. Rs. 26,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_122",
+    "name": "Xiaomi Redmi A5 4G (3GB RAM/64GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 23400,
+    "originalPrice": 25740,
+    "stock": 3,
+    "avgRating": 4.8,
+    "reviewCount": 76,
+    "image": "/store_export_android/images/xiaomi-redmi-a5-4g-3gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-a5-4g-3gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-a5-4g-3gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Xiaomi Redmi A5 4G (3GB RAM/64GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi A5 4G: Processor : Unisoc T7250 Display :\u00a06.88 inches Camera :\u00a032 MP (wide). Rs. 23,400 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_123",
+    "name": "Xiaomi Redmi A3 (3GB RAM/64GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 22300,
+    "originalPrice": 24530,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 45,
+    "image": "/store_export_android/images/xiaomi-redmi-a3-3gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/xiaomi-redmi-a3-3gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/xiaomi-redmi-a3-3gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Redmi A3 (3GB RAM/64GB) with TRCSL warranty.",
+    "description": "Xiaomi Redmi A3: Processor: Mediatek Helio G36 Display:\u00a06.71 inches Camera:\u00a0Dual Camera. Rs. 22,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_124",
+    "name": "Samsung Galaxy Tab S9 FE 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 121900,
+    "originalPrice": 134090,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 73,
+    "image": "/store_export_android/images/samsung-galaxy-tab-s9-fe-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-s9-fe-5g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-tab-s9-fe-5g-6gb-ram-128gb/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s9-fe-5g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s9-fe-5g-6gb-ram-128gb/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Tab S9 FE 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Tab S9 FE 5G: Processor: Exynos 1380 (5 nm) Display: 10.9 Inches Camera:. Rs. 121,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_125",
+    "name": "Samsung Galaxy Tab S6 Lite (4GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 79500,
+    "originalPrice": 87450,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 60,
+    "image": "/store_export_android/images/samsung-galaxy-tab-s6-lite-4gb-ram-128gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-s6-lite-4gb-ram-128gb/01.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-s6-lite-4gb-ram-128gb/01.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Tab S6 Lite (4GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Tab S6 Lite: 4GB RAM | 128GB ROM Nano-SIM micro SDXC (dedicated slot) Li-Po. Rs. 96,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_126",
+    "name": "Samsung Galaxy Tab A9 Plus 5G (8GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 58000,
+    "originalPrice": 63800,
+    "stock": 15,
+    "avgRating": 5.0,
+    "reviewCount": 33,
+    "image": "/store_export_android/images/samsung-galaxy-tab-a9-plus-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-a9-plus-5g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-a9-plus-5g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Tab A9 Plus 5G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Tab A9 Plus 5G: PROCESSOR: Qualcomm SM6375 Snapdragon 695 5G DISPLAY: 11.0. Rs. 58,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_127",
+    "name": "Samsung Galaxy Tab A9 4G (8GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 39000,
+    "originalPrice": 42900,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 38,
+    "image": "/store_export_android/images/samsung-galaxy-tab-a9-4g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-a9-4g-8gb-ram-128gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-a9-4g-8gb-ram-128gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy Tab A9 4G (8GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Tab A9 4G: Mediatek Helio G99 DISPLAY:\u00a08.7 inches CAMERA:\u00a08 MP BATTERY:. Rs. 42,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_128",
+    "name": "Samsung Galaxy Tab A9 (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 34500,
+    "originalPrice": 37950,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 80,
+    "image": "/store_export_android/images/samsung-galaxy-tab-a9-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-tab-a9-4gb-ram-64gb/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-tab-a9-4gb-ram-64gb/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy Tab A9 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy Tab A9: Mediatek Helio G99 DISPLAY:\u00a08.7 inches CAMERA:\u00a08 MP BATTERY: Li-Po. Rs. 34,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_129",
+    "name": "Samsung Galaxy A35 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 74900,
+    "originalPrice": 82390,
+    "stock": 18,
+    "avgRating": 4.6,
+    "reviewCount": 69,
+    "image": "/store_export_android/images/samsung-galaxy-a35-5g-8gb-ram-256gb/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a35-5g-8gb-ram-256gb/01.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a35-5g-8gb-ram-256gb/01.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A35 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A35 5G: 8GB RAM | 256GB ROM | Expandable Upto 1 TB 16.76 cm (6.6 inch) Full. Rs. 79,300 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_130",
+    "name": "Samsung Galaxy A25 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 55200,
+    "originalPrice": 60720,
+    "stock": 25,
+    "avgRating": 5.0,
+    "reviewCount": 85,
+    "image": "/store_export_android/images/samsung-galaxy-a25-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a25-5g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a25-5g-6gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a25-5g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a25-5g-6gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A25 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A25 5G: 6GB RAM | 128GB ROM 6.5-inch Super AMOLED display 50MP Main camera. Rs. 55,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_131",
+    "name": "Samsung Galaxy A16 5G (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 52900,
+    "originalPrice": 58190,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 70,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb-2/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A16 5G (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 5G: 8GB RAM | 128GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP +. Rs. 59,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_132",
+    "name": "Samsung Galaxy A16 5G (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 47900,
+    "originalPrice": 52690,
+    "stock": 12,
+    "avgRating": 4.7,
+    "reviewCount": 25,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-6gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 5G (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16 5G: 6GB RAM | 128GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP +. Rs. 61,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_133",
+    "name": "Samsung Galaxy A16 (6GB RAM / 128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 41990,
+    "originalPrice": 46189,
+    "stock": 15,
+    "avgRating": 4.7,
+    "reviewCount": 31,
+    "image": "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a16-6gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A16 (6GB RAM / 128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16: 6GB RAM | 128GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP + 2MP. Rs. 47,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_134",
+    "name": "Samsung Galaxy A16 (8GB RAM / 256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 52900,
+    "originalPrice": 58190,
+    "stock": 4,
+    "avgRating": 4.8,
+    "reviewCount": 31,
+    "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a16-5g-8gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A16 (8GB RAM / 256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A16: 8GB RAM | 256GB ROM 02 cm (6.7 inch) Full HD+ Display 50MP + 5MP + 2MP. Rs. 54,700 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_135",
+    "name": "Samsung Galaxy A15 (8GB RAM/256GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 54200,
+    "originalPrice": 59620,
+    "stock": 8,
+    "avgRating": 4.9,
+    "reviewCount": 44,
+    "image": "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a15-8gb-ram-256gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A15 (8GB RAM/256GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A15: 8GB RAM | 256GB ROM 6.5-inch Super AMOLED display 50MP Main camera. Rs. 54,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_136",
+    "name": "Samsung Galaxy M15 5G (6GB RAM 128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 42500,
+    "originalPrice": 46750,
+    "stock": 3,
+    "avgRating": 4.7,
+    "reviewCount": 43,
+    "image": "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-m15-5g-6gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy M15 5G (6GB RAM 128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy M15 5G: 6GB RAM / 128GB ROM 6.5\u2033 FHD+ Super AMOLED 50MP Rear Camera 6000mAh. Rs. 44,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_137",
+    "name": "Samsung Galaxy F15 5G (6GB/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 47000,
+    "originalPrice": 51700,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 75,
+    "image": "/store_export_android/images/samsung-galaxy-f15-5g-6gb-128gb/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f15-5g-6gb-128gb/01.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f15-5g-6gb-128gb/01.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy F15 5G (6GB/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F15 5G: 6.6 inches Super AMOLED 1080 x 2340 pixels MediaTek Dimensity 6100+. Rs. 47,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_138",
+    "name": "Samsung Galaxy A06 (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 31500,
+    "originalPrice": 34650,
+    "stock": 5,
+    "avgRating": 4.9,
+    "reviewCount": 33,
+    "image": "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a06-6gb-ram-128gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A06 (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A06: 6.7 inches, 108.4 cm Mediatek Helio G85 128GB 6GB RAM 50 MP. Rs. 35,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_139",
+    "name": "Samsung Galaxy A06 (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 26500,
+    "originalPrice": 29150,
+    "stock": 4,
+    "avgRating": 4.6,
+    "reviewCount": 33,
+    "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a06-4gb-ram-64gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A06 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A06: 6.7 inches, 108.4 cm Mediatek Helio G85 64GB 4GB RAM 50 MP. Rs. 29,000 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_140",
+    "name": "Samsung Galaxy A05s (6GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 33500,
+    "originalPrice": 36850,
+    "stock": 22,
+    "avgRating": 4.7,
+    "reviewCount": 47,
+    "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-6gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A05s (6GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A05s: 6GB RAM / 128GB ROM 6.7 inches FHD + 90Hz Display 50MP Triple Camera. Rs. 33,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_141",
+    "name": "Samsung Galaxy A05s (4GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 35500,
+    "originalPrice": 39050,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 44,
+    "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-128gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A05s (4GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A05s: 4GB RAM / 128GB ROM 6.7 inches FHD + 90Hz Display 50MP Triple Camera. Rs. 35,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_142",
+    "name": "Samsung Galaxy A05s (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 32500,
+    "originalPrice": 35750,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 70,
+    "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a05s-4gb-ram-64gb/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy A05s (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy A05s: 4GB RAM / 64GB ROM 6.7 inches FHD + 90Hz Display 50MP Triple Camera. Rs. 33,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_143",
+    "name": "Samsung Galaxy M04 (4GB RAM/128GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 31200,
+    "originalPrice": 34320,
+    "stock": 22,
+    "avgRating": 4.8,
+    "reviewCount": 38,
+    "image": "/store_export_android/images/samsung-galaxy-m04-4gb-ram-128gb/01.png",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-m04-4gb-ram-128gb/01.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-m04-4gb-ram-128gb/01.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Samsung Galaxy M04 (4GB RAM/128GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy M04: 4GB RAM/128GB 6.5 inches, 102.0 cm 2 Octa-Core Processor 720 x 1600. Rs. 31,200 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_144",
+    "name": "Samsung Galaxy F04 (4GB RAM/64GB)",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 27500,
+    "originalPrice": 30250,
+    "stock": 4,
+    "avgRating": 4.7,
+    "reviewCount": 37,
+    "image": "/store_export_android/images/samsung-galaxy-f04-4gb-ram-64gb/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-f04-4gb-ram-64gb/01.jpg",
+      "/store_export_android/images/samsung-galaxy-f04-4gb-ram-64gb/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-f04-4gb-ram-64gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-f04-4gb-ram-64gb/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy F04 (4GB RAM/64GB) with TRCSL warranty.",
+    "description": "Samsung Galaxy F04: Processor: Mediatek MT6765 Helio P35 Display:\u00a06.5 inches Camera: Dual. Rs. 27,500 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_145",
+    "name": "Samsung Galaxy A04s (3/32GB) - TRCSL APPROVED",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 30400,
+    "originalPrice": 33440,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 33,
+    "image": "/store_export_android/images/samsung-galaxy-a04s-3-32gb-trcsl-approved/01.webp",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a04s-3-32gb-trcsl-approved/01.webp",
+      "/store_export_android/images/samsung-galaxy-a04s-3-32gb-trcsl-approved/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a04s-3-32gb-trcsl-approved/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a04s-3-32gb-trcsl-approved/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A04s (3/32GB) - TRCSL APPROVED with TRCSL warranty.",
+    "description": "Samsung Galaxy A04s \u2013 TRCSL APPROVED: Processor: Exynos 850 Display: 6.5 inches Camera:. Rs. 30,400 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_146",
+    "name": "Samsung Galaxy A04e (3/64GB) - TRCSL APPROVED",
+    "brand": "Samsung",
+    "category": "Accessories",
+    "price": 29400,
+    "originalPrice": 32340,
+    "stock": 4,
+    "avgRating": 4.6,
+    "reviewCount": 57,
+    "image": "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/01.jpg",
+    "images": [
+      "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/01.jpg",
+      "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/02.jpg",
+      "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/store_export_android/images/samsung-galaxy-a04e-3-64gb-trcsl-approved/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Samsung, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Samsung"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Samsung Galaxy A04e (3/64GB) - TRCSL APPROVED with TRCSL warranty.",
+    "description": "Samsung Galaxy A04e \u2013 TRCSL APPROVED: 6.5 inches, Plane to Line Switching Liquid-Crystal. Rs. 29,400 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_147",
+    "name": "Google Pixel 7 (128GB)",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 92000,
+    "originalPrice": 101200,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 23,
+    "image": "/store_export_android/images/google-pixel-7-128gb/01.png",
+    "images": [
+      "/store_export_android/images/google-pixel-7-128gb/01.png",
+      "/store_export_android/images/google-pixel-7-128gb/02.png",
+      "/store_export_android/images/google-pixel-7-128gb/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Obsidian",
+        "hex": "#1a1c1e",
+        "image": "/store_export_android/images/google-pixel-7-128gb/01.png"
+      },
+      {
+        "name": "Snow",
+        "hex": "#f5f5f7",
+        "image": "/store_export_android/images/google-pixel-7-128gb/02.png"
+      },
+      {
+        "name": "Lemongrass",
+        "hex": "#dce1ba",
+        "image": "/store_export_android/images/google-pixel-7-128gb/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Google, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Google"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Google Pixel 7 (128GB) with TRCSL warranty.",
+    "description": "Google Pixel 7: Released 2022, October 13 197g, 8.7mm thickness Android 13. Genuine stock, warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_148",
+    "name": "Apple HomePod Mini 2",
+    "brand": "Apple",
+    "category": "Phones",
+    "price": 45990,
+    "originalPrice": 50589,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 12,
+    "image": "/ACCESORIES/images/apple-homepod-mini-2/01.webp",
+    "images": [
+      "/ACCESORIES/images/apple-homepod-mini-2/01.webp",
+      "/ACCESORIES/images/apple-homepod-mini-2/02.webp",
+      "/ACCESORIES/images/apple-homepod-mini-2/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-homepod-mini-2/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-homepod-mini-2/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/apple-homepod-mini-2/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple HomePod Mini 2 with TRCSL warranty.",
+    "description": "Room-filling sound.  An intelligent assistant.  Control your smart home.  Private and secure  01 Year Applecare Warranty"
+  },
+  {
+    "id": "prod_149",
+    "name": "Apple AirTag 4 Pack 1st Gen",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 28900,
+    "originalPrice": 31790,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 38,
+    "image": "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/01.jpeg",
+    "images": [
+      "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/01.jpeg",
+      "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/02.png",
+      "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/01.jpeg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/apple-airtag-4-pack-1st-gen/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple AirTag 4 Pack 1st Gen with TRCSL warranty.",
+    "description": "Track & Locate with Find My Network   Precision Finding via Ultra Wideband   Use with Keys, Wallet, Bags & More   See Direction, Distance & Map Location   Works with Apple\u2019s Find My App   Built-In Speaker Plays Location Sound   Find Items by Asking Siri   Entire Process is Anonymous & Encrypted   Over a Year of Battery Life   Standard Battery is Re"
+  },
+  {
+    "id": "prod_150",
+    "name": "Apple AirTag Single Pack 1st Gen",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 11900,
+    "originalPrice": 14280,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 37,
+    "image": "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/01.jpeg",
+    "images": [
+      "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/01.jpeg",
+      "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/02.png",
+      "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/01.jpeg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/apple-airtag-single-pack-1st-gen/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple AirTag Single Pack 1st Gen with TRCSL warranty.",
+    "description": "Track & Locate with Find My Network   Precision Finding via Ultra Wideband   Use with Keys, Wallet, Bags & More   See Direction, Distance & Map Location   Works with Apple\u2019s Find My App   Built-In Speaker Plays Location Sound   Find Items by Asking Siri   Entire Process is Anonymous & Encrypted   Over a Year of Battery Life   Standard Battery is Re"
+  },
+  {
+    "id": "prod_151",
+    "name": "Anker Overhead Q30 Noise Canceling",
+    "brand": "Anker",
+    "category": "Accessories",
+    "price": 17500,
+    "originalPrice": 19250,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 79,
+    "image": "/ACCESORIES/images/anker-overhead-q30-noise-canceling/01.jpg",
+    "images": [
+      "/ACCESORIES/images/anker-overhead-q30-noise-canceling/01.jpg",
+      "/ACCESORIES/images/anker-overhead-q30-noise-canceling/02.jpg",
+      "/ACCESORIES/images/anker-overhead-q30-noise-canceling/03.jpg",
+      "/ACCESORIES/images/anker-overhead-q30-noise-canceling/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/anker-overhead-q30-noise-canceling/01.jpg"
+      },
+      {
+        "name": "Life Blue",
+        "hex": "#1e3a8a",
+        "image": "/ACCESORIES/images/anker-overhead-q30-noise-canceling/02.jpg"
+      },
+      {
+        "name": "Sakura Pink",
+        "hex": "#f472b6",
+        "image": "/ACCESORIES/images/anker-overhead-q30-noise-canceling/03.jpg"
+      },
+      {
+        "name": "Silver White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/anker-overhead-q30-noise-canceling/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Anker, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Anker"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Anker Overhead Q30 Noise Canceling with TRCSL warranty.",
+    "description": "Brand:\u202fAnker       Model:\u202fSoundcore\u202fQ30       Hybrid\u202factive\u202fnoise\u202fcancellation\u202freduces\u202fup\u202fto\u202f95%\u202fambient\u202fsound       3\u202fANC\u202fmodes\u202f(Transport,\u202fOutdoor,\u202fIndoor)\u202ffor\u202fcustom\u202fenvironments       40\u202fmm\u202fsilk\u202fdrivers\u202fdeliver\u202fHi\u2011Res\u202faudio\u202fwith\u202frich\u202fbass\u202fand\u202fclarity       Up\u202fto\u202f60\u202fhours\u202fof playtime\u202f(40\u202fh\u202fwith\u202fANC);\u202f5\u2011minute\u202ffast\u202fcharge\u202f=\u202f4\u202fh\u202fof use       Multi"
+  },
+  {
+    "id": "prod_152",
+    "name": "Anker Soundcore Q11i Wireless Headphones",
+    "brand": "Anker",
+    "category": "Audio",
+    "price": 10900,
+    "originalPrice": 13080,
+    "stock": 8,
+    "avgRating": 4.8,
+    "reviewCount": 16,
+    "image": "/ACCESORIES/images/anker-soundcore-q11i-wireless-headphones/01.webp",
+    "images": [
+      "/ACCESORIES/images/anker-soundcore-q11i-wireless-headphones/01.webp",
+      "/ACCESORIES/images/anker-soundcore-q11i-wireless-headphones/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/anker-soundcore-q11i-wireless-headphones/01.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/anker-soundcore-q11i-wireless-headphones/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Anker, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Anker"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Anker Soundcore Q11i Wireless Headphones with TRCSL warranty.",
+    "description": "Hi-Res Audio  One-Touch Bass Boost  60-Hour Playtime  Detachable Ear Cushions"
+  },
+  {
+    "id": "prod_153",
+    "name": "Anker Soundcore K20i Wireless Earbuds",
+    "brand": "Anker",
+    "category": "Audio",
+    "price": 4490,
+    "originalPrice": 5388,
+    "stock": 5,
+    "avgRating": 4.7,
+    "reviewCount": 85,
+    "image": "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/01.webp",
+    "images": [
+      "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/01.webp",
+      "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/02.webp",
+      "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/01.webp"
+      },
+      {
+        "name": "White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/02.webp"
+      },
+      {
+        "name": "Blue",
+        "hex": "#2563eb",
+        "image": "/ACCESORIES/images/anker-soundcore-k20i-wireless-earbuds/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Anker, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Anker"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Anker Soundcore K20i Wireless Earbuds with TRCSL warranty.",
+    "description": "BassUp Technology  13mm Drivers  AI Enhanced Clear Calls  22 Preset EQs  IPX5 Water Resistant  Touch Control"
+  },
+  {
+    "id": "prod_154",
+    "name": "Apple Watch Series SE 3 40mm Midnight",
+    "brand": "Apple",
+    "category": "Watch",
+    "price": 82900,
+    "originalPrice": 91190,
+    "stock": 15,
+    "avgRating": 4.6,
+    "reviewCount": 82,
+    "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-midnight/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-watch-series-se-3-40mm-midnight/01.jpg",
+      "/ACCESORIES/images/apple-watch-series-se-3-40mm-midnight/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-midnight/01.jpg"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-midnight/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Watch Series SE 3 40mm Midnight with TRCSL warranty.",
+    "description": "Processor: Apple S10   Display: 1.57 inches   Operating System: watchOS 26    1 Year Apple Care Warranty"
+  },
+  {
+    "id": "prod_155",
+    "name": "Apple Watch Series SE 3 40mm Starlight",
+    "brand": "Apple",
+    "category": "Watch",
+    "price": 83500,
+    "originalPrice": 91850,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 30,
+    "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-starlight/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-watch-series-se-3-40mm-starlight/01.jpg",
+      "/ACCESORIES/images/apple-watch-series-se-3-40mm-starlight/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-starlight/01.jpg"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-watch-series-se-3-40mm-starlight/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Watch Series SE 3 40mm Starlight with TRCSL warranty.",
+    "description": "Processor: Apple S10   Display: 1.57 inches   Operating System: watchOS 26    1 Year Apple Care Warranty"
+  },
+  {
+    "id": "prod_156",
+    "name": "DJI Osmo Action 6 Adventure Combo",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 158990,
+    "originalPrice": 174889,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 73,
+    "image": "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/01.png",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/01.png",
+      "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/02.png",
+      "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-action-6-adventure-combo/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Action 6 Adventure Combo with TRCSL warranty.",
+    "description": "Display: \u00a0Dual touchscreens ( 1.46\u2033 front ,\u00a0 2.5\u2033 rear ) with\u00a0 up to 1000 nits \u00a0for clear viewing and control.        Camera: \u00a0 1/1.1-inch CMOS ,\u00a0 4K 120fps ,\u00a0 38MP photos , advanced stabilization ( RockSteady 3.0 / HorizonSteady ).        Platform & Storage: \u00a0 64GB built-in storage , expandable up to\u00a0 1TB microSD ,\u00a0 120 Mbps \u00a0video, multiple pro s"
+  },
+  {
+    "id": "prod_157",
+    "name": "DJI Osmo Action 5 Pro Adventure Combo",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 135500,
+    "originalPrice": 149050,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 40,
+    "image": "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/01.jpg",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/01.jpg",
+      "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/02.jpg",
+      "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-action-5-pro-adventure-combo/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Action 5 Pro Adventure Combo with TRCSL warranty.",
+    "description": "Capture steady, pristine video footage in up to 4K resolution wherever you are with the\u00a0 Osmo Action 5 Pro Adventure Combo \u00a0from\u00a0 DJI . The Osmo Action 5 Pro features high-bright dual OLED screens, RockSteady and HorizonSteady stabilization systems, a 40MP sensor, a 4-hour battery life, and a waterproof camera body with an air pressure gauge."
+  },
+  {
+    "id": "prod_158",
+    "name": "JBL Tune 520BT Wireless On Ear Headphones Best",
+    "brand": "JBL",
+    "category": "Audio",
+    "price": 10990,
+    "originalPrice": 13188,
+    "stock": 5,
+    "avgRating": 4.8,
+    "reviewCount": 56,
+    "image": "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/01.webp",
+    "images": [
+      "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/01.webp",
+      "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/02.webp",
+      "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Navy Blue",
+        "hex": "#1e3a8a",
+        "image": "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/02.webp"
+      },
+      {
+        "name": "Ivory White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/jbl-tune-520bt-wireless-on-ear-headphones-best-price-in-srilanka/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: JBL, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "JBL"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official JBL Tune 520BT Wireless On Ear Headphones Best with TRCSL warranty.",
+    "description": "JBL Pure Bass Sound  Hands-free calls with Voice Aware  Wireless Bluetooth 5.3 technology  Lightweight, comfortable and foldable design"
+  },
+  {
+    "id": "prod_159",
+    "name": "DJI Osmo Pocket 4P (Vlog Combo)",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 288990,
+    "originalPrice": 317889,
+    "stock": 18,
+    "avgRating": 5.0,
+    "reviewCount": 45,
+    "image": "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/01.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/02.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4p-vlog-combo/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Pocket 4P (Vlog Combo) with TRCSL warranty.",
+    "description": "Dual Lens  1-inch wide-angle camera with 17-stop dynamic range  Up to 8\u00d7 ultra HD slow motion  Cinematic 4K footage is always within reach  ActiveTrack 8.0\u00a0 [3] \u00a0keeps subjects centered across various holding positions, with even greater stability"
+  },
+  {
+    "id": "prod_160",
+    "name": "DJI Osmo Pocket 4 (Creator Combo)",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 189900,
+    "originalPrice": 208890,
+    "stock": 4,
+    "avgRating": 4.9,
+    "reviewCount": 31,
+    "image": "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/01.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/02.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-4-creater-combo/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official DJI Osmo Pocket 4 (Creator Combo) with TRCSL warranty.",
+    "description": "14-Stop Dynamic Range  1\u2033 CMOS & 4K/240fps  10-bit D-Log  3-Axis Stabilization  2x Lossless Zoom  ActiveTrack 7.0 & Intelligent Focusing"
+  },
+  {
+    "id": "prod_161",
+    "name": "DJI Osmo Pocket 3 (Creator Combo)",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 163900,
+    "originalPrice": 180290,
+    "stock": 12,
+    "avgRating": 4.8,
+    "reviewCount": 75,
+    "image": "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/01.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/02.webp",
+      "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-pocket-3-creator-combo/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Pocket 3 (Creator Combo) with TRCSL warranty.",
+    "description": "1-inch CMOS Image Sensor  Full-Pixel PDAF Focusing  4K/120fps  10-bit HLG Video  2-inch OLED, 556\u00d7314 Pixels Screen  Stereo Recording  80% in 16 Mins Charging Time"
+  },
+  {
+    "id": "prod_162",
+    "name": "DJI Mic 3 - Dual Wireless Microphone",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 92500,
+    "originalPrice": 101750,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 69,
+    "image": "/ACCESORIES/images/dji-mic-3-dual-wireless-microphone/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-mic-3-dual-wireless-microphone/01.webp",
+      "/ACCESORIES/images/dji-mic-3-dual-wireless-microphone/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-mic-3-dual-wireless-microphone/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-mic-3-dual-wireless-microphone/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Mic 3 - Dual Wireless Microphone with TRCSL warranty.",
+    "description": "Short Description      Lightweight & Intuitive, Compact Storage  4TX + 8RX Capability  Adaptive Gain Control  Three Voice Tone Presets  Dual Band Lossless Audio  Integrated Timecode"
+  },
+  {
+    "id": "prod_163",
+    "name": "DJI Mic Mini 2 - Mobile Version (USB-C)",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 40500,
+    "originalPrice": 44550,
+    "stock": 18,
+    "avgRating": 4.8,
+    "reviewCount": 71,
+    "image": "/ACCESORIES/images/dji-mic-mini-2-mobile-version-usb-c/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-mic-mini-2-mobile-version-usb-c/01.webp",
+      "/ACCESORIES/images/dji-mic-mini-2-mobile-version-usb-c/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-mic-mini-2-mobile-version-usb-c/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-mic-mini-2-mobile-version-usb-c/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Mic Mini 2 - Mobile Version (USB-C) with TRCSL warranty.",
+    "description": "Lightweight & Versatile, Compact Storage  High-Quality Audio, Mixed Device Transmission  Three Voice Tone Presets, Two-Level Noise Cancelling  Automatic Limiting to Prevent Audio Clipping"
+  },
+  {
+    "id": "prod_164",
+    "name": "HUAWEI Band 11 Pro Smartwatch",
+    "brand": "Huawei",
+    "category": "Watch",
+    "price": 22990,
+    "originalPrice": 25289,
+    "stock": 25,
+    "avgRating": 4.7,
+    "reviewCount": 75,
+    "image": "/ACCESORIES/images/huawei-band-11-pro-smartwatch/01.webp",
+    "images": [
+      "/ACCESORIES/images/huawei-band-11-pro-smartwatch/01.webp",
+      "/ACCESORIES/images/huawei-band-11-pro-smartwatch/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/ACCESORIES/images/huawei-band-11-pro-smartwatch/01.webp"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/huawei-band-11-pro-smartwatch/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Huawei, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Huawei"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official HUAWEI Band 11 Pro Smartwatch with TRCSL warranty.",
+    "description": "Autonomous GNSS Positioning  1.62-Inch High-Brightness Screen  Enhanced Sleep Tracking  Pulse Wave Arrhythmia Analysis"
+  },
+  {
+    "id": "prod_165",
+    "name": "Apple Magic Keyboard for iPad Pro 13\u2011inch (M4/M5)",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 129900,
+    "originalPrice": 142890,
+    "stock": 12,
+    "avgRating": 4.8,
+    "reviewCount": 24,
+    "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-13-inch-m4-m5/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-13-inch-m4-m5/01.jpg",
+      "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-13-inch-m4-m5/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-13-inch-m4-m5/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-13-inch-m4-m5/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Magic Keyboard for iPad Pro 13\u2011inch (M4/M5) with TRCSL warranty.",
+    "description": "The   Apple Magic Keyboard for iPad Pro 13-inch (M4/M5)  professional-grade workstation  USB-C Pass-Through Charging  Haptic Glass Trackpad"
+  },
+  {
+    "id": "prod_166",
+    "name": "Apple 40W Dynamic Power Adapter 60w Max",
+    "brand": "Apple",
+    "category": "Chargers",
+    "price": 17490,
+    "originalPrice": 19239,
+    "stock": 18,
+    "avgRating": 4.6,
+    "reviewCount": 36,
+    "image": "/APPLE/apple_20w-usb-c-power-adapter.webp",
+    "images": [
+      "/APPLE/apple_20w-usb-c-power-adapter.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Gloss White (UK 3-Pin)",
+        "hex": "#ffffff",
+        "image": "/APPLE/apple_20w-usb-c-power-adapter.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Chargers, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Chargers"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple 40W Dynamic Power Adapter 60w Max with TRCSL warranty.",
+    "description": "Description   Upto 60W Max Dynamically Power Output  Fast Charging up to 50% in 20\u201330 minutes.  Portability & Convenience: Compact, lightweight design,  Works with iPhone 8 to iPhone 17 Pro Max, iPad Pro/Air/Mini, MacBook Air (M1\u2013M4), Apple Watch, AirPods, Apple Vision Pro, and other USB-C devices."
+  },
+  {
+    "id": "prod_167",
+    "name": "Apple Magic Keyboard for iPad Pro 11\u2011inch (M4/M5)",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 118900,
+    "originalPrice": 130790,
+    "stock": 8,
+    "avgRating": 4.7,
+    "reviewCount": 83,
+    "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-11-inch-m4-m5/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-11-inch-m4-m5/01.jpg",
+      "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-11-inch-m4-m5/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-11-inch-m4-m5/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-magic-keyboard-for-ipad-pro-11-inch-m4-m5/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Magic Keyboard for iPad Pro 11\u2011inch (M4/M5) with TRCSL warranty.",
+    "description": "The   Apple Magic Keyboard for iPad Pro 11-inch (M4/M5)  professional-grade workstation  USB-C Pass-Through Charging  Haptic Glass Trackpad"
+  },
+  {
+    "id": "prod_168",
+    "name": "iPad Magic Keyboard 11-inch A3339 US (M3/M4)",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 113900,
+    "originalPrice": 125290,
+    "stock": 5,
+    "avgRating": 4.6,
+    "reviewCount": 49,
+    "image": "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/01.jpg",
+    "images": [
+      "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/01.jpg",
+      "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/02.jpg",
+      "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/ipad-magic-keyboard-11-inch-a3339-us-m3-m4/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official iPad Magic Keyboard 11-inch A3339 US (M3/M4) with TRCSL warranty.",
+    "description": "Key Features:      Comfortable and responsive keys   Stylish, modern design   Durable construction for everyday use   Easy and convenient to use   Suitable for work, study, gaming, and browsing"
+  },
+  {
+    "id": "prod_169",
+    "name": "Apple Mac Mini M4 16GB 512GB",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 315990,
+    "originalPrice": 347589,
+    "stock": 3,
+    "avgRating": 4.9,
+    "reviewCount": 28,
+    "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-512gb/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-mac-mini-m4-16gb-512gb/01.jpg",
+      "/ACCESORIES/images/apple-mac-mini-m4-16gb-512gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-512gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-512gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Apple Mac Mini M4 16GB 512GB with TRCSL warranty.",
+    "description": "The\u00a0 mac mini m4 16gb 256gb  offers the perfect balance of size and storage, featuring a larger 256 SSD for all your files and apps. Powered by the M4 chip and 16GB of unified memory, this ultra-compact desktop delivers massive performance in a 5-inch square footprint.      Chip: \u00a0Apple M4 (10-Core CPU, 10-Core GPU)    Memory: \u00a016GB Unified Memory "
+  },
+  {
+    "id": "prod_170",
+    "name": "Apple Mac Mini M4 16GB 256GB",
+    "brand": "Apple",
+    "category": "Accessories",
+    "price": 284900,
+    "originalPrice": 313390,
+    "stock": 18,
+    "avgRating": 4.7,
+    "reviewCount": 25,
+    "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-256gb/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-mac-mini-m4-16gb-256gb/01.jpg",
+      "/ACCESORIES/images/apple-mac-mini-m4-16gb-256gb/02.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-256gb/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/apple-mac-mini-m4-16gb-256gb/02.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Mac Mini M4 16GB 256GB with TRCSL warranty.",
+    "description": "The\u00a0 mac mini m4 16gb 256gb  offers the perfect balance of size and storage, featuring a larger 256 SSD for all your files and apps. Powered by the M4 chip and 16GB of unified memory, this ultra-compact desktop delivers massive performance in a 5-inch square footprint.      Chip: \u00a0Apple M4 (10-Core CPU, 10-Core GPU)    Memory: \u00a016GB Unified Memory "
+  },
+  {
+    "id": "prod_171",
+    "name": "CMF by Nothing Buds 2A Wireless Earbuds",
+    "brand": "Nothing",
+    "category": "Audio",
+    "price": 8890,
+    "originalPrice": 10668,
+    "stock": 3,
+    "avgRating": 4.8,
+    "reviewCount": 76,
+    "image": "/ACCESORIES/images/cmf-by-nothing-buds-2a-wireless-earbuds-price-in-srilanka/01.webp",
+    "images": [
+      "/ACCESORIES/images/cmf-by-nothing-buds-2a-wireless-earbuds-price-in-srilanka/01.webp",
+      "/ACCESORIES/images/cmf-by-nothing-buds-2a-wireless-earbuds-price-in-srilanka/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Graphite Silver",
+        "hex": "#71717a",
+        "image": "/ACCESORIES/images/cmf-by-nothing-buds-2a-wireless-earbuds-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#ffffff",
+        "image": "/ACCESORIES/images/cmf-by-nothing-buds-2a-wireless-earbuds-price-in-srilanka/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Nothing, Category: Audio, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Nothing"
+      },
+      {
+        "title": "Category",
+        "desc": "Audio"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official CMF by Nothing Buds 2A Wireless Earbuds with TRCSL warranty.",
+    "description": "Pure Bass Sound  Hands-free calls with Voice Aware  Wireless Bluetooth 5.3 technology  Lightweight, comfortable and foldable design"
+  },
+  {
+    "id": "prod_172",
+    "name": "Xiaomi Mi Sound Party Speaker",
+    "brand": "Xiaomi",
+    "category": "Accessories",
+    "price": 32500,
+    "originalPrice": 35750,
+    "stock": 15,
+    "avgRating": 4.9,
+    "reviewCount": 34,
+    "image": "/ACCESORIES/images/xiaomi-mi-sound-party-speaker-price-in-srilanka/01.webp",
+    "images": [
+      "/ACCESORIES/images/xiaomi-mi-sound-party-speaker-price-in-srilanka/01.webp",
+      "/ACCESORIES/images/xiaomi-mi-sound-party-speaker-price-in-srilanka/02.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/xiaomi-mi-sound-party-speaker-price-in-srilanka/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/xiaomi-mi-sound-party-speaker-price-in-srilanka/02.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Xiaomi, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Xiaomi"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xiaomi Mi Sound Party Speaker with TRCSL warranty.",
+    "description": "50\u202fW total output with Bass Boost  Up to 26 hours playback  TWS + Party Connect  IP67 splash & dust resistance  Fast-charge & reverse charging"
+  },
+  {
+    "id": "prod_173",
+    "name": "Osmo Mobile 8P Phone Gimbal",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 60900,
+    "originalPrice": 66990,
+    "stock": 18,
+    "avgRating": 4.9,
+    "reviewCount": 19,
+    "image": "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/01.webp",
+    "images": [
+      "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/01.webp",
+      "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/02.webp",
+      "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/osmo-mobile-8p-phone-gimbal/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Osmo Mobile 8P Phone Gimbal with TRCSL warranty.",
+    "description": "Short Description      Remote Control Selfies, Precise Framing  Expanded & Enhanced Subject Tracking  Direct Phone Connection  Robust 3-Axis Gimbal Stabilization  10-Hour Battery Life  Built-in Extension Rod & Tripod     Actual product colors may vary slightly from the images shown on our website"
+  },
+  {
+    "id": "prod_174",
+    "name": "Xundo Magnetic Wireless Detachable Keyboard Case - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Cases",
+    "price": 10900,
+    "originalPrice": 13080,
+    "stock": 15,
+    "avgRating": 4.9,
+    "reviewCount": 29,
+    "image": "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/01.webp",
+    "images": [
+      "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/01.webp",
+      "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/02.webp",
+      "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/xundo-magnetic-wireless-detachable-keyboard-case/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Cases, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Cases"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Xundo Magnetic Wireless Detachable Keyboard Case - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "Xundo Magnetic Wireless Detachable Keyboard Case: The\u00a0XUNDD KB003\u00a0is a premium magnetic. Rs. 14,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_175",
+    "name": "Hollyland Lark M2 Wireless Microphone - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 34500,
+    "originalPrice": 37950,
+    "stock": 3,
+    "avgRating": 4.6,
+    "reviewCount": 48,
+    "image": "/ACCESORIES/images/hollyland-lark-m2-wireless-microphone/01.jpg",
+    "images": [
+      "/ACCESORIES/images/hollyland-lark-m2-wireless-microphone/01.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/hollyland-lark-m2-wireless-microphone/01.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "HOT",
+    "tagline": "Official Hollyland Lark M2 Wireless Microphone - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "Hollyland Lark M2 Wireless Microphone: Compact wireless lav mic Clear. Rs. 39,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_176",
+    "name": "Apple Watch Series 11 42MM Aluminum GPS",
+    "brand": "Apple",
+    "category": "Watch",
+    "price": 112500,
+    "originalPrice": 123750,
+    "stock": 22,
+    "avgRating": 4.9,
+    "reviewCount": 81,
+    "image": "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/01.jpg",
+    "images": [
+      "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/01.jpg",
+      "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/02.avif",
+      "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Gray",
+        "hex": "#94a3b8",
+        "image": "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/01.jpg"
+      },
+      {
+        "name": "Midnight Black",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/02.avif"
+      },
+      {
+        "name": "Silver Steel",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/apple-watch-series-11-42mm-aluminum-gps/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Apple, Category: Watch, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Apple"
+      },
+      {
+        "title": "Category",
+        "desc": "Watch"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official Apple Watch Series 11 42MM Aluminum GPS with TRCSL warranty.",
+    "description": "Apple Watch Series 11 42MM Aluminum GPS: Get notified of chronic high blood pressure. Rs. 129,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_177",
+    "name": "DJI DMMR02 Mic Mini Wireless Microphone - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 30990,
+    "originalPrice": 34089,
+    "stock": 25,
+    "avgRating": 5.0,
+    "reviewCount": 20,
+    "image": "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/01.jpg",
+    "images": [
+      "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/01.jpg",
+      "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/02.jpg",
+      "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/03.webp"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-dmmr01-mic-mini-wireless-microphone/03.webp"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI DMMR02 Mic Mini Wireless Microphone - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "DJI DMMR02 Mic Mini Wireless Microphone: Range: 400m maximum transmission distance for. Rs. 35,990 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_178",
+    "name": "DJI Osmo Mobile 8 Smart Gimbal - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Accessories",
+    "price": 44900,
+    "originalPrice": 49390,
+    "stock": 25,
+    "avgRating": 4.6,
+    "reviewCount": 81,
+    "image": "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/01.png",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/01.png",
+      "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/02.png",
+      "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/03.jpg",
+      "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/03.jpg"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-8-smart-gimbal/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Accessories, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Accessories"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Mobile 8 Smart Gimbal - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "DJI Osmo Mobile 8 Smart Gimbal: Native Tracking With Integrated Audio & Lighting. Rs. 55,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_179",
+    "name": "DJI Osmo Mobile 7 Smartphone Gimbal Stabilizer - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 26900,
+    "originalPrice": 29590,
+    "stock": 12,
+    "avgRating": 4.6,
+    "reviewCount": 31,
+    "image": "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/01.webp",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/01.webp",
+      "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/02.webp",
+      "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/03.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/01.webp"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/02.webp"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7-smartphone-gimbal-stabilizer/03.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Mobile 7 Smartphone Gimbal Stabilizer - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "DJI Osmo Mobile 7 Smartphone Gimbal Stabilizer: Robust 3-Axis Gimbal Stabilization. Rs. 35,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_180",
+    "name": "DJI Osmo Mobile 7P Smartphone Gimbal Stabilizer - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 38990,
+    "originalPrice": 42889,
+    "stock": 15,
+    "avgRating": 4.8,
+    "reviewCount": 83,
+    "image": "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/01.jpg",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/01.jpg",
+      "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/02.jpg",
+      "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/03.jpg",
+      "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/04.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/01.jpg"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/02.jpg"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/03.jpg"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#f8fafc",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-7p-smartphone-gimbal-stabilizer/04.jpg"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Mobile 7P Smartphone Gimbal Stabilizer - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "DJI Osmo Mobile 7P Smartphone Gimbal Stabilizer: Extendable Smartphone Gimbal Stabilizer. Rs. 55,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_181",
+    "name": "DJI Osmo Mobile SE Gimbal Stabilizer - Buy in Sri Lanka",
+    "brand": "Quantum",
+    "category": "Phones",
+    "price": 23990,
+    "originalPrice": 26389,
+    "stock": 15,
+    "avgRating": 4.9,
+    "reviewCount": 34,
+    "image": "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/01.png",
+    "images": [
+      "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/01.png",
+      "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/02.png",
+      "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/03.png"
+    ],
+    "finishes": [
+      {
+        "name": "Default Finish",
+        "hex": "#0f172a",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/01.png"
+      },
+      {
+        "name": "Silver Metallic",
+        "hex": "#cbd5e1",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/02.png"
+      },
+      {
+        "name": "Midnight Dark",
+        "hex": "#1e293b",
+        "image": "/ACCESORIES/images/dji-osmo-mobile-se-gimbal-stabilizer/03.png"
+      }
+    ],
+    "specs": "Warranty: 1 Year Comprehensive TRCSL Sri Lanka Warranty, Brand: Quantum, Category: Phones, Delivery: Prompt doorstep courier delivery across Sri Lanka",
+    "detailedSpecs": [
+      {
+        "title": "Warranty",
+        "desc": "1 Year Comprehensive TRCSL Sri Lanka Warranty"
+      },
+      {
+        "title": "Brand",
+        "desc": "Quantum"
+      },
+      {
+        "title": "Category",
+        "desc": "Phones"
+      },
+      {
+        "title": "Delivery",
+        "desc": "Prompt doorstep courier delivery across Sri Lanka"
+      }
+    ],
+    "badge": "OFFICIAL",
+    "tagline": "Official DJI Osmo Mobile SE Gimbal Stabilizer - Buy in Sri Lanka with TRCSL warranty.",
+    "description": "DJI Osmo Mobile SE Gimbal Stabilizer: The foldable design of the DJI Osmo Mobile SE makes. Rs. 31,900 with warranty, COD & islandwide delivery in Sri Lanka."
+  },
+  {
+    "id": "prod_182",
+    "name": "Samsung Galaxy S26 Ultra 5G",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 389000,
+    "originalPrice": 415000,
+    "stock": 8,
+    "avgRating": 5.0,
+    "reviewCount": 64,
+    "image": "/galaxy_s26_ultra.jpg",
+    "images": [
+      "/galaxy_s26_ultra.jpg",
+      "/s26ultra_camera.jpg",
+      "/hero_galaxy_s26.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium Cobalt",
+        "hex": "#2c3e50",
+        "image": "/galaxy_s26_ultra.jpg"
+      },
+      {
+        "name": "Titanium Mirror Gray",
+        "hex": "#7f8c8d",
+        "image": "/s26ultra_camera.jpg"
+      },
+      {
+        "name": "Titanium Horizon Amber",
+        "hex": "#d35400",
+        "image": "/hero_galaxy_s26.jpg"
+      }
+    ],
+    "specs": "Display: 6.9-inch Dynamic AMOLED 2X 144Hz with Gorilla Armor 2, Camera: 200MP Quad Telephoto with 100x Space Zoom & Galaxy AI 2.0, Processor: Snapdragon 8 Elite Extreme Edition (3nm), Battery: 5500mAh with 65W Super Fast Charge 2.0 & S Pen Built-in",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "6.9-inch Dynamic AMOLED 2X 144Hz with Gorilla Armor 2"
+      },
+      {
+        "title": "Camera",
+        "desc": "200MP Quad Telephoto with 100x Space Zoom & Galaxy AI 2.0"
+      },
+      {
+        "title": "Processor",
+        "desc": "Snapdragon 8 Elite Extreme Edition (3nm)"
+      },
+      {
+        "title": "Battery",
+        "desc": "5500mAh with 65W Super Fast Charge 2.0 & S Pen Built-in"
+      }
+    ],
+    "badge": "FLAGSHIP TITAN",
+    "tagline": "Official Samsung Galaxy S26 Ultra 5G with TRCSL warranty.",
+    "description": "The ultimate Android experience. Grade 5 titanium chassis, embedded Bluetooth S Pen, 200MP ProVisual Engine, and next-generation Galaxy AI."
+  },
+  {
+    "id": "prod_183",
+    "name": "Samsung Galaxy Z Flip 6 5G",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 279000,
+    "originalPrice": 299000,
+    "stock": 10,
+    "avgRating": 4.8,
+    "reviewCount": 39,
+    "image": "/zflip6.jpg",
+    "images": [
+      "/zflip6.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Mint Green",
+        "hex": "#a7f3d0",
+        "image": "/zflip6.jpg"
+      },
+      {
+        "name": "Silver Shadow",
+        "hex": "#94a3b8",
+        "image": "/zflip6.jpg"
+      },
+      {
+        "name": "Yellow Glow",
+        "hex": "#fef08a",
+        "image": "/zflip6.jpg"
+      },
+      {
+        "name": "Blue Horizon",
+        "hex": "#bfdbfe",
+        "image": "/zflip6.jpg"
+      }
+    ],
+    "specs": "Display: 6.7-inch FHD+ Dynamic AMOLED 2X 120Hz + 3.4-inch FlexWindow, Camera: 50MP Wide with OIS + 12MP Ultra-wide with FlexCam, Durability: Armor Aluminum frame with IP48 water resistance",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "6.7-inch FHD+ Dynamic AMOLED 2X 120Hz + 3.4-inch FlexWindow"
+      },
+      {
+        "title": "Camera",
+        "desc": "50MP Wide with OIS + 12MP Ultra-wide with FlexCam"
+      },
+      {
+        "title": "Durability",
+        "desc": "Armor Aluminum frame with IP48 water resistance"
+      }
+    ],
+    "badge": "FLEX FOLDABLE",
+    "tagline": "Official Samsung Galaxy Z Flip 6 5G with TRCSL warranty.",
+    "description": "Pocket-sized perfection with 50MP FlexCam, FlexWindow widgets, all-day 4000mAh battery and Galaxy AI interpreter."
+  },
+  {
+    "id": "prod_184",
+    "name": "Samsung Galaxy S24+ 5G (12GB/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 249000,
+    "originalPrice": 269000,
+    "stock": 12,
+    "avgRating": 4.9,
+    "reviewCount": 42,
+    "image": "/samsung_s24.jpg",
+    "images": [
+      "/samsung_s24.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Onyx Black",
+        "hex": "#1e293b",
+        "image": "/samsung_s24.jpg"
+      },
+      {
+        "name": "Marble Gray",
+        "hex": "#e2e8f0",
+        "image": "/samsung_s24.jpg"
+      },
+      {
+        "name": "Cobalt Violet",
+        "hex": "#581c87",
+        "image": "/samsung_s24.jpg"
+      }
+    ],
+    "specs": "Display: 6.7-inch QHD+ Dynamic AMOLED 2X 1-120Hz, Performance: Exynos 2400 / Snapdragon 8 Gen 3 with 12GB RAM, Battery: 4900mAh with 45W Fast Charging",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "6.7-inch QHD+ Dynamic AMOLED 2X 1-120Hz"
+      },
+      {
+        "title": "Performance",
+        "desc": "Exynos 2400 / Snapdragon 8 Gen 3 with 12GB RAM"
+      },
+      {
+        "title": "Battery",
+        "desc": "4900mAh with 45W Fast Charging"
+      }
+    ],
+    "badge": "GALAXY AI",
+    "tagline": "Official Samsung Galaxy S24+ 5G (12GB/256GB) with TRCSL warranty.",
+    "description": "Bigger screen, enhanced 4900mAh battery, stunning QHD+ resolution and full suite of Galaxy AI features."
+  },
+  {
+    "id": "prod_185",
+    "name": "Samsung Galaxy A55 5G (8GB/256GB)",
+    "brand": "Samsung",
+    "category": "Phones",
+    "price": 104500,
+    "originalPrice": 114000,
+    "stock": 15,
+    "avgRating": 4.7,
+    "reviewCount": 75,
+    "image": "/galaxy_a55.jpg",
+    "images": [
+      "/galaxy_a55.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Awesome Iceblue",
+        "hex": "#bae6fd",
+        "image": "/galaxy_a55.jpg"
+      },
+      {
+        "name": "Awesome Navy",
+        "hex": "#0f172a",
+        "image": "/galaxy_a55.jpg"
+      },
+      {
+        "name": "Awesome Lilac",
+        "hex": "#e9d5ff",
+        "image": "/galaxy_a55.jpg"
+      }
+    ],
+    "specs": "Display: 6.6-inch Super AMOLED 120Hz with Vision Booster, Build: Metal frame with Corning Gorilla Glass Victus+, Security: Samsung Knox Vault with 4 OS upgrades",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "6.6-inch Super AMOLED 120Hz with Vision Booster"
+      },
+      {
+        "title": "Build",
+        "desc": "Metal frame with Corning Gorilla Glass Victus+"
+      },
+      {
+        "title": "Security",
+        "desc": "Samsung Knox Vault with 4 OS upgrades"
+      }
+    ],
+    "badge": "BESTSELLER",
+    "tagline": "Official Samsung Galaxy A55 5G (8GB/256GB) with TRCSL warranty.",
+    "description": "The premium mid-range champion. Metal frame, 50MP OIS camera with Nightography, and Knox Vault security."
+  },
+  {
+    "id": "prod_186",
+    "name": "Samsung Galaxy Watch Ultra (47mm LTE)",
+    "brand": "Samsung",
+    "category": "Watch",
+    "price": 139000,
+    "originalPrice": 155000,
+    "stock": 7,
+    "avgRating": 4.9,
+    "reviewCount": 31,
+    "image": "/galaxy_watch_ultra.jpg",
+    "images": [
+      "/galaxy_watch_ultra.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Titanium White + Orange Peak",
+        "hex": "#ea580c",
+        "image": "/galaxy_watch_ultra.jpg"
+      },
+      {
+        "name": "Titanium Gray + Dark Trail",
+        "hex": "#475569",
+        "image": "/galaxy_watch_ultra.jpg"
+      },
+      {
+        "name": "Titanium Silver",
+        "hex": "#cbd5e1",
+        "image": "/galaxy_watch_ultra.jpg"
+      }
+    ],
+    "specs": "Case: Grade 4 Titanium with 10ATM & IP68 water resistance, Battery: 590mAh with up to 100 hours in Power Saving mode, Sensors: Dual-frequency GPS (L1+L5) with BioActive Sensor",
+    "detailedSpecs": [
+      {
+        "title": "Case",
+        "desc": "Grade 4 Titanium with 10ATM & IP68 water resistance"
+      },
+      {
+        "title": "Battery",
+        "desc": "590mAh with up to 100 hours in Power Saving mode"
+      },
+      {
+        "title": "Sensors",
+        "desc": "Dual-frequency GPS (L1+L5) with BioActive Sensor"
+      }
+    ],
+    "badge": "EXTREME ADVENTURE",
+    "tagline": "Official Samsung Galaxy Watch Ultra (47mm LTE) with TRCSL warranty.",
+    "description": "Engineered for extremes. Cushion-designed titanium case, emergency siren, multisport tracking, and energy score."
+  },
+  {
+    "id": "prod_187",
+    "name": "Samsung Galaxy Buds3 Pro",
+    "brand": "Samsung",
+    "category": "Audio",
+    "price": 54900,
+    "originalPrice": 62000,
+    "stock": 14,
+    "avgRating": 4.8,
+    "reviewCount": 56,
+    "image": "/galaxy_buds3.jpg",
+    "images": [
+      "/galaxy_buds3.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Silver Blade",
+        "hex": "#94a3b8",
+        "image": "/galaxy_buds3.jpg"
+      },
+      {
+        "name": "White Blade",
+        "hex": "#f8fafc",
+        "image": "/galaxy_buds3.jpg"
+      }
+    ],
+    "specs": "Audio: Enhanced 2-way speaker with planar tweeter & 24-bit 96kHz Hi-Fi, ANC: Adaptive Noise Control with Blade Light indicators, AI Features: Real-time Interpreter in your ear with Galaxy AI",
+    "detailedSpecs": [
+      {
+        "title": "Audio",
+        "desc": "Enhanced 2-way speaker with planar tweeter & 24-bit 96kHz Hi-Fi"
+      },
+      {
+        "title": "ANC",
+        "desc": "Adaptive Noise Control with Blade Light indicators"
+      },
+      {
+        "title": "AI Features",
+        "desc": "Real-time Interpreter in your ear with Galaxy AI"
+      }
+    ],
+    "badge": "HI-RES AUDIO",
+    "tagline": "Official Samsung Galaxy Buds3 Pro with TRCSL warranty.",
+    "description": "Iconic blade design with pulsating Blade Lights, dual-amp Hi-Fi acoustic sound, and Galaxy AI live interpretation."
+  },
+  {
+    "id": "prod_188",
+    "name": "Google Pixel 11 Pro 5G",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 315000,
+    "originalPrice": 345000,
+    "stock": 5,
+    "avgRating": 5.0,
+    "reviewCount": 28,
+    "image": "/hero_pixel11.png",
+    "images": [
+      "/hero_pixel11.png",
+      "/pixel10_pro.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Moonlight Obsidian",
+        "hex": "#111827",
+        "image": "/hero_pixel11.png"
+      },
+      {
+        "name": "Porcelain Marble",
+        "hex": "#f1f5f9",
+        "image": "/pixel10_pro.jpg"
+      },
+      {
+        "name": "Rose Quartz",
+        "hex": "#f472b6",
+        "image": "/hero_pixel11.png"
+      }
+    ],
+    "specs": "AI Silicon: Google Tensor G5 (TSMC 3nm) with Gemini Nano On-Device, Display: 6.8-inch Super Actua OLED 3000 nits LTPO 1-120Hz, Camera: 50MP Triple Camera System with 30x Super Res Zoom & 8K Video Boost",
+    "detailedSpecs": [
+      {
+        "title": "AI Silicon",
+        "desc": "Google Tensor G5 (TSMC 3nm) with Gemini Nano On-Device"
+      },
+      {
+        "title": "Display",
+        "desc": "6.8-inch Super Actua OLED 3000 nits LTPO 1-120Hz"
+      },
+      {
+        "title": "Camera",
+        "desc": "50MP Triple Camera System with 30x Super Res Zoom & 8K Video Boost"
+      }
+    ],
+    "badge": "GEMINI BUILT-IN",
+    "tagline": "Official Google Pixel 11 Pro 5G with TRCSL warranty.",
+    "description": "The pinnacle of Google AI. Powered by custom TSMC Tensor silicon, Studio Video Boost, and native Gemini multimodal assistant."
+  },
+  {
+    "id": "prod_189",
+    "name": "Google Pixel 9 Pro 5G (16GB RAM/128GB)",
+    "brand": "Google",
+    "category": "Phones",
+    "price": 235000,
+    "originalPrice": 255000,
+    "stock": 9,
+    "avgRating": 4.9,
+    "reviewCount": 44,
+    "image": "/pixel9pro.jpg",
+    "images": [
+      "/pixel9pro.jpg",
+      "/pixel10_pro.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Obsidian",
+        "hex": "#18181b",
+        "image": "/pixel9pro.jpg"
+      },
+      {
+        "name": "Porcelain",
+        "hex": "#fafaf9",
+        "image": "/pixel10_pro.jpg"
+      },
+      {
+        "name": "Hazel",
+        "hex": "#57534e",
+        "image": "/pixel9pro.jpg"
+      },
+      {
+        "name": "Rose",
+        "hex": "#f472b6",
+        "image": "/pixel9pro.jpg"
+      }
+    ],
+    "specs": "Silicon: Google Tensor G4 with 16GB RAM for advanced Gemini Nano, Display: 6.3-inch Super Actua LTPO display with 3000 nits peak, Camera: 50MP Main + 48MP Ultrawide + 48MP 5x Telephoto + 42MP Selfie",
+    "detailedSpecs": [
+      {
+        "title": "Silicon",
+        "desc": "Google Tensor G4 with 16GB RAM for advanced Gemini Nano"
+      },
+      {
+        "title": "Display",
+        "desc": "6.3-inch Super Actua LTPO display with 3000 nits peak"
+      },
+      {
+        "title": "Camera",
+        "desc": "50MP Main + 48MP Ultrawide + 48MP 5x Telephoto + 42MP Selfie"
+      }
+    ],
+    "badge": "PRO CAMERA",
+    "tagline": "Official Google Pixel 9 Pro 5G (16GB RAM/128GB) with TRCSL warranty.",
+    "description": "Pro power in an elegant 6.3-inch size. Silky matte glass back with polished metal frame, 16GB RAM and Zoom Enhance."
+  },
+  {
+    "id": "prod_190",
+    "name": "Google Pixel Watch 3 (45mm LTE)",
+    "brand": "Google",
+    "category": "Watch",
+    "price": 105000,
+    "originalPrice": 118000,
+    "stock": 6,
+    "avgRating": 4.8,
+    "reviewCount": 21,
+    "image": "/pixel_watch_3.jpg",
+    "images": [
+      "/pixel_watch_3.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Matte Black + Obsidian Active",
+        "hex": "#18181b",
+        "image": "/pixel_watch_3.jpg"
+      },
+      {
+        "name": "Polished Silver + Porcelain",
+        "hex": "#f5f5f4",
+        "image": "/pixel_watch_3.jpg"
+      },
+      {
+        "name": "Champagne Gold + Hazel",
+        "hex": "#d6d3d1",
+        "image": "/pixel_watch_3.jpg"
+      }
+    ],
+    "specs": "Display: Actua Display up to 2000 nits with ultrathin bezels, Sensors: Loss of Pulse Detection, Readiness Score & Cardio Load, Battery: Up to 36 hours with Battery Saver mode",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "Actua Display up to 2000 nits with ultrathin bezels"
+      },
+      {
+        "title": "Sensors",
+        "desc": "Loss of Pulse Detection, Readiness Score & Cardio Load"
+      },
+      {
+        "title": "Battery",
+        "desc": "Up to 36 hours with Battery Saver mode"
+      }
+    ],
+    "badge": "FITBIT INSIGHTS",
+    "tagline": "Official Google Pixel Watch 3 (45mm LTE) with TRCSL warranty.",
+    "description": "The first 45mm Pixel Watch. Bigger, brighter Actua display, advanced running mechanics and comprehensive health tracking."
+  },
+  {
+    "id": "prod_191",
+    "name": "OnePlus 12 5G (16GB RAM/512GB)",
+    "brand": "OnePlus",
+    "category": "Phones",
+    "price": 195000,
+    "originalPrice": 215000,
+    "stock": 14,
+    "avgRating": 4.8,
+    "reviewCount": 61,
+    "image": "/oneplus12.jpg",
+    "images": [
+      "/oneplus12.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Flowy Emerald",
+        "hex": "#065f46",
+        "image": "/oneplus12.jpg"
+      },
+      {
+        "name": "Silky Black",
+        "hex": "#111827",
+        "image": "/oneplus12.jpg"
+      }
+    ],
+    "specs": "Display: 6.82-inch ProXDR 120Hz with 4500 nits peak brightness, Camera: 4th Gen Hasselblad Camera with 64MP 3x Periscope Telephoto, Charging: 100W SUPERVOOC + 50W Wireless AIRVOOC",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "6.82-inch ProXDR 120Hz with 4500 nits peak brightness"
+      },
+      {
+        "title": "Camera",
+        "desc": "4th Gen Hasselblad Camera with 64MP 3x Periscope Telephoto"
+      },
+      {
+        "title": "Charging",
+        "desc": "100W SUPERVOOC + 50W Wireless AIRVOOC"
+      }
+    ],
+    "badge": "VALUE KING",
+    "tagline": "Official OnePlus 12 5G (16GB RAM/512GB) with TRCSL warranty.",
+    "description": "Equipped with Snapdragon 8 Gen 3, custom vapor cooling system, 5400mAh battery and 64MP Hasselblad periscope lens."
+  },
+  {
+    "id": "prod_192",
+    "name": "Xiaomi 15 Ultra 5G (16GB/512GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 345000,
+    "originalPrice": 375000,
+    "stock": 6,
+    "avgRating": 5.0,
+    "reviewCount": 35,
+    "image": "/xiaomi15ultra.jpg",
+    "images": [
+      "/xiaomi15ultra.jpg",
+      "/hero_xiaomi.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Leica Black Leather",
+        "hex": "#1c1917",
+        "image": "/xiaomi15ultra.jpg"
+      },
+      {
+        "name": "Titanium White Ceramic",
+        "hex": "#f5f5f4",
+        "image": "/hero_xiaomi.jpg"
+      },
+      {
+        "name": "Vintage Silver",
+        "hex": "#94a3b8",
+        "image": "/xiaomi15ultra.jpg"
+      }
+    ],
+    "specs": "Camera: 200MP Leica Periscope Telephoto + 1-inch Sony Main Sensor, Processor: Snapdragon 8 Elite with Xiaomi HyperOS 2.0, Battery: 6000mAh High-Density Battery with 90W Wired + 80W Wireless",
+    "detailedSpecs": [
+      {
+        "title": "Camera",
+        "desc": "200MP Leica Periscope Telephoto + 1-inch Sony Main Sensor"
+      },
+      {
+        "title": "Processor",
+        "desc": "Snapdragon 8 Elite with Xiaomi HyperOS 2.0"
+      },
+      {
+        "title": "Battery",
+        "desc": "6000mAh High-Density Battery with 90W Wired + 80W Wireless"
+      }
+    ],
+    "badge": "LEICA OPTICS",
+    "tagline": "Official Xiaomi 15 Ultra 5G (16GB/512GB) with TRCSL warranty.",
+    "description": "Professional optical camera disguised as a smartphone. Summilux lenses, 1-inch sensor, 200MP periscope zoom, and Snapdragon 8 Elite."
+  },
+  {
+    "id": "prod_193",
+    "name": "Xiaomi 14 Ultra 5G (16GB/512GB)",
+    "brand": "Xiaomi",
+    "category": "Phones",
+    "price": 285000,
+    "originalPrice": 310000,
+    "stock": 7,
+    "avgRating": 4.9,
+    "reviewCount": 52,
+    "image": "/xiaomi14ultra.jpg",
+    "images": [
+      "/xiaomi14ultra.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Black Nano-tech Vegan Leather",
+        "hex": "#1c1917",
+        "image": "/xiaomi14ultra.jpg"
+      },
+      {
+        "name": "White Vegan Leather",
+        "hex": "#f5f5f4",
+        "image": "/xiaomi14ultra.jpg"
+      }
+    ],
+    "specs": "Camera: All-Focal-Length Leica Quad 50MP Cameras with stepless variable aperture, Display: 6.73-inch WQHD+ All Around Liquid Display 120Hz, Durability: Xiaomi Guardian Structure with Shield Glass",
+    "detailedSpecs": [
+      {
+        "title": "Camera",
+        "desc": "All-Focal-Length Leica Quad 50MP Cameras with stepless variable aperture"
+      },
+      {
+        "title": "Display",
+        "desc": "6.73-inch WQHD+ All Around Liquid Display 120Hz"
+      },
+      {
+        "title": "Durability",
+        "desc": "Xiaomi Guardian Structure with Shield Glass"
+      }
+    ],
+    "badge": "PRO PHOTOGRAPHY",
+    "tagline": "Official Xiaomi 14 Ultra 5G (16GB/512GB) with TRCSL warranty.",
+    "description": "Legendary Leica Quad Camera system with continuous f/1.63-f/4.0 variable aperture and 8K video on all four lenses."
+  },
+  {
+    "id": "prod_194",
+    "name": "Apple AirPods Pro 2 (USB-C & Active Hearing Protection)",
+    "brand": "Apple",
+    "category": "Audio",
+    "price": 74900,
+    "originalPrice": 82000,
+    "stock": 16,
+    "avgRating": 4.9,
+    "reviewCount": 88,
+    "image": "/airpods_pro2.jpg",
+    "images": [
+      "/airpods_pro2.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Glossy White MagSafe Case",
+        "hex": "#f8fafc",
+        "image": "/airpods_pro2.jpg"
+      }
+    ],
+    "specs": "Chip: Apple H2 headphone chip + Apple U1 in charging case, ANC: Up to 2x more Active Noise Cancellation with Transparency mode, Audio: Personalized Spatial Audio with dynamic head tracking",
+    "detailedSpecs": [
+      {
+        "title": "Chip",
+        "desc": "Apple H2 headphone chip + Apple U1 in charging case"
+      },
+      {
+        "title": "ANC",
+        "desc": "Up to 2x more Active Noise Cancellation with Transparency mode"
+      },
+      {
+        "title": "Audio",
+        "desc": "Personalized Spatial Audio with dynamic head tracking"
+      }
+    ],
+    "badge": "PRO AUDIO",
+    "tagline": "Official Apple AirPods Pro 2 (USB-C & Active Hearing Protection) with TRCSL warranty.",
+    "description": "Up to 2x more active noise cancellation, Adaptive Audio, and clinically validated Hearing Aid capabilities with USB-C MagSafe case."
+  },
+  {
+    "id": "prod_195",
+    "name": "Apple Watch Ultra 2 (49mm Titanium)",
+    "brand": "Apple",
+    "category": "Watch",
+    "price": 245000,
+    "originalPrice": 265000,
+    "stock": 12,
+    "avgRating": 5.0,
+    "reviewCount": 45,
+    "image": "/apple_watch_ultra.jpg",
+    "images": [
+      "/apple_watch_ultra.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Natural Titanium + Orange Ocean Band",
+        "hex": "#f97316",
+        "image": "/apple_watch_ultra.jpg"
+      },
+      {
+        "name": "Black Titanium + Trail Loop",
+        "hex": "#1e293b",
+        "image": "/apple_watch_ultra.jpg"
+      }
+    ],
+    "specs": "Display: 3,000 nits sapphire crystal display with Night Mode, Battery: Up to 36 hours regular use / 72 hours in Low Power mode, Action Button: Customizable tactile button for instant workout markers",
+    "detailedSpecs": [
+      {
+        "title": "Display",
+        "desc": "3,000 nits sapphire crystal display with Night Mode"
+      },
+      {
+        "title": "Battery",
+        "desc": "Up to 36 hours regular use / 72 hours in Low Power mode"
+      },
+      {
+        "title": "Action Button",
+        "desc": "Customizable tactile button for instant workout markers"
+      }
+    ],
+    "badge": "ULTRA RUGGED",
+    "tagline": "Official Apple Watch Ultra 2 (49mm Titanium) with TRCSL warranty.",
+    "description": "The most capable and rugged Apple Watch. 49mm aerospace-grade titanium, brightest 3000-nit display, and dual-frequency GPS."
+  },
+  {
+    "id": "prod_196",
+    "name": "Apple MagSafe 25W Fast Wireless Charger",
+    "brand": "Apple",
+    "category": "Chargers",
+    "price": 14900,
+    "originalPrice": 17500,
+    "stock": 25,
+    "avgRating": 4.8,
+    "reviewCount": 73,
+    "image": "/apple_magsafe.jpg",
+    "images": [
+      "/apple_magsafe.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Silver Matte Aluminum",
+        "hex": "#cbd5e1",
+        "image": "/apple_magsafe.jpg"
+      }
+    ],
+    "specs": "Speed: Fast wireless charging up to 25W with 30W adapter, Cable: Woven braided 1m / 2m USB-C integrated cable, Compatibility: iPhone 12 through iPhone 18, AirPods with MagSafe",
+    "detailedSpecs": [
+      {
+        "title": "Speed",
+        "desc": "Fast wireless charging up to 25W with 30W adapter"
+      },
+      {
+        "title": "Cable",
+        "desc": "Woven braided 1m / 2m USB-C integrated cable"
+      },
+      {
+        "title": "Compatibility",
+        "desc": "iPhone 12 through iPhone 18, AirPods with MagSafe"
+      }
+    ],
+    "badge": "25W FAST MAGSAFE",
+    "tagline": "Official Apple MagSafe 25W Fast Wireless Charger with TRCSL warranty.",
+    "description": "Snap-on magnetic wireless charging up to 25W when paired with 30W power adapter. Premium braided cord."
+  },
+  {
+    "id": "prod_197",
+    "name": "Anker Prime 65W GaN Wall Charger (3-Port Fast)",
+    "brand": "Anker",
+    "category": "Chargers",
+    "price": 14500,
+    "originalPrice": 16900,
+    "stock": 20,
+    "avgRating": 4.9,
+    "reviewCount": 67,
+    "image": "/anker_65w.jpg",
+    "images": [
+      "/anker_65w.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Anker Metallic Charcoal",
+        "hex": "#1e293b",
+        "image": "/anker_65w.jpg"
+      }
+    ],
+    "specs": "Power Output: 65W Max across 2x USB-C and 1x USB-A ports, Technology: GaNPrime with PowerIQ 4.0 and ActiveShield 2.0 temperature sensor, Size: 53% smaller than original MacBook 67W adapter",
+    "detailedSpecs": [
+      {
+        "title": "Power Output",
+        "desc": "65W Max across 2x USB-C and 1x USB-A ports"
+      },
+      {
+        "title": "Technology",
+        "desc": "GaNPrime with PowerIQ 4.0 and ActiveShield 2.0 temperature sensor"
+      },
+      {
+        "title": "Size",
+        "desc": "53% smaller than original MacBook 67W adapter"
+      }
+    ],
+    "badge": "GANPRIME 65W",
+    "tagline": "Official Anker Prime 65W GaN Wall Charger (3-Port Fast) with TRCSL warranty.",
+    "description": "Charge your laptop, phone, and earbuds all at once. Ultra-compact gallium nitride charging technology."
+  },
+  {
+    "id": "prod_198",
+    "name": "Anker MagGo Qi2 15W Foldable 3-in-1 Charging Station",
+    "brand": "Anker",
+    "category": "Chargers",
+    "price": 28900,
+    "originalPrice": 32500,
+    "stock": 14,
+    "avgRating": 5.0,
+    "reviewCount": 42,
+    "image": "/anker_maggo.jpg",
+    "images": [
+      "/anker_maggo.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Phantom Black",
+        "hex": "#0f172a",
+        "image": "/anker_maggo.jpg"
+      },
+      {
+        "name": "Shell White",
+        "hex": "#f8fafc",
+        "image": "/anker_maggo.jpg"
+      }
+    ],
+    "specs": "Standard: Official Qi2 Certified 15W Ultra-Fast Magnetic Wireless, 3-in-1: Simultaneous charging for Phone, Apple Watch / Galaxy Watch, and Earbuds, Portability: Ultra-foldable travel-ready design",
+    "detailedSpecs": [
+      {
+        "title": "Standard",
+        "desc": "Official Qi2 Certified 15W Ultra-Fast Magnetic Wireless"
+      },
+      {
+        "title": "3-in-1",
+        "desc": "Simultaneous charging for Phone, Apple Watch / Galaxy Watch, and Earbuds"
+      },
+      {
+        "title": "Portability",
+        "desc": "Ultra-foldable travel-ready design"
+      }
+    ],
+    "badge": "QI2 15W MAGSAFE",
+    "tagline": "Official Anker MagGo Qi2 15W Foldable 3-in-1 Charging Station with TRCSL warranty.",
+    "description": "Next-generation Qi2 wireless charging delivering twice the speed of standard wireless pads. Folds into your palm."
+  },
+  {
+    "id": "prod_199",
+    "name": "Belkin UltraGlass 2 Screen Protector with Easy Align",
+    "brand": "Belkin",
+    "category": "Cases",
+    "price": 8500,
+    "originalPrice": 9900,
+    "stock": 35,
+    "avgRating": 4.8,
+    "reviewCount": 95,
+    "image": "/belkin_glass.jpg",
+    "images": [
+      "/belkin_glass.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Crystal Clear UltraGlass",
+        "hex": "#e2e8f0",
+        "image": "/belkin_glass.jpg"
+      }
+    ],
+    "specs": "Strength: Up to 2.7x stronger than standard tempered glass, Thickness: Ultrathin 0.29mm with precision touch sensitivity, Protection: Antimicrobial coating reducing 99% of bacterial growth",
+    "detailedSpecs": [
+      {
+        "title": "Strength",
+        "desc": "Up to 2.7x stronger than standard tempered glass"
+      },
+      {
+        "title": "Thickness",
+        "desc": "Ultrathin 0.29mm with precision touch sensitivity"
+      },
+      {
+        "title": "Protection",
+        "desc": "Antimicrobial coating reducing 99% of bacterial growth"
+      }
+    ],
+    "badge": "APPLE CERTIFIED",
+    "tagline": "Official Belkin UltraGlass 2 Screen Protector with Easy Align with TRCSL warranty.",
+    "description": "Double ion-exchange strengthened glass engineered exclusively for iPhone flagships with bubble-free installation tray."
+  },
+  {
+    "id": "prod_200",
+    "name": "Spigen Ultra Hybrid MagFit Crystal Case",
+    "brand": "Spigen",
+    "category": "Cases",
+    "price": 9900,
+    "originalPrice": 11500,
+    "stock": 30,
+    "avgRating": 4.9,
+    "reviewCount": 112,
+    "image": "/spigen_case.jpg",
+    "images": [
+      "/spigen_case.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Crystal Clear",
+        "hex": "#f8fafc",
+        "image": "/spigen_case.jpg"
+      },
+      {
+        "name": "Frost Black",
+        "hex": "#1e293b",
+        "image": "/spigen_case.jpg"
+      }
+    ],
+    "specs": "Protection: Air Cushion Technology military-grade drop defense, MagSafe: Integrated neodymium magnets for rock-solid magnetic attachment, Clarity: Blue resin infused anti-yellowing technology",
+    "detailedSpecs": [
+      {
+        "title": "Protection",
+        "desc": "Air Cushion Technology military-grade drop defense"
+      },
+      {
+        "title": "MagSafe",
+        "desc": "Integrated neodymium magnets for rock-solid magnetic attachment"
+      },
+      {
+        "title": "Clarity",
+        "desc": "Blue resin infused anti-yellowing technology"
+      }
+    ],
+    "badge": "MAGFIT",
+    "tagline": "Official Spigen Ultra Hybrid MagFit Crystal Case with TRCSL warranty.",
+    "description": "Show off your phone's authentic color while enjoying military-grade corner air cushions and built-in MagSafe ring."
+  },
+  {
+    "id": "prod_201",
+    "name": "ESR HaloLock MagSafe Wireless Car Mount Charger",
+    "brand": "Accessories",
+    "category": "Accessories",
+    "price": 12900,
+    "originalPrice": 14900,
+    "stock": 18,
+    "avgRating": 4.7,
+    "reviewCount": 53,
+    "image": "/esr_carmount.jpg",
+    "images": [
+      "/esr_carmount.jpg"
+    ],
+    "finishes": [
+      {
+        "name": "Matte Black",
+        "hex": "#0f172a",
+        "image": "/esr_carmount.jpg"
+      }
+    ],
+    "specs": "Magnets: 1400g magnetic holding force keeps device secure on bumpy roads, Cooling: CryoBoost phone-cooling fan prevents overheating during navigation, Mount: Secure vent clamp with 360-degree ball joint",
+    "detailedSpecs": [
+      {
+        "title": "Magnets",
+        "desc": "1400g magnetic holding force keeps device secure on bumpy roads"
+      },
+      {
+        "title": "Cooling",
+        "desc": "CryoBoost phone-cooling fan prevents overheating during navigation"
+      },
+      {
+        "title": "Mount",
+        "desc": "Secure vent clamp with 360-degree ball joint"
+      }
+    ],
+    "badge": "CRYOOBOOST 15W",
+    "tagline": "Official ESR HaloLock MagSafe Wireless Car Mount Charger with TRCSL warranty.",
+    "description": "CryoBoost cooling fan and ultra-strong HaloLock magnets keep your device charging at maximum speeds on every drive."
+  }
 ];
-export const repairTickets = [
-    {
-        id: "REP-104", userId: "u1", device: "iPhone 15 Pro", brand: "Apple",
-        issue: "Cracked Screen", mode: "Walk-in",
-        status: "Repairing", stages: ["Received", "Diagnosing", "Repairing", "Quality Tested", "Ready"],
-        currentStage: 2, diagnosticNotes: "Touch IC slightly damaged too, replacing simultaneously.",
-        estimatedCost: 28000, estimateApproved: null,
-        createdAt: "2024-11-14", slotDate: "2024-11-15", slotTime: "10:30"
-    },
-    {
-        id: "REP-103", userId: "u1", device: "Samsung S22", brand: "Samsung",
-        issue: "Battery Replacement", mode: "Mail-in",
-        status: "Quality Tested", stages: ["Received", "Diagnosing", "Repairing", "Quality Tested", "Ready"],
-        currentStage: 3, diagnosticNotes: "Battery capacity at 68%, replaced with OEM unit.",
-        estimatedCost: 12000, estimateApproved: true,
-        createdAt: "2024-11-10", waybill: "QM-WB-8821"
-    }
-];
-export const orders = [
-    {
-        id: "ORD-5521", items: [
-            { name: "iPhone 16 Pro 256GB Black", qty: 1, price: 425000, image: "/iphone16pro.jpg" },
-            { name: "Anker 65W GaN Charger", qty: 1, price: 14500, image: "/accessories.jpg" }
-        ],
-        total: 439500, paymentMethod: "PayHere", paymentStatus: "Paid",
-        orderStatus: "Shipped", courierTracking: "DHL-4421881",
-        createdAt: "2024-11-12"
-    },
-    {
-        id: "ORD-5489", items: [
-            { name: "Galaxy S24 Ultra 512GB", qty: 1, price: 449000, image: "/samsung_s24.jpg" }
-        ],
-        total: 449000, paymentMethod: "COD", paymentStatus: "Pending",
-        orderStatus: "Processing", createdAt: "2024-11-08"
-    }
-];
-export const reviews = [
-    {
-        id: "r1", productId: "p1", user: "Kasun M.", rating: 5,
-        comment: "Arrived sealed and fast dispatch. The titanium frame feels incredibly premium. Camera system is the best I have used.",
-        date: "18 Oct 2024", isVerifiedBuyer: true,
-        storeReply: "Thank you, Kasun! Enjoy your new iPhone 16 Pro! ðŸ™Œ"
-    },
-    {
-        id: "r2", productId: "p1", user: "Dilini P.", rating: 5,
-        comment: "Battery life is amazing â€” easily gets through a full day with heavy usage. ProRes video is incredible.",
-        date: "22 Oct 2024", isVerifiedBuyer: true, storeReply: null
-    },
-    {
-        id: "r3", productId: "p1", user: "Ruwan S.", rating: 4,
-        comment: "Great phone overall. The Dynamic Island is more useful than I expected. Minus one star since the box didn't include a charger.",
-        date: "5 Nov 2024", isVerifiedBuyer: true, storeReply: null
-    }
-];
-export const timeSlots = [
-    { time: "09:00", booked: false }, { time: "09:30", booked: true },
+
+export const repairTimeSlots = [
+    { time: "09:00", booked: false }, { time: "09:30", booked: false },
     { time: "10:00", booked: false }, { time: "10:30", booked: false },
     { time: "11:00", booked: true }, { time: "11:30", booked: false },
     { time: "12:00", booked: false }, { time: "12:30", booked: false },
@@ -128,6 +10164,7 @@ export const timeSlots = [
     { time: "15:00", booked: true }, { time: "15:30", booked: false },
     { time: "16:00", booked: false }, { time: "16:30", booked: false },
 ];
+
 export const repairAdminQueue = [
     { id: "REP-104", customer: "Kasun M.", device: "iPhone 15 Pro", mode: "Walk-in", status: "Repairing", priority: "High" },
     { id: "REP-103", customer: "Dilini P.", device: "Samsung S22", mode: "Mail-in", status: "Quality Tested", priority: "Normal" },
@@ -135,25 +10172,28 @@ export const repairAdminQueue = [
     { id: "REP-101", customer: "Nimal J.", device: "iPhone 13", mode: "Mail-in", status: "Received", priority: "Low" },
     { id: "REP-100", customer: "Amaya K.", device: "OnePlus 11", mode: "Walk-in", status: "Ready", priority: "Normal" },
 ];
+
 export const adminOrders = [
-    { id: "ORD-5521", customer: "Kasun M.", items: 2, total: "LKR 439,500", payment: "PayHere", status: "Shipped" },
-    { id: "ORD-5489", customer: "Dilini P.", items: 1, total: "LKR 449,000", payment: "COD", status: "Processing" },
-    { id: "ORD-5455", customer: "Ruwan S.", items: 3, total: "LKR 28,700", payment: "PayHere", status: "Delivered" },
-    { id: "ORD-5441", customer: "Nimal J.", items: 1, total: "LKR 89,000", payment: "PayHere", status: "Processing" },
-    { id: "ORD-5420", customer: "Amaya K.", items: 2, total: "LKR 19,000", payment: "COD", status: "Delivered" },
+    { id: "ORD-5521", customer: "Kasun M.", items: 2, total: "LKR 441,500", payment: "PayHere", status: "Shipped" },
+    { id: "ORD-5489", customer: "Dilini P.", items: 1, total: "LKR 385,000", payment: "COD", status: "Processing" },
+    { id: "ORD-5455", customer: "Ruwan S.", items: 2, total: "LKR 83,500", payment: "PayHere", status: "Delivered" },
+    { id: "ORD-5441", customer: "Nimal J.", items: 1, total: "LKR 108,000", payment: "PayHere", status: "Processing" },
+    { id: "ORD-5420", customer: "Amaya K.", items: 1, total: "LKR 24,500", payment: "COD", status: "Delivered" },
 ];
+
 export const auditLogs = [
     { time: "14:22", action: "DELETED", actor: "Admin 'Kamal'", target: "product", item: "Spigen Case", id: "#8412", color: "#ef4444" },
     { time: "13:55", action: "ADDED", actor: "Admin 'Kamal'", target: "product", item: "iPhone 16 Pro 512GB", id: "#8413", color: "#10b981" },
-    { time: "11:30", action: "ROLE_CHANGE", actor: "Super Admin", target: "user", item: "Nuwan â†’ Technician role", id: "#U041", color: "#7c3aed" },
+    { time: "11:30", action: "ROLE_CHANGE", actor: "Super Admin", target: "user", item: "Nuwan → Technician role", id: "#U041", color: "#7c3aed" },
     { time: "10:14", action: "FAILED_LOGIN", actor: "Unknown", target: "auth", item: "3 attempts from 45.33.x.x", id: null, color: "#f59e0b" },
     { time: "09:22", action: "IDOR_BLOCKED", actor: "User #U205", target: "order", item: "ORD-5489 (not owned)", id: null, color: "#ef4444" },
     { time: "08:00", action: "ADDED", actor: "Admin 'Kamal'", target: "product", item: "Samsung A55 128GB", id: "#8410", color: "#10b981" },
 ];
+
 export const staffList = [
     { id: "A1", name: "Kamal Perera", email: "kamal@quantummobile.lk", role: "Admin", specialisation: "Sales", status: "Active", lastLogin: "Today 14:30" },
     { id: "A2", name: "Nuwan Silva", email: "nuwan@quantummobile.lk", role: "Admin", specialisation: "Technician", status: "Active", lastLogin: "Today 12:15" },
     { id: "A3", name: "Priya Fernando", email: "priya@quantummobile.lk", role: "Admin", specialisation: "Sales", status: "Inactive", lastLogin: "3 days ago" },
 ];
-export const MOCK_PRODUCTS = products;
 
+export const MOCK_PRODUCTS = products;
