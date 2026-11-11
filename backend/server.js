@@ -16,6 +16,7 @@ import chatRoutes from './routes/chatRoutes.js';
 import repairRoutes from './routes/repairRoutes.js';
 import posRoutes from './routes/posRoutes.js';
 import logisticsRoutes from './routes/logisticsRoutes.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 // Load environment variables
@@ -84,6 +85,7 @@ app.use('/api/chat', chatRoutes);
 app.use('/api/repairs', repairRoutes);
 app.use('/api/pos', posRoutes);
 app.use('/api/logistics', logisticsRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // Error Handling Middlewares (Spring Boot ControllerAdvice equivalent)
 app.use(notFound);

@@ -36,8 +36,8 @@ const orderSchema = new mongoose.Schema(
     paymentMethod: {
       type: String,
       required: true,
-      enum: ['PayHere', 'Card', 'COD', 'BankTransfer'],
-      default: 'PayHere'
+      enum: ['Stripe', 'PayHere', 'Card', 'COD', 'CashOnDelivery', 'BankTransfer'],
+      default: 'Stripe'
     },
     paymentResult: {
       transactionId: { type: String },

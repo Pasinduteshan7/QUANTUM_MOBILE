@@ -149,7 +149,7 @@ export default function CartPage() {
             <div style={{ marginTop: 20, display: 'flex', flexDirection: 'column', gap: 8, fontSize: 11, color: 'var(--text-muted)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <ShieldCheck size={14} color="#10b981"/>
-                <span>PayHere sandbox verified in LKR</span>
+                <span>Stripe Pay sandbox verified in LKR</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <Truck size={14} color="#0284c7"/>
