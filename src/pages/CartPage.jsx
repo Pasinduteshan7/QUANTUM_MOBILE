@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useCart } from '@/context/CartContext';
 import { ShoppingCart, Trash2, ArrowRight, ShieldCheck, Truck, ArrowLeft } from 'lucide-react';
+
 export default function CartPage() {
+    const navigate = useNavigate();
     const { cartItems, totalCount, grandTotal, formattedGrandTotal, updateQuantity, removeFromCart, clearCart } = useCart();
     return (<div className="container" style={{ maxWidth: 960, paddingTop: 40, paddingBottom: 80 }}>
       {/* Breadcrumb */}
@@ -122,7 +124,7 @@ export default function CartPage() {
             </div>
 
             <button
-              onClick={() => toast.success(`Order summary validated: ${formattedGrandTotal}. Proceeding to PayHere gateway!`, { icon: '💳', duration: 4000 })}
+              onClick={() => navigate('/checkout')}
               style={{
                 display: 'flex',
                 alignItems: 'center',

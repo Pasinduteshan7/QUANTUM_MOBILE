@@ -181,6 +181,7 @@ export const CartProvider = ({ children }) => {
 
     const totalCount = cartItems.reduce((acc, it) => acc + (it.quantity || 1), 0);
     const grandTotal = cartItems.reduce((acc, it) => acc + (it.unitPrice || it.price) * (it.quantity || 1), 0);
+    const formattedGrandTotal = `LKR ${grandTotal.toLocaleString()}`;
     const selectedItems = cartItems.filter(i => selectedIds.includes(String(i.id)));
     const selectedGrandTotal = selectedItems.reduce((acc, it) => acc + (it.unitPrice || it.price) * (it.quantity || 1), 0);
 
@@ -189,6 +190,7 @@ export const CartProvider = ({ children }) => {
             loading,
             totalCount,
             grandTotal,
+            formattedGrandTotal,
             selectedIds,
             selectedItems,
             selectedGrandTotal,
@@ -207,6 +209,6 @@ export const CartProvider = ({ children }) => {
 export const useCart = () => {
     const ctx = useContext(CartContext);
     if (!ctx)
-        return { cartItems: [], totalCount: 0, grandTotal: 0, addToCart: () => { }, updateQuantity: () => { }, removeFromCart: () => { } };
+        return { cartItems: [], totalCount: 0, grandTotal: 0, formattedGrandTotal: 'LKR 0', addToCart: () => { }, updateQuantity: () => { }, removeFromCart: () => { } };
     return ctx;
 };

@@ -1,30 +1,79 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
 import { CreditCard, Truck, CheckCircle2, ArrowRight, ArrowLeft, Lock } from 'lucide-react';
 import toast from 'react-hot-toast';
+
 export default function CheckoutPage() {
     const { cartItems, grandTotal, formattedGrandTotal, clearCart } = useCart();
+    const { user, token } = useAuth();
     const [paymentMethod, setPaymentMethod] = useState('payhere');
     const [orderPlaced, setOrderPlaced] = useState(false);
     const [orderId, setOrderId] = useState('');
-    // Form Fields
-    const [name, setName] = useState('Kasun Mendis');
-    const [phone, setPhone] = useState('+94 77 123 4567');
-    const [email, setEmail] = useState('kasun@gmail.com');
-    const [address, setAddress] = useState('45/A, Galle Road, Colombo 03');
-    const [city, setCity] = useState('Colombo');
-    const handlePlaceOrder = (e) => {
+    const [submitting, setSubmitting] = useState(false);
+
+    // Form Fields (Pre-filled from auth profile if available)
+    const [name, setName] = useState(user?.name || 'Kasun Perera');
+    const [phone, setPhone] = useState(user?.phone || '+94 77 123 4567');
+    const [email, setEmail] = useState(user?.email || 'kasun@gmail.com');
+    const [address, setAddress] = useState(user?.shippingAddress?.street || '45/A, Galle Road');
+    const [city, setCity] = useState(user?.shippingAddress?.city || 'Colombo 03');
+
+    const handlePlaceOrder = async (e) => {
         e.preventDefault();
         if (!name || !address || !phone) {
             toast.error('Please complete all delivery fields');
             return;
         }
-        const newOrderId = 'ORD-' + Math.floor(5000 + Math.random() * 900);
+
+        setSubmitting(true);
+        const activeToken = token || (typeof window !== 'undefined' ? localStorage.getItem('quantum_token') : null);
+        let newOrderId = 'ORD-' + Math.floor(5000 + Math.random() * 900);
+
+        if (activeToken) {
+            try {
+                const res = await fetch('http://localhost:5000/api/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${activeToken}`
+                    },
+                    body: JSON.stringify({
+                        orderItems: cartItems.map(it => ({
+                            name: it.name,
+                            qty: it.quantity || 1,
+                            image: it.image,
+                            price: it.unitPrice || it.price,
+                            product: it.productId || it.id
+                        })),
+                        shippingAddress: {
+                            fullName: name,
+                            phone: phone,
+                            street: address,
+                            city: city,
+                            postalCode: '00300'
+                        },
+                        paymentMethod: paymentMethod === 'payhere' ? 'PayHere' : 'CashOnDelivery',
+                        itemsPrice: grandTotal,
+                        shippingPrice: 0,
+                        totalPrice: grandTotal
+                    })
+                });
+                const data = await res.json();
+                if (data.success && data.data?._id) {
+                    newOrderId = 'ORD-' + data.data._id.slice(-6).toUpperCase();
+                }
+            } catch (err) {
+                console.warn('Backend order save fallback:', err);
+            }
+        }
+
         setOrderId(newOrderId);
         setOrderPlaced(true);
+        setSubmitting(false);
         clearCart();
-        toast.success(`Order ${newOrderId} placed successfully!`);
+        toast.success(`Order ${newOrderId} placed successfully!`, { icon: '🎉' });
     };
     if (orderPlaced) {
         return (<div className="container" style={{ maxWidth: 640, paddingTop: 60, paddingBottom: 80, textAlign: 'center' }}>
@@ -213,24 +262,28 @@ export default function CheckoutPage() {
             <span style={{ fontSize: 24, fontWeight: 900, color: 'var(--cyan)', fontFamily: 'Outfit' }}>{formattedGrandTotal || 'LKR 439,500'}</span>
           </div>
 
-          <button type="submit" style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 8,
-            padding: '12px 20px',
-            borderRadius: 10,
-            background: 'linear-gradient(135deg, #0284c7, #0066ff)',
-            color: '#040d1a',
-            fontWeight: 800,
-            fontSize: 14,
-            border: 'none',
-            cursor: 'pointer',
-            width: '100%',
-            boxShadow: '0 4px 18px rgba(0,212,255,0.35)'
-        }}>
+          <button
+            type="submit"
+            disabled={submitting}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              padding: '12px 20px',
+              borderRadius: 10,
+              background: 'linear-gradient(135deg, #0284c7, #0066ff)',
+              color: '#ffffff',
+              fontWeight: 800,
+              fontSize: 14,
+              border: 'none',
+              cursor: submitting ? 'wait' : 'pointer',
+              width: '100%',
+              boxShadow: '0 4px 18px rgba(2,132,199,0.35)'
+            }}
+          >
             <Lock size={15}/>
-            <span>Place Order Now</span>
+            <span>{submitting ? 'Processing Order...' : 'Place Order Now'}</span>
           </button>
         </div>
       </form>

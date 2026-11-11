@@ -15,6 +15,8 @@ import HomePage from './pages/HomePage';
 import PhoneDetailPage from './pages/PhoneDetailPage';
 import AccessoriesPage from './pages/AccessoriesPage';
 import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrdersPage from './pages/OrdersPage';
 import RepairBookPage from './pages/RepairBookPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import SuperAdminDashboardPage from './pages/SuperAdminDashboardPage';
@@ -42,6 +44,8 @@ function AppLayout() {
             <Route path="/phones/:id" element={<PhoneDetailPage />} />
             <Route path="/accessories" element={<AccessoriesPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/orders" element={<OrdersPage />} />
             <Route path="/repairs" element={<Navigate to="/repairs/book" replace />} />
             <Route path="/repairs/book" element={<RepairBookPage />} />
             <Route path="/admin" element={<AdminDashboardPage />} />
