@@ -24,7 +24,6 @@ const chatMessageSchema = new mongoose.Schema(
     },
     senderRole: {
       type: String,
-      enum: ['customer', 'admin', 'technician', 'super_admin'],
       default: 'customer'
     },
     message: {
