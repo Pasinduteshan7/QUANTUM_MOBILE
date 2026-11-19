@@ -43,20 +43,22 @@ api.interceptors.request.use((config) => {
     }
     return config;
 });
-// Response interceptor: purge broken/expired tokens on 401 or 403
-api.interceptors.response.use((response) => response, (error) => {
-    if (typeof window !== 'undefined' && error.response && (error.response.status === 401 || error.response.status === 403)) {
-        const token = localStorage.getItem('quantum_token');
-        if (token && (token.startsWith('demo-jwt-token') || window.location.pathname.startsWith('/admin'))) {
-            localStorage.removeItem('quantum_token');
-            localStorage.removeItem('quantum_user');
-            if (window.location.pathname.startsWith('/admin')) {
-                window.location.href = '/admin';
-            } else if (window.location.pathname.startsWith('/super-admin') || window.location.pathname.startsWith('/superadmin')) {
-                window.location.href = '/super-admin';
+// Response interceptor: only purge token if session is genuinely invalid or expired
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (typeof window !== 'undefined' && error.response && error.response.status === 401) {
+            const msg = String(error.response.data?.message || '').toLowerCase();
+            // Only remove credentials if the JWT token is confirmed invalid or expired
+            if (msg.includes('expired') || msg.includes('invalid token') || msg.includes('no longer exists')) {
+                const token = localStorage.getItem('quantum_token');
+                if (token && !token.startsWith('ey')) {
+                    localStorage.removeItem('quantum_token');
+                    localStorage.removeItem('quantum_user');
+                }
             }
         }
+        return Promise.reject(error);
     }
-    return Promise.reject(error);
-});
+);
 export default api;

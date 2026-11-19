@@ -13,5 +13,11 @@ export default defineConfig({
     port: 5173,
     host: true,
     open: false,
+    proxy: {
+      '/uploads': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
+    }
   },
 });
