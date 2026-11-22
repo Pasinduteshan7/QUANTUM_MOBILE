@@ -1,9 +1,13 @@
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-// Ensure uploads folder exists
-const uploadDir = path.join(process.cwd(), 'backend', 'uploads');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Ensure backend/uploads folder exists reliably regardless of working directory
+const uploadDir = path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -15,27 +19,32 @@ const storage = multer.diskStorage({
   },
   filename(req, file, cb) {
     const ext = path.extname(file.originalname);
+    const isVideo = file.mimetype.startsWith('video/') || /mp4|webm|mov|mkv/i.test(ext);
+    const prefix = isVideo ? 'video' : 'img';
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-    cb(null, `img-${uniqueSuffix}${ext}`);
+    cb(null, `${prefix}-${uniqueSuffix}${ext}`);
   }
 });
 
-// File validation filter
+// File validation filter for images and videos
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpg|jpeg|png|webp|avif/;
-  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = allowedTypes.test(file.mimetype);
+  const allowedExts = /jpg|jpeg|png|webp|avif|svg|mp4|webm|mov|mkv/i;
+  const isExtAllowed = allowedExts.test(path.extname(file.originalname).toLowerCase());
+  const isMimeAllowed =
+    file.mimetype.startsWith('image/') ||
+    file.mimetype.startsWith('video/') ||
+    file.mimetype === 'application/octet-stream';
 
-  if (extname && mimetype) {
+  if (isExtAllowed && isMimeAllowed) {
     cb(null, true);
   } else {
-    cb(new Error('Only image files (jpg, jpeg, png, webp, avif) are supported!'), false);
+    cb(new Error('Supported formats: JPG, PNG, WebP, SVG, MP4, WebM, MOV (Max 100MB)'), false);
   }
 };
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB max per image
+  limits: { fileSize: 100 * 1024 * 1024 }, // 100 MB max (ideal for high-quality hero videos and images)
   fileFilter
 });
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { ShoppingCart, MessageCircle, MessageSquare, X, Search, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ShoppingCart, MessageCircle, MessageSquare, X, Search, Check, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { APPLE_CATEGORIES, APPLE_MALL_PRODUCTS } from '../data/appleMallData';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
@@ -25,10 +26,43 @@ export default function AppleMallSection() {
     }));
   };
 
-  // Filter products by category
-  const filteredProducts = selectedCategory === 'all'
-    ? APPLE_MALL_PRODUCTS
-    : APPLE_MALL_PRODUCTS.filter(p => p.category === selectedCategory);
+  const [liveProducts, setLiveProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products?limit=1000')
+      .then(r => r.json())
+      .then(d => {
+        const list = d.data?.products || d.data || [];
+        const appleItems = list.filter(p => (p.brand || '').toLowerCase() === 'apple');
+        const existingNames = new Set(APPLE_MALL_PRODUCTS.map(p => p.name.toLowerCase().trim()));
+        const newItems = appleItems.filter(p => !existingNames.has(p.name.toLowerCase().trim())).map(p => ({
+          id: p._id || p.id,
+          category: (p.category || '').toLowerCase() === 'phones' ? 'iphone' : (p.category || 'iphone').toLowerCase(),
+          categoryLabel: p.category || 'iPhone',
+          name: p.name,
+          price: p.price,
+          originalPrice: p.originalPrice || Math.round(p.price * 1.1),
+          discountPercent: p.originalPrice && p.originalPrice > p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0,
+          availability: p.stock > 0 ? `${p.stock} in Stock` : 'Out of Stock',
+          mainImage: p.mainImage || '/APPLE/apple_iphone-18-pro_silver.webp',
+          variants: p.finishes?.length ? p.finishes : [{ name: 'Standard Edition', image: p.mainImage || '/APPLE/apple_iphone-18-pro_silver.webp', hex: '#1e293b' }],
+          specs: p.specs?.length
+            ? p.specs.map(s => typeof s === 'string' ? s : `${s.title}: ${s.desc}`)
+            : (p.description ? p.description.split('\n').filter(Boolean) : ['Genuine Apple Store Product', '1 Year TRCSL Warranty'])
+        }));
+        setLiveProducts(newItems);
+      })
+      .catch(() => {});
+  }, []);
+
+  const combinedAppleProducts = [...liveProducts, ...APPLE_MALL_PRODUCTS]
+    .sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+
+  // Filter products by category (organized in price descending order)
+  const filteredProducts = (selectedCategory === 'all'
+    ? combinedAppleProducts
+    : combinedAppleProducts.filter(p => p.category === selectedCategory))
+    .sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
 
   const handleOpenModal = (product) => {
     setSelectedProduct(product);
@@ -742,6 +776,24 @@ export default function AppleMallSection() {
                   </button>
                 </div>
 
+                {/* View Full Product Showcase Link */}
+                <Link
+                  to={`/phones/${selectedProduct._id || selectedProduct.id}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6,
+                    marginTop: 14,
+                    color: '#0066cc',
+                    fontSize: 13,
+                    fontWeight: 700,
+                    textDecoration: 'none'
+                  }}
+                >
+                  <span>View Full Highlights, In-Box Items & Configurations</span>
+                  <ExternalLink size={14} />
+                </Link>
               </div>
 
             </div>

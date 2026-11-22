@@ -136,7 +136,12 @@ export const emitBulkStockUpdated = (deductions) => {
 export const emitOrderCreated = (order) => {
   if (!io) return;
   io.emit('order:created', order);
-  console.log(`[Socket.io] Broadcast order:created for ${order._id}`);
+  const rawUid = order.user?._id || order.user;
+  const uid = rawUid ? rawUid.toString() : null;
+  if (uid) {
+    io.to(`user:${uid}`).emit('order:myCreated', order);
+  }
+  console.log(`[Socket.io] Broadcast order:created for ${order._id} (user: ${uid || 'guest'})`);
 };
 
 /**
@@ -145,11 +150,12 @@ export const emitOrderCreated = (order) => {
 export const emitOrderStatusUpdated = (order) => {
   if (!io) return;
   io.emit('order:statusUpdated', order);
-  if (order.user) {
-    const uid = typeof order.user === 'object' ? order.user._id : order.user;
+  const rawUid = order.user?._id || order.user;
+  const uid = rawUid ? rawUid.toString() : null;
+  if (uid) {
     io.to(`user:${uid}`).emit('order:myStatusUpdated', order);
   }
-  console.log(`[Socket.io] Broadcast order:statusUpdated for ${order._id}`);
+  console.log(`[Socket.io] Broadcast order:statusUpdated for ${order._id} (user: ${uid || 'all'})`);
 };
 
 /**
@@ -163,4 +169,59 @@ export const emitChatMessage = (message) => {
   }
   console.log(`[Socket.io] Broadcast chat:message from ${message.senderName || 'Staff'}`);
 };
+
+/**
+ * Real-time event: New product added to catalog
+ */
+export const emitProductCreated = (product) => {
+  if (!io) return;
+  io.emit('product:created', product);
+  console.log(`[Socket.io] Broadcast product:created for ${product.name} (${product._id})`);
+};
+
+/**
+ * Real-time event: Product updated (details, specs, price, stock)
+ */
+export const emitProductUpdated = (product) => {
+  if (!io) return;
+  io.emit('product:updated', product);
+  console.log(`[Socket.io] Broadcast product:updated for ${product.name} (${product._id})`);
+};
+
+/**
+ * Real-time event: Product deleted from catalog
+ */
+export const emitProductDeleted = (productId) => {
+  if (!io) return;
+  io.emit('product:deleted', { _id: productId });
+  console.log(`[Socket.io] Broadcast product:deleted for ${productId}`);
+};
+
+/**
+ * Real-time event: Walk-in POS checkout sale completed
+ */
+export const emitPosSaleCompleted = (sale) => {
+  if (!io) return;
+  io.emit('pos:saleCompleted', sale);
+  console.log(`[Socket.io] Broadcast pos:saleCompleted for Sale #${sale.saleNumber || sale._id}`);
+};
+
+/**
+ * Real-time event: Customer verified review posted
+ */
+export const emitReviewCreated = (review) => {
+  if (!io) return;
+  io.emit('review:created', review);
+  console.log(`[Socket.io] Broadcast review:created for ${review.productName} by ${review.userName}`);
+};
+
+/**
+ * Real-time event: Repair ticket deleted
+ */
+export const emitRepairDeleted = (ticketId) => {
+  if (!io) return;
+  io.emit('repair:deleted', { ticketId });
+  console.log(`[Socket.io] Broadcast repair:deleted for ${ticketId}`);
+};
+
 

@@ -4,6 +4,7 @@ import {
   getStaffMembers,
   createStaffMember,
   toggleStaffStatus,
+  updateStaffRole,
   deleteStaffMember,
   getAuditLogs
 } from '../controllers/superAdminController.js';
@@ -18,6 +19,7 @@ router.get('/overview', getSuperAdminOverview);
 router.get('/staff', getStaffMembers);
 router.post('/staff', createStaffMember);
 router.put('/staff/:id/status', toggleStaffStatus);
+router.put('/staff/:id/role', updateStaffRole);
 router.delete('/staff/:id', deleteStaffMember);
 
 router.get('/audit-logs', getAuditLogs);

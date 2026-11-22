@@ -13,6 +13,11 @@ const productSchema = new mongoose.Schema(
       trim: true,
       index: true
     },
+    ecosystemSlug: {
+      type: String,
+      trim: true,
+      index: true
+    },
     category: {
       type: String,
       required: [true, 'Category is required (e.g. Phones, Watch, Audio, Chargers, Cases, Accessories)'],
@@ -57,7 +62,7 @@ const productSchema = new mongoose.Schema(
       {
         name: { type: String, required: true },
         hex: { type: String, required: true },
-        image: { type: String, required: true }
+        image: { type: String, default: '' }
       }
     ],
     specs: [
@@ -66,6 +71,18 @@ const productSchema = new mongoose.Schema(
         desc: { type: String, required: true }
       }
     ],
+    highlights: {
+      type: [String],
+      default: []
+    },
+    inTheBox: {
+      type: [String],
+      default: []
+    },
+    storageOptions: {
+      type: [String],
+      default: []
+    },
     badge: {
       type: String,
       default: null

@@ -2,6 +2,8 @@ import express from 'express';
 import {
   registerUser,
   loginUser,
+  googleLogin,
+  getGoogleAuthConfig,
   getUserProfile,
   updateUserProfile,
   forgotPassword,
@@ -14,6 +16,8 @@ const router = express.Router();
 // Public routes
 router.post('/register', registerUser);
 router.post('/login', loginUser);
+router.post('/google', googleLogin);
+router.get('/google/config', getGoogleAuthConfig);
 router.post('/forgot-password', forgotPassword);
 router.put('/reset-password/:token', resetPassword);
 

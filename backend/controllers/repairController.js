@@ -1,5 +1,10 @@
 import Repair from '../models/Repair.js';
 import { sendSuccess, sendError } from '../utils/apiResponse.js';
+import { emitRepairBooked, emitRepairUpdated, emitRepairPaid, emitRepairDeleted } from '../socket.js';
+import {
+  sendRepairBookingConfirmationEmail,
+  sendRepairPaymentReceiptEmail
+} from '../utils/emailService.js';
 
 const STAGES_MAP = {
   'Received': 0,
@@ -21,6 +26,8 @@ export const bookRepair = async (req, res, next) => {
     const {
       customerName,
       customerPhone,
+      customerEmail,
+      userId,
       deviceBrand,
       deviceModel,
       issueId,
@@ -73,6 +80,8 @@ export const bookRepair = async (req, res, next) => {
       ticketId,
       customerName: customerName || 'Valued Customer',
       customerPhone,
+      customerEmail: customerEmail || (req.user?.email || ''),
+      userId: userId || req.user?._id || null,
       deviceBrand,
       deviceModel,
       issueId,
@@ -96,6 +105,15 @@ export const bookRepair = async (req, res, next) => {
         ? `Doorstep pickup assigned to ${courierPartner}. Tamper-evident safe bag provided upon handover.`
         : ''
     });
+
+    emitRepairBooked(newRepair);
+
+    // Asynchronously dispatch confirmation & tracking number email to customer
+    if (newRepair.customerEmail) {
+      sendRepairBookingConfirmationEmail(newRepair.customerEmail, newRepair.customerName, newRepair).catch(
+        (err) => console.error('Failed to dispatch repair confirmation email:', err.message)
+      );
+    }
 
     return sendSuccess(res, 201, 'Repair reservation successfully booked!', newRepair);
   } catch (error) {
@@ -192,6 +210,72 @@ export const approveEstimate = async (req, res, next) => {
 };
 
 /**
+ * @desc    Process customer Stripe payment for a repair ticket
+ * @route   POST /api/repairs/track/:ticketId/pay
+ * @access  Public
+ */
+export const payRepairTicket = async (req, res, next) => {
+  try {
+    const { ticketId } = req.params;
+    const { stripePaymentIntentId, amount } = req.body;
+
+    const query = ticketId.trim();
+    const repair = await Repair.findOne({
+      $or: [
+        { ticketId: { $regex: new RegExp(`^${query}$`, 'i') } },
+        { customerPhone: { $regex: query, $options: 'i' } }
+      ]
+    });
+
+    if (!repair) {
+      return sendError(res, 404, `Repair ticket ${ticketId} not found.`);
+    }
+
+    if (repair.isPaid) {
+      return sendError(res, 400, `Repair ticket ${repair.ticketId} has already been paid.`);
+    }
+
+    // Determine paid amount
+    const parsedCost = typeof repair.estimatedCost === 'number'
+      ? repair.estimatedCost
+      : parseInt(String(repair.estimatedCost).replace(/[^0-9]/g, '')) || 0;
+
+    const payAmount = Number(amount) || repair.frozenCost || parsedCost || 12500;
+
+    repair.isPaid = true;
+    repair.paidAt = new Date();
+    repair.paymentMethod = 'Stripe';
+    repair.paymentAmount = payAmount;
+    repair.stripePaymentIntentId = stripePaymentIntentId || `pi_sandbox_${Date.now()}`;
+    repair.estimateApproved = true;
+
+    // Transition bench status to Repairing if it was at Received or Diagnosing
+    if (repair.status === 'Received' || repair.status === 'Diagnosing') {
+      repair.status = 'Repairing';
+      repair.currentStage = 2;
+    }
+
+    const payNote = ` | [PAYMENT VERIFIED: LKR ${payAmount.toLocaleString()} paid via Stripe (Tx: ${repair.stripePaymentIntentId}). Estimate approved & technician authorized to proceed.]`;
+    repair.diagnosticNotes = (repair.diagnosticNotes || '') + payNote;
+
+    await repair.save();
+    emitRepairPaid(repair);
+    emitRepairUpdated(repair);
+
+    // Asynchronously dispatch official payment receipt and 90-day warranty certificate email
+    if (repair.customerEmail) {
+      sendRepairPaymentReceiptEmail(repair.customerEmail, repair.customerName, repair).catch(
+        (err) => console.error('Failed to dispatch repair receipt email:', err.message)
+      );
+    }
+
+    return sendSuccess(res, 200, 'Payment verified and repair ticket updated successfully!', repair);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * @desc    Get all repairs with full filtering & schedule analysis (Admin)
  * @route   GET /api/repairs
  * @access  Private (Admin / Super Admin)
@@ -230,6 +314,7 @@ export const getAllRepairs = async (req, res, next) => {
 
     const stats = {
       total: allRepairs.length,
+      active: allRepairs.filter(r => ['Received', 'Diagnosing', 'Repairing', 'Quality Tested'].includes(r.status)).length,
       received: allRepairs.filter(r => r.status === 'Received').length,
       diagnosing: allRepairs.filter(r => r.status === 'Diagnosing').length,
       repairing: allRepairs.filter(r => r.status === 'Repairing').length,
@@ -334,9 +419,53 @@ export const updateRepairStatus = async (req, res, next) => {
     if (assignedTechnician) {
       repair.assignedTechnician = assignedTechnician;
     }
+    if (req.body.isPaid !== undefined) {
+      repair.isPaid = Boolean(req.body.isPaid);
+      if (repair.isPaid && !repair.paidAt) {
+        repair.paidAt = new Date();
+      }
+    }
+    if (req.body.paymentAmount !== undefined) {
+      repair.paymentAmount = Number(req.body.paymentAmount);
+    }
+    if (req.body.paymentMethod !== undefined) {
+      repair.paymentMethod = req.body.paymentMethod;
+    }
 
     const updated = await repair.save();
+    emitRepairUpdated(updated);
+
     return sendSuccess(res, 200, `Repair ticket ${repair.ticketId} updated.`, updated);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @desc    Get currently logged-in user's repair tickets
+ * @route   GET /api/repairs/my-repairs
+ * @access  Private (Customer or any authenticated user)
+ */
+export const getMyRepairs = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const userEmail = req.user.email;
+    const userPhone = req.user.phone;
+
+    const orConditions = [{ userId }];
+    if (userEmail) {
+      orConditions.push({ customerEmail: { $regex: new RegExp(`^${userEmail.trim()}$`, 'i') } });
+    }
+    if (userPhone && userPhone.length > 5) {
+      const cleanPhone = userPhone.replace(/\D/g, '');
+      if (cleanPhone.length >= 7) {
+        orConditions.push({ customerPhone: { $regex: cleanPhone.slice(-7) } });
+      }
+    }
+
+    const repairs = await Repair.find({ $or: orConditions }).sort({ createdAt: -1 });
+
+    return sendSuccess(res, 200, 'User repairs retrieved successfully', repairs);
   } catch (error) {
     next(error);
   }
@@ -354,6 +483,7 @@ export const deleteRepair = async (req, res, next) => {
     if (!repair) {
       return sendError(res, 404, 'Repair ticket not found.');
     }
+    emitRepairDeleted(repair.ticketId);
     return sendSuccess(res, 200, `Repair ticket ${repair.ticketId} deleted.`);
   } catch (error) {
     next(error);

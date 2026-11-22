@@ -4,6 +4,8 @@ import User from '../models/User.js';
 import AuditLog from '../models/AuditLog.js';
 import ChatMessage from '../models/ChatMessage.js';
 import { sendSuccess, sendError } from '../utils/apiResponse.js';
+import { emitStockUpdated, emitOrderStatusUpdated, emitChatMessage, emitProductCreated, emitProductUpdated, emitProductDeleted } from '../socket.js';
+import { sendTestEmail } from '../utils/emailService.js';
 
 /**
  * @desc    Get Admin Dashboard Stats & Stock Counters
@@ -96,7 +98,7 @@ export const getAllAdminProducts = async (req, res, next) => {
       query.stock = { $gt: 5 };
     }
 
-    const products = await Product.find(query).sort({ stock: 1, createdAt: -1 });
+    const products = await Product.find(query).sort({ price: -1, stock: 1, createdAt: -1 });
     return sendSuccess(res, 200, 'Products retrieved for admin', products);
   } catch (error) {
     next(error);
@@ -141,6 +143,9 @@ export const updateProductStock = async (req, res, next) => {
       ip: req.ip || req.connection?.remoteAddress
     });
 
+    // Broadcast live stock update via WebSocket
+    emitStockUpdated(product);
+
     return sendSuccess(res, 200, 'Stock count updated successfully', product);
   } catch (error) {
     next(error);
@@ -166,6 +171,8 @@ export const adminCreateProduct = async (req, res, next) => {
       level: 'success',
       ip: req.ip
     });
+
+    emitProductCreated(product);
 
     return sendSuccess(res, 201, 'Product created successfully', product);
   } catch (error) {
@@ -200,6 +207,8 @@ export const adminUpdateProduct = async (req, res, next) => {
       ip: req.ip
     });
 
+    emitProductUpdated(product);
+
     return sendSuccess(res, 200, 'Product updated successfully', product);
   } catch (error) {
     next(error);
@@ -228,6 +237,8 @@ export const adminDeleteProduct = async (req, res, next) => {
       level: 'danger',
       ip: req.ip
     });
+
+    emitProductDeleted(req.params.id);
 
     return sendSuccess(res, 200, 'Product removed from catalog');
   } catch (error) {
@@ -259,7 +270,7 @@ export const getAllAdminOrders = async (req, res, next) => {
  */
 export const updateAdminOrderStatus = async (req, res, next) => {
   try {
-    const { status } = req.body;
+    const { status, courierPartner, waybillNumber, estimatedDelivery } = req.body;
     const order = await Order.findById(req.params.id);
 
     if (!order) {
@@ -267,7 +278,31 @@ export const updateAdminOrderStatus = async (req, res, next) => {
     }
 
     const oldStatus = order.orderStatus;
-    order.orderStatus = status;
+    if (status) {
+      order.orderStatus = status;
+    }
+
+    if (courierPartner) {
+      order.courierPartner = courierPartner;
+    }
+
+    if (waybillNumber !== undefined) {
+      order.waybillNumber = waybillNumber;
+    } else if (status === 'SHIPPED' && !order.waybillNumber) {
+      // Auto-assign realistic tracking number if dispatching without manual waybill
+      const prefix = order.courierPartner?.includes('Koombiyo')
+        ? 'KMB'
+        : order.courierPartner?.includes('Prompt')
+        ? 'PRP'
+        : order.courierPartner?.includes('Pronto')
+        ? 'PRN'
+        : 'DOM';
+      order.waybillNumber = `${prefix}-${Math.floor(100000 + Math.random() * 900000)}`;
+    }
+
+    if (estimatedDelivery) {
+      order.estimatedDelivery = estimatedDelivery;
+    }
 
     if (status === 'DELIVERED') {
       order.deliveredAt = new Date();
@@ -280,13 +315,46 @@ export const updateAdminOrderStatus = async (req, res, next) => {
       userName: req.user?.name || 'Store Admin',
       userRole: req.user?.role || 'admin',
       action: 'ORDER_STATUS_UPDATE',
-      target: `Order #${order._id.toString().slice(-6).toUpperCase()} (${oldStatus} -> ${status})`,
-      details: { orderId: order._id, oldStatus, newStatus: status },
+      target: `Order #${order._id.toString().slice(-6).toUpperCase()} (${oldStatus} -> ${order.orderStatus})`,
+      details: {
+        orderId: order._id,
+        oldStatus,
+        newStatus: order.orderStatus,
+        courierPartner: order.courierPartner,
+        waybillNumber: order.waybillNumber
+      },
       level: status === 'CANCELLED' ? 'danger' : 'info',
       ip: req.ip
     });
 
-    return sendSuccess(res, 200, 'Order status updated', order);
+    emitOrderStatusUpdated(order);
+
+    return sendSuccess(res, 200, 'Order status & courier tracking updated successfully', order);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @desc    Dispatch Test Email (Admin Utility)
+ * @route   POST /api/admin/test-email
+ * @access  Private / Admin
+ */
+export const sendAdminTestEmail = async (req, res, next) => {
+  try {
+    const { targetEmail } = req.body;
+    const recipient = targetEmail || req.user?.email || process.env.EMAIL_USER;
+
+    if (!recipient) {
+      return sendError(res, 400, 'Please provide targetEmail in request body.');
+    }
+
+    const result = await sendTestEmail(recipient);
+    if (result.success) {
+      return sendSuccess(res, 200, `Test email successfully dispatched to ${recipient}!`, result);
+    } else {
+      return sendError(res, 500, `Failed to dispatch test email: ${result.error || result.reason}`);
+    }
   } catch (error) {
     next(error);
   }
@@ -316,6 +384,11 @@ export const getAllAdminUsers = async (req, res, next) => {
  */
 export const getAdminChats = async (req, res, next) => {
   try {
+    const chatAllowed = ['admin', 'store_admin', 'super_admin'];
+    if (req.user && !chatAllowed.includes(req.user.role)) {
+      return sendError(res, 403, 'Access restricted: Customer inquiries are exclusively accessible by Store Admin.');
+    }
+
     // Group messages by threadId (or fallback to conversationId)
     const threads = await ChatMessage.aggregate([
       { $sort: { createdAt: 1 } },
@@ -361,6 +434,11 @@ export const getAdminChats = async (req, res, next) => {
  */
 export const getConversationMessages = async (req, res, next) => {
   try {
+    const chatAllowed = ['admin', 'store_admin', 'super_admin'];
+    if (req.user && !chatAllowed.includes(req.user.role)) {
+      return sendError(res, 403, 'Access restricted: Customer inquiries are exclusively accessible by Store Admin.');
+    }
+
     const { conversationId } = req.params;
     const messages = await ChatMessage.find({
       $or: [
@@ -392,6 +470,11 @@ export const getConversationMessages = async (req, res, next) => {
  */
 export const replyAdminChat = async (req, res, next) => {
   try {
+    const chatAllowed = ['admin', 'store_admin', 'super_admin'];
+    if (req.user && !chatAllowed.includes(req.user.role)) {
+      return sendError(res, 403, 'Access restricted: Customer inquiries are exclusively accessible by Store Admin.');
+    }
+
     const { conversationId, threadId, message } = req.body;
 
     if (!conversationId || !message) {
@@ -414,6 +497,8 @@ export const replyAdminChat = async (req, res, next) => {
       isStaff: true,
       isRead: true
     });
+
+    emitChatMessage(reply);
 
     return sendSuccess(res, 201, 'Reply sent to customer', reply);
   } catch (error) {

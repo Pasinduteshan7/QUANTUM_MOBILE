@@ -15,13 +15,81 @@ import {
 import { ECOSYSTEM_DATA } from '../data/ecosystemData';
 import AppleMallSection from '../components/AppleMallSection';
 import EcosystemBrandCatalog from '../components/EcosystemBrandCatalog';
+import { ecosystemService } from '@/services/ecosystemService';
+import { productService } from '@/services/productService';
+
+const formatMediaUrl = (url) => {
+  if (!url) return '';
+  return url.startsWith('http') ? url : encodeURI(decodeURI(url));
+};
 
 export default function EcosystemPage() {
   const { brand } = useParams();
   const { addToCart } = useCart();
 
   const brandKey = (brand || 'apple').toLowerCase();
-  const config = ECOSYSTEM_DATA[brandKey] || ECOSYSTEM_DATA.apple;
+  const [config, setConfig] = useState(ECOSYSTEM_DATA[brandKey] || ECOSYSTEM_DATA.apple);
+
+  useEffect(() => {
+    // 1. Initial fallback to local data
+    const localData = ECOSYSTEM_DATA[brandKey] || ECOSYSTEM_DATA.apple;
+    setConfig(localData);
+
+    // 2. Fetch live data from MongoDB for dynamic or edited ecosystems
+    ecosystemService.getEcosystemBySlug(brandKey)
+      .then(res => {
+        if (res?.data) {
+          setConfig(prev => ({
+            ...prev,
+            ...res.data,
+            heroVideo: res.data.heroVideo || prev.heroVideo,
+            heroImage: res.data.heroImage || prev.heroImage,
+            flagship: {
+              ...(prev.flagship || {}),
+              ...(res.data.flagship || {})
+            },
+            bundle: {
+              ...(prev.bundle || {}),
+              ...(res.data.bundle || {})
+            }
+          }));
+        }
+      })
+      .catch(() => {});
+
+    // 3. Fetch live products from MongoDB to dynamically sync flagship colors, stock, and prices with catalog
+    productService.getProducts({ brand: brandKey })
+      .then(res => {
+        const prodList = res?.products || res?.data?.products || [];
+        if (prodList.length > 0) {
+          const currentFlagshipName = (config.flagship?.name || '').toLowerCase();
+          const phonesOnly = prodList.filter(p => (p.category || '').toLowerCase() === 'phones');
+          const candidates = phonesOnly.length > 0 ? phonesOnly : prodList;
+
+          const matchedProd = candidates.find(p => {
+            const pName = (p.name || '').toLowerCase();
+            return pName.includes(currentFlagshipName) || currentFlagshipName.includes(pName);
+          }) || candidates.sort((a, b) => (b.price || 0) - (a.price || 0))[0];
+
+          if (matchedProd && matchedProd.finishes && matchedProd.finishes.length > 0) {
+            setConfig(prev => ({
+              ...prev,
+              flagship: {
+                ...(prev.flagship || {}),
+                id: matchedProd._id || matchedProd.id,
+                name: matchedProd.name,
+                price: matchedProd.price,
+                originalPrice: matchedProd.originalPrice,
+                finishes: matchedProd.finishes,
+                stock: matchedProd.stock,
+                highlights: matchedProd.highlights || []
+              }
+            }));
+          }
+        }
+      })
+      .catch(() => {});
+  }, [brandKey]);
 
   // The pinnacle flagship phone of this ecosystem
   const flagship = config.flagship || config.catalogByCategory?.phones?.[0] || config.catalogByCategory?.iphone?.[0] || {};
@@ -135,8 +203,8 @@ export default function EcosystemPage() {
           <video
             ref={heroCinemaVideoRef}
             key={`${brandKey}-${config.heroVideo}`}
-            src={config.heroVideo}
-            poster={config.heroImage}
+            src={formatMediaUrl(config.heroVideo)}
+            poster={formatMediaUrl(config.heroImage)}
             autoPlay
             muted
             playsInline
@@ -151,6 +219,7 @@ export default function EcosystemPage() {
               objectFit: 'cover',
               objectPosition: 'center right',
               transformOrigin: '75% 50%',
+              filter: 'brightness(1.18) contrast(1.06)',
               animation: 'heroMacroDollyZoom 14s cubic-bezier(0.16, 1, 0.3, 1) forwards'
             }}
           />
@@ -165,7 +234,7 @@ export default function EcosystemPage() {
           height: 520,
           borderRadius: '50%',
           background: config.accentColor,
-          opacity: 0.32,
+          opacity: 0.38,
           filter: 'blur(110px)',
           pointerEvents: 'none',
           zIndex: 2
@@ -178,7 +247,7 @@ export default function EcosystemPage() {
             position: 'absolute',
             inset: 0,
             zIndex: 3,
-            background: 'linear-gradient(90deg, rgba(2, 6, 23, 0.95) 0%, rgba(2, 6, 23, 0.82) 42%, rgba(2, 6, 23, 0.2) 75%, rgba(2, 6, 23, 0.8) 100%), radial-gradient(ellipse at 75% 50%, transparent 40%, rgba(2, 6, 23, 0.5) 100%)',
+            background: 'linear-gradient(90deg, rgba(2, 6, 23, 0.92) 0%, rgba(2, 6, 23, 0.70) 35%, rgba(2, 6, 23, 0.05) 60%, rgba(2, 6, 23, 0.20) 100%), radial-gradient(ellipse at 75% 50%, transparent 60%, rgba(2, 6, 23, 0.25) 100%)',
             pointerEvents: 'none'
           }}
         />
@@ -260,17 +329,15 @@ export default function EcosystemPage() {
 
 
 
-      {/* 2. ECOSYSTEM STICKY NAVIGATION BAR */}
+      {/* 2. ECOSYSTEM NAVIGATION SHORTCUT BAR (Static / Non-Floating) */}
       <nav 
         id="ecosystem-explorer"
         style={{
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid #d2d2d7',
-          position: 'sticky',
-          top: 118,
-          zIndex: 30,
-          boxShadow: '0 2px 10px rgba(0,0,0,0.03)'
+          background: '#ffffff',
+          borderBottom: '1px solid #e2e8f0',
+          position: 'relative',
+          zIndex: 10,
+          boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
         }}
       >
         <div className="container" style={{
@@ -558,6 +625,16 @@ export default function EcosystemPage() {
                     <span>Explore All {config.brand} Products</span>
                     <ChevronRight size={14} />
                   </a>
+
+                  {flagship.id && (
+                    <Link
+                      to={`/phones/${flagship.id}`}
+                      style={{ fontSize: 13, fontWeight: 700, color: config.accentColor, display: 'flex', alignItems: 'center', gap: 4, textDecoration: 'none' }}
+                    >
+                      <span>Full Specifications & In-Box</span>
+                      <ChevronRight size={14} />
+                    </Link>
+                  )}
                 </div>
 
                 {/* The Signature Flagship Spec Stack (Bold heading + descriptive sentences) */}
@@ -862,18 +939,19 @@ export default function EcosystemPage() {
 
               {config.heroVideo ? (
                 <video 
-                  src={config.heroVideo} 
+                  src={formatMediaUrl(config.heroVideo)} 
                   autoPlay 
                   controls 
                   playsInline 
                   loop={false}
-                  poster={config.heroImage}
+                  poster={formatMediaUrl(config.heroImage)}
                   style={{
                     width: '100%',
                     maxHeight: 360,
                     objectFit: 'contain',
                     zIndex: 2,
-                    borderRadius: 16
+                    borderRadius: 16,
+                    filter: 'brightness(1.15) contrast(1.05)'
                   }}
                   onEnded={(e) => e.target.pause()}
                 />

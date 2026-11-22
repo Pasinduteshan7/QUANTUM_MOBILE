@@ -2,6 +2,7 @@ import PosSale from '../models/PosSale.js';
 import Product from '../models/Product.js';
 import Repair from '../models/Repair.js';
 import { sendSuccess, sendError } from '../utils/apiResponse.js';
+import { emitBulkStockUpdated, emitRepairUpdated, emitPosSaleCompleted } from '../socket.js';
 
 /**
  * @desc    Process a new Walk-in Counter Sale (POS Checkout)
@@ -88,6 +89,13 @@ export const createPosSale = async (req, res, next) => {
       status: 'Completed',
       receiptNotes: receiptNotes || '6-Month Comprehensive In-Store Warranty Included. Serial/IMEI logged.'
     });
+
+    // Real-time broadcast for stock auto-deduction, POS counter sale, and repair pickup across all tabs
+    emitBulkStockUpdated(items);
+    emitPosSaleCompleted(newSale);
+    if (repairTicket) {
+      emitRepairUpdated({ ticketId: repairTicket.ticketId, status: 'Delivered', courierStage: 5 });
+    }
 
     return sendSuccess(res, 201, `Counter Sale #${saleNumber} completed successfully!`, newSale);
   } catch (error) {

@@ -46,11 +46,14 @@ export const productService = {
             }
             if (filters?.sort) {
                 if (filters.sort === 'price_asc')
-                    result.sort((a, b) => a.price - b.price);
+                    result.sort((a, b) => (Number(a.price) || 0) - (Number(b.price) || 0));
                 if (filters.sort === 'price_desc')
-                    result.sort((a, b) => b.price - a.price);
+                    result.sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
                 if (filters.sort === 'rating')
                     result.sort((a, b) => (b.avgRating || b.rating || 0) - (a.avgRating || a.rating || 0));
+            } else {
+                // Default: price descending order
+                result.sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
             }
             return { products: result, total: result.length };
         }

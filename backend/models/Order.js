@@ -19,9 +19,8 @@ const orderSchema = new mongoose.Schema(
           image: String
         },
         product: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Product',
-          required: true
+          type: mongoose.Schema.Types.Mixed,
+          required: false
         }
       }
     ],
@@ -30,7 +29,7 @@ const orderSchema = new mongoose.Schema(
       phone: { type: String, required: true },
       street: { type: String, required: true },
       city: { type: String, required: true },
-      district: { type: String, required: true },
+      district: { type: String, default: 'Colombo' },
       postalCode: { type: String, default: '' }
     },
     paymentMethod: {
@@ -75,6 +74,19 @@ const orderSchema = new mongoose.Schema(
     },
     deliveredAt: {
       type: Date
+    },
+    courierPartner: {
+      type: String,
+      enum: ['Domex Express', 'Koombiyo Delivery', 'Prompt Xpress', 'Pronto Lanka', 'Certis Lanka', 'Quantum Direct Courier'],
+      default: 'Domex Express'
+    },
+    waybillNumber: {
+      type: String,
+      default: ''
+    },
+    estimatedDelivery: {
+      type: String,
+      default: '24–48 Hours across Sri Lanka'
     }
   },
   {

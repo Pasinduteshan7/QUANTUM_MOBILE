@@ -11,9 +11,10 @@ import {
   getAllAdminUsers,
   getAdminChats,
   getConversationMessages,
-  replyAdminChat
+  replyAdminChat,
+  sendAdminTestEmail
 } from '../controllers/adminController.js';
-import { protect, admin } from '../middleware/authMiddleware.js';
+import { protect, admin, requirePrivilege } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -21,19 +22,20 @@ const router = express.Router();
 router.use(protect, admin);
 
 router.get('/stats', getAdminStats);
-router.get('/products', getAllAdminProducts);
-router.put('/products/:id/stock', updateProductStock);
-router.post('/products', adminCreateProduct);
-router.put('/products/:id', adminUpdateProduct);
-router.delete('/products/:id', adminDeleteProduct);
+router.get('/products', requirePrivilege('inventory:view'), getAllAdminProducts);
+router.put('/products/:id/stock', requirePrivilege('inventory:adjust'), updateProductStock);
+router.post('/products', requirePrivilege('products:create'), adminCreateProduct);
+router.put('/products/:id', requirePrivilege('products:edit'), adminUpdateProduct);
+router.delete('/products/:id', requirePrivilege('products:edit'), adminDeleteProduct);
 
-router.get('/orders', getAllAdminOrders);
-router.put('/orders/:id/status', updateAdminOrderStatus);
+router.get('/orders', requirePrivilege('orders:view'), getAllAdminOrders);
+router.put('/orders/:id/status', requirePrivilege('orders:dispatch'), updateAdminOrderStatus);
 
 router.get('/users', getAllAdminUsers);
 
-router.get('/chats', getAdminChats);
-router.get('/chats/:conversationId', getConversationMessages);
-router.post('/chats/reply', replyAdminChat);
+router.get('/chats', requirePrivilege('chats:view'), getAdminChats);
+router.get('/chats/:conversationId', requirePrivilege('chats:view'), getConversationMessages);
+router.post('/chats/reply', requirePrivilege('chats:reply'), replyAdminChat);
+router.post('/test-email', sendAdminTestEmail);
 
 export default router;

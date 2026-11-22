@@ -8,7 +8,7 @@ function SearchResults() {
     const query = searchParams.get('q') || '';
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [sortBy, setSortBy] = useState('rating');
+    const [sortBy, setSortBy] = useState('price_desc');
     useEffect(() => {
         const doSearch = async () => {
             setLoading(true);

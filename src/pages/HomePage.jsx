@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '@/components/ProductCard';
+import BrandLogo from '@/components/BrandLogo';
 import { products } from '@/lib/mockData';
-import { Sparkles, ArrowRight, Wrench, Truck, CreditCard, ShieldCheck, Star, MessageSquare, Smartphone, Battery, Droplets, Zap, ChevronRight } from 'lucide-react';
+import { Sparkles, ArrowRight, Wrench, Truck, CreditCard, ShieldCheck, Star, MessageSquare, Smartphone, Battery, Droplets, Zap, ChevronRight, Headphones } from 'lucide-react';
 const slides = [
     {
         brand: 'Apple',
@@ -66,6 +67,7 @@ const slides = [
     }
 ];
 const brands = [
+    'Apple', 'Samsung', 'Google Pixel', 'OnePlus', 'Xiaomi', 'Realme', 'Anker', 'Spigen', 'Belkin',
     'Apple', 'Samsung', 'Google Pixel', 'OnePlus', 'Xiaomi', 'Realme', 'Anker', 'Spigen', 'Belkin',
     'Apple', 'Samsung', 'Google Pixel', 'OnePlus', 'Xiaomi', 'Realme', 'Anker', 'Spigen', 'Belkin'
 ];
@@ -151,8 +153,25 @@ export default function Home() {
         return () => clearInterval(t);
     }, []);
 
-    const featuredPhones = products.filter(p => p.category === 'Phones').slice(0, 4);
-    const featuredAccessories = products.filter(p => p.category !== 'Phones').slice(0, 4);
+    const [liveProducts, setLiveProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/products?limit=50')
+            .then(r => r.json())
+            .then(d => {
+                const list = d.data?.products || d.data || [];
+                if (Array.isArray(list) && list.length > 0) {
+                    setLiveProducts(list);
+                }
+            })
+            .catch(() => {});
+    }, []);
+
+    const allProducts = (liveProducts.length > 0 ? [...liveProducts, ...products] : products)
+        .slice()
+        .sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+    const featuredPhones = allProducts.filter(p => p.category === 'Phones').slice(0, 4);
+    const featuredAccessories = allProducts.filter(p => p.category !== 'Phones').slice(0, 4);
 
     return (<>
       {/* HERO SECTION (Dynamic Carousel for Flagship Launches) */}
@@ -228,18 +247,39 @@ export default function Home() {
       </section>
 
       {/* BRAND TICKER MARQUEE */}
-      <section className="brand-ticker">
+      <section className="brand-ticker" aria-label="Brand Ecosystems & Manufacturers Ticker">
         <div className="brand-track">
           {brands.map((b, idx) => (
-            <Link key={idx} to={brandLinks[b] || '/ecosystem/apple'} className="brand-pill" style={{ textDecoration: 'none' }}>
-              {b}
+            <Link
+              key={idx}
+              to={brandLinks[b] || '/ecosystem/apple'}
+              className="brand-pill"
+              title={`Explore ${b}`}
+              style={{
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 14,
+                padding: '4px 6px',
+                transition: 'transform 0.2s ease, filter 0.2s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'scale(1.12)';
+                e.currentTarget.style.filter = 'drop-shadow(0 4px 10px rgba(0,0,0,0.12))';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.filter = 'none';
+              }}
+            >
+              <BrandLogo brand={b} size={24} />
             </Link>
           ))}
         </div>
       </section>
 
       {/* BRAND ECOSYSTEMS SHOWCASE */}
-      <section className="section" style={{ background: '#f8fafc', borderBottom: '1px solid var(--border)', paddingTop: 48, paddingBottom: 56 }}>
+      <section className="section" style={{ background: 'var(--bg-primary)', borderBottom: '1px solid var(--border)', paddingTop: 48, paddingBottom: 56 }}>
         <div className="container">
           <div className="section-header" style={{ marginBottom: 36 }}>
             <div className="section-badge">
@@ -300,7 +340,7 @@ export default function Home() {
                   }}>
                     {eco.badge}
                   </div>
-                  <h3 style={{ fontSize: 18, fontWeight: 900, color: '#0f172a', margin: '0 0 6px', fontFamily: 'Outfit, sans-serif' }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 900, color: 'var(--text-primary)', margin: '0 0 6px', fontFamily: 'Outfit, sans-serif' }}>
                     {eco.name}
                   </h3>
                   <div style={{ fontSize: 13, fontWeight: 700, color: eco.color, marginBottom: 8 }}>
@@ -366,8 +406,122 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EDITORIAL LIFESTYLE 1: STUDIO ACOUSTICS & AUDIO */}
+      <section style={{ padding: '16px 0 32px' }}>
+        <div className="container">
+          <div
+            style={{
+              borderRadius: 28,
+              background: 'linear-gradient(135deg, #090d16 0%, #17172b 55%, #0d111c 100%)',
+              padding: '48px 44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 36,
+              flexWrap: 'wrap',
+              color: '#ffffff',
+              boxShadow: '0 20px 48px rgba(15, 23, 42, 0.22)',
+              position: 'relative',
+              overflow: 'hidden',
+              border: '1px solid rgba(255, 255, 255, 0.08)'
+            }}
+          >
+            {/* Ambient Burgundy Bloom */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-30%',
+                right: '5%',
+                width: 480,
+                height: 480,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(131, 24, 67, 0.38) 0%, transparent 70%)',
+                pointerEvents: 'none'
+              }}
+            />
+
+            <div style={{ flex: '1 1 360px', zIndex: 1 }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: 1.2,
+                  textTransform: 'uppercase',
+                  color: '#fb7185',
+                  background: 'rgba(244, 63, 94, 0.15)',
+                  padding: '4px 12px',
+                  borderRadius: 20,
+                  marginBottom: 16
+                }}
+              >
+                <Headphones size={13} />
+                <span>Acoustic Engineering</span>
+              </div>
+
+              <h3
+                style={{
+                  fontSize: 34,
+                  fontWeight: 900,
+                  color: '#ffffff',
+                  margin: '0 0 14px',
+                  fontFamily: 'Outfit, sans-serif',
+                  lineHeight: 1.15
+                }}
+              >
+                Studio Acoustics.<br />Pure Spatial Silence.
+              </h3>
+
+              <p style={{ fontSize: 15, color: '#cbd5e1', lineHeight: 1.6, margin: '0 0 24px', maxWidth: 480 }}>
+                Immerse yourself in lossless drivers, ultra-low latency DACs, and precision active noise cancellation engineered for iPhone, Galaxy & Pixel.
+              </p>
+
+              <div>
+                <Link
+                  to="/accessories?category=audio"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '12px 24px',
+                    borderRadius: 14,
+                    background: '#ffffff',
+                    color: '#0f172a',
+                    fontWeight: 800,
+                    fontSize: 13,
+                    textDecoration: 'none',
+                    boxShadow: '0 4px 16px rgba(255, 255, 255, 0.25)',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+                >
+                  <span>Explore Wireless Audio</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+
+            <div style={{ flex: '0 1 380px', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
+              <img
+                src="/accessories.jpg"
+                alt="Studio Audio Gear"
+                style={{
+                  maxHeight: 260,
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 15px 35px rgba(0, 0, 0, 0.55))'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE US (TRUST & NFR FEATURES) */}
-      <section className="section" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+      <section className="section" style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">
@@ -437,8 +591,122 @@ export default function Home() {
         </div>
       </section>
 
+      {/* EDITORIAL LIFESTYLE 2: WORKSPACE & GAN CHARGING */}
+      <section style={{ padding: '16px 0 32px' }}>
+        <div className="container">
+          <div
+            style={{
+              borderRadius: 28,
+              background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f0fdf4 100%)',
+              border: '1px solid rgba(0, 0, 0, 0.06)',
+              padding: '48px 44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: 36,
+              flexWrap: 'wrap',
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.04)',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Ambient Cyan Mesh Bloom */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-25%',
+                left: '25%',
+                width: 440,
+                height: 440,
+                borderRadius: '50%',
+                background: 'radial-gradient(circle, rgba(2, 132, 199, 0.08) 0%, transparent 70%)',
+                pointerEvents: 'none'
+              }}
+            />
+
+            <div style={{ flex: '1 1 360px', zIndex: 1 }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: 1.2,
+                  textTransform: 'uppercase',
+                  color: '#0284c7',
+                  background: 'rgba(2, 132, 199, 0.1)',
+                  padding: '4px 12px',
+                  borderRadius: 20,
+                  marginBottom: 16
+                }}
+              >
+                <Zap size={13} color="#0284c7" />
+                <span>GaNPrime & Qi2 Wireless</span>
+              </div>
+
+              <h3
+                style={{
+                  fontSize: 34,
+                  fontWeight: 900,
+                  color: '#1d1d1f',
+                  margin: '0 0 14px',
+                  fontFamily: 'Outfit, sans-serif',
+                  lineHeight: 1.15
+                }}
+              >
+                All-Day Power.<br />Zero Desk Clutter.
+              </h3>
+
+              <p style={{ fontSize: 15, color: '#424245', lineHeight: 1.6, margin: '0 0 24px', maxWidth: 480 }}>
+                Supercharge your iPhone, MacBook, and Galaxy simultaneously with pocket-sized 65W GaN adapters, 15W Qi2 magnetic stands, and armored cables.
+              </p>
+
+              <div>
+                <Link
+                  to="/accessories?category=power"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '12px 24px',
+                    borderRadius: 14,
+                    background: '#0071e3',
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: 13,
+                    textDecoration: 'none',
+                    boxShadow: '0 4px 14px rgba(0, 113, 227, 0.25)',
+                    transition: 'all 0.15s ease'
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'none'}
+                >
+                  <span>Explore Fast Chargers</span>
+                  <ArrowRight size={15} />
+                </Link>
+              </div>
+            </div>
+
+            <div style={{ flex: '0 1 340px', display: 'flex', justifyContent: 'center', zIndex: 1 }}>
+              <img
+                src="/hero_iphone18.jpg"
+                alt="GaN Fast Charging Gear"
+                style={{
+                  maxHeight: 240,
+                  maxWidth: '100%',
+                  objectFit: 'contain',
+                  borderRadius: 18,
+                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.12)'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TRENDING ACCESSORIES */}
-      <section className="section" style={{ background: 'var(--bg-secondary)', borderTop: '1px solid var(--border)' }}>
+      <section className="section" style={{ background: 'var(--bg-primary)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className="section-header">
             <div className="section-badge">

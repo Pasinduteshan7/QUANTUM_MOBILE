@@ -3,11 +3,15 @@ import {
   createOrder,
   getMyOrders,
   getOrderById,
-  payhereNotify
+  payhereNotify,
+  lookupOrdersStatus
 } from '../controllers/orderController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
+
+// Public order status lookup (tracking receipts & local storage order sync)
+router.post('/lookup-status', lookupOrdersStatus);
 
 // PayHere Payment Webhook (Public callback from payment processor)
 router.post('/payhere-notify', payhereNotify);

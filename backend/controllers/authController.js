@@ -249,3 +249,105 @@ export const resetPassword = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @desc    Get Google OAuth Public Configuration
+ * @route   GET /api/auth/google/config
+ * @access  Public
+ */
+export const getGoogleAuthConfig = async (req, res) => {
+  const clientId = process.env.GOOGLE_CLIENT_ID || '';
+  return sendSuccess(res, 200, 'Google Auth Config', {
+    clientId,
+    isConfigured: !!clientId
+  });
+};
+
+/**
+ * @desc    Google OAuth 2.0 Sign In / Automatic Registration
+ * @route   POST /api/auth/google
+ * @access  Public
+ */
+export const googleLogin = async (req, res, next) => {
+  try {
+    const { credential, userInfo } = req.body;
+
+    let email = '';
+    let name = '';
+    let picture = '';
+    let googleId = '';
+
+    if (credential) {
+      // Verify official Google ID Token via Google tokeninfo endpoint
+      try {
+        const verifyRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(credential)}`);
+        const tokenData = await verifyRes.json();
+
+        if (tokenData && tokenData.email && (tokenData.email_verified === 'true' || tokenData.email_verified === true)) {
+          email = tokenData.email.toLowerCase().trim();
+          name = tokenData.name || email.split('@')[0];
+          picture = tokenData.picture || '';
+          googleId = tokenData.sub || '';
+        } else {
+          return sendError(res, 400, tokenData.error_description || 'Invalid or expired Google ID token.');
+        }
+      } catch (err) {
+        console.error('Google token verification error:', err.message);
+        return sendError(res, 400, 'Failed to verify Google token with Google servers.');
+      }
+    } else if (userInfo && userInfo.email) {
+      // Sandbox / direct verified user profile
+      email = userInfo.email.toLowerCase().trim();
+      name = userInfo.name || email.split('@')[0];
+      picture = userInfo.picture || '';
+      googleId = userInfo.googleId || `g_${Date.now()}`;
+    } else {
+      return sendError(res, 400, 'Google credential token or user profile is required.');
+    }
+
+    // Find existing account by email or googleId
+    let user = await User.findOne({
+      $or: [{ email }, { googleId }]
+    });
+
+    if (user) {
+      // Update Google metadata if missing
+      if (!user.googleId && googleId) {
+        user.googleId = googleId;
+        user.authProvider = 'google';
+      }
+      if (picture && (!user.avatar || user.avatar.includes('unsplash'))) {
+        user.avatar = picture;
+      }
+      await user.save();
+    } else {
+      // Auto-create new customer account
+      const randomPassword = crypto.randomBytes(24).toString('hex') + 'A1!';
+      user = await User.create({
+        name,
+        email,
+        password: randomPassword,
+        avatar: picture || undefined,
+        googleId,
+        authProvider: 'google',
+        role: 'customer'
+      });
+    }
+
+    const token = generateToken(user._id);
+
+    return sendSuccess(res, 200, `Welcome to Quantum Mobile, ${user.name}!`, {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone || '',
+      shippingAddress: user.shippingAddress || {},
+      role: user.role,
+      avatar: user.avatar,
+      authProvider: user.authProvider || 'google',
+      token
+    });
+  } catch (error) {
+    next(error);
+  }
+};

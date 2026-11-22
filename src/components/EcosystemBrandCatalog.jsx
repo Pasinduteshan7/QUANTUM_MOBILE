@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ShoppingCart, MessageCircle, X, Search, Check } from 'lucide-react';
 import { ECOSYSTEM_CATALOGS } from '../data/otherEcosystemsCatalogData';
 import { useCart } from '../context/CartContext';
@@ -14,12 +14,47 @@ export default function EcosystemBrandCatalog({ brandKey }) {
   const [quantity, setQuantity] = useState(1);
   const [addedItemIds, setAddedItemIds] = useState({});
 
+  const [liveProducts, setLiveProducts] = useState([]);
+
+  useEffect(() => {
+    if (!brandKey) return;
+    fetch('http://localhost:5000/api/products?limit=1000')
+      .then(r => r.json())
+      .then(d => {
+        const list = d.data?.products || d.data || [];
+        const brandLower = brandKey.toLowerCase();
+        const brandItems = list.filter(p => (p.brand || '').toLowerCase() === brandLower);
+        const existingNames = new Set((catalog?.products || []).map(p => p.name.toLowerCase().trim()));
+        const newItems = brandItems.filter(p => !existingNames.has(p.name.toLowerCase().trim())).map(p => ({
+          id: p._id || p.id,
+          category: (p.category || 'phones').toLowerCase(),
+          categoryLabel: p.category || (catalog?.brandName || brandKey),
+          name: p.name,
+          price: p.price,
+          originalPrice: p.originalPrice || Math.round(p.price * 1.1),
+          discountPercent: p.originalPrice && p.originalPrice > p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0,
+          availability: p.stock > 0 ? `${p.stock} in Stock` : 'Out of Stock',
+          mainImage: p.mainImage || '/accessories.jpg',
+          variants: p.finishes?.length ? p.finishes : [{ name: 'Standard Edition', image: p.mainImage || '/accessories.jpg', hex: '#1e293b' }],
+          specs: p.specs?.length
+            ? p.specs.map(s => typeof s === 'string' ? s : `${s.title}: ${s.desc}`)
+            : (p.description ? p.description.split('\n').filter(Boolean) : ['Genuine Brand Product', '1 Year TRCSL Warranty'])
+        }));
+        setLiveProducts(newItems);
+      })
+      .catch(() => {});
+  }, [brandKey]);
+
   if (!catalog) return null;
 
-  // Filter products by category
-  const filteredProducts = selectedCategory === 'all'
-    ? catalog.products
-    : catalog.products.filter(p => p.category === selectedCategory);
+  const combinedProducts = [...liveProducts, ...(catalog.products || [])]
+    .sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+
+  // Filter products by category (organized in price descending order)
+  const filteredProducts = (selectedCategory === 'all'
+    ? combinedProducts
+    : combinedProducts.filter(p => p.category === selectedCategory))
+    .sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
 
   const handleOpenModal = (product) => {
     setSelectedProduct(product);

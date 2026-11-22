@@ -80,8 +80,7 @@ export const ECOSYSTEM_DATA = {
       finishes: [
         { name: 'Deep Burgundy', hex: '#5b142b', image: '/APPLE/apple_iphone-18-pro-max_burgundy.webp' },
         { name: 'Silver Titanium', hex: '#d1d5db', image: '/APPLE/apple_iphone-18-pro_silver.webp' },
-        { name: 'Titanium Blue', hex: '#1e3a5f', image: '/APPLE/apple_iphone-18_blue.jpg' },
-        { name: 'Cosmic Orange', hex: '#ea580c', image: '/APPLE/apple_iphone-17-pro_cosmic-orange.jpg' }
+        { name: 'Titanium Blue', hex: '#1e3a5f', image: '/APPLE/apple_iphone-18_blue.jpg' }
       ],
       specs: [
         { title: 'Display', desc: '6.9-inch Super Retina XDR OLED with 1-120Hz ProMotion & Ultra-Thin Border unibody' },

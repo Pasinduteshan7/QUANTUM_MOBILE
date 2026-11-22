@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ecosystemService } from '@/services/ecosystemService';
 import {
   Sparkles,
   Headphones,
   Zap,
   Shield,
   Watch,
+  Video,
+  Tv,
   Wrench,
   MessageSquare,
   PanelLeftClose,
@@ -14,6 +17,7 @@ import {
   Layers
 } from 'lucide-react';
 import { useSidebar } from '../context/SidebarContext';
+import BrandLogo from './BrandLogo';
 
 const ECOSYSTEM_BRANDS = [
   {
@@ -108,12 +112,50 @@ const ACCESSORY_CATEGORIES = [
     badge: 'Cellular',
     sub: 'Ultra 2, Series 10, Galaxy',
     path: '/accessories?category=smartwatches'
+  },
+  {
+    id: 'creator',
+    label: 'Creator & Cameras',
+    icon: Video,
+    badge: '4K / 3-Axis',
+    sub: 'DJI, Gimbals, Mics',
+    path: '/accessories?category=creator'
+  },
+  {
+    id: 'smart-home',
+    label: 'Smart Home & TV',
+    icon: Tv,
+    badge: 'Matter',
+    sub: 'Apple TV, Nest, Hubs',
+    path: '/accessories?category=smart-home'
   }
 ];
 
 export default function VerticalSidebar() {
   const { pathname, search } = useLocation();
   const { collapsed, toggleCollapse, mobileOpen, closeMobile } = useSidebar();
+  const [brands, setBrands] = useState(ECOSYSTEM_BRANDS);
+
+  // Dynamically synchronize ecosystems from MongoDB / API
+  useEffect(() => {
+    ecosystemService.getAllEcosystems()
+      .then(res => {
+        if (res?.data && res.data.length > 0) {
+          const mapped = res.data.map(e => ({
+            id: e.slug,
+            name: e.brand || e.name,
+            emblem: e.emblem || '✦',
+            flagship: e.flagship?.name || e.heroTitleMain || `${e.brand} Flagship`,
+            chip: e.flagship?.specs?.[0]?.desc?.split(' ')?.[0] || 'Flagship AI',
+            tag: e.subCategories?.map(s => s.label).slice(0, 3).join(' • ') || 'Phones • Accessories',
+            color: e.accentColor || '#0284c7',
+            path: `/ecosystem/${e.slug}`
+          }));
+          setBrands(mapped);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const handleOpenChat = () => {
     window.dispatchEvent(new CustomEvent('open-store-chat', {
@@ -151,15 +193,15 @@ export default function VerticalSidebar() {
           left: 0,
           bottom: 0,
           width: collapsed ? 72 : 270,
-          background: 'rgba(255, 255, 255, 0.98)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderRight: '1px solid #e2e8f0',
+          background: 'rgba(255, 255, 255, 0.92)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderRight: '1px solid rgba(0, 0, 0, 0.08)',
           zIndex: 999,
           display: 'flex',
           flexDirection: 'column',
           transition: 'width 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
-          boxShadow: '4px 0 24px rgba(0, 0, 0, 0.04)',
+          boxShadow: '4px 0 24px rgba(0, 0, 0, 0.03)',
           overflow: 'hidden'
         }}
       >
@@ -167,11 +209,11 @@ export default function VerticalSidebar() {
         <div
           style={{
             padding: collapsed ? '14px 10px' : '14px 16px',
-            borderBottom: '1px solid #f1f5f9',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.06)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: collapsed ? 'center' : 'space-between',
-            background: '#fafafa'
+            background: 'rgba(245, 245, 247, 0.7)'
           }}
         >
           {!collapsed && (
@@ -180,7 +222,7 @@ export default function VerticalSidebar() {
               <span style={{
                 fontSize: 11,
                 fontWeight: 800,
-                color: '#475569',
+                color: 'var(--text-secondary)',
                 letterSpacing: 1,
                 textTransform: 'uppercase'
               }}>
@@ -246,13 +288,13 @@ export default function VerticalSidebar() {
               }}>
                 <span>Brand Ecosystems</span>
                 <span style={{ fontSize: 9, background: '#e0f2fe', color: '#0284c7', padding: '1px 5px', borderRadius: 4 }}>
-                  5 Brands
+                  {brands.length} Brands
                 </span>
               </div>
             )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {ECOSYSTEM_BRANDS.map(b => {
+              {brands.map(b => {
                 const isActive = pathname === b.path;
 
                 return (
@@ -298,14 +340,18 @@ export default function VerticalSidebar() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: 16,
-                        fontWeight: 900,
                         flexShrink: 0,
                         boxShadow: isActive ? `0 4px 12px ${b.color}40` : 'none',
-                        transition: 'all 0.2s ease'
+                        transition: 'all 0.2s ease',
+                        padding: 3
                       }}
                     >
-                      {b.emblem}
+                      <BrandLogo
+                        brand={b.id || b.name}
+                        size={b.id === 'apple' ? 18 : b.id === 'samsung' ? 22 : 20}
+                        color={isActive ? '#ffffff' : (b.id === 'apple' ? '#0f172a' : null)}
+                        monochrome={isActive}
+                      />
                     </div>
 
                     {/* Brand Titles & Flagship Chip (Expanded only) */}
@@ -315,7 +361,7 @@ export default function VerticalSidebar() {
                           <span style={{
                             fontSize: 13,
                             fontWeight: isActive ? 800 : 700,
-                            color: isActive ? b.color : '#0f172a',
+                            color: isActive ? b.color : 'var(--text-primary)',
                             fontFamily: 'Outfit, sans-serif'
                           }}>
                             {b.name}

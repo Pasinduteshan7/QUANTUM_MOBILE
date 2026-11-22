@@ -1,5 +1,7 @@
+import mongoose from 'mongoose';
 import Product from '../models/Product.js';
 import { sendSuccess, sendError } from '../utils/apiResponse.js';
+import { emitProductCreated, emitProductUpdated, emitProductDeleted } from '../socket.js';
 
 /**
  * @desc    Get all products with filtering, search, sorting and pagination
@@ -47,11 +49,12 @@ export const getProducts = async (req, res, next) => {
       if (maxPrice) query.price.$lte = Number(maxPrice);
     }
 
-    // Sorting
-    let sortOption = { createdAt: -1 }; // default newest first
-    if (sort === 'price_asc') sortOption = { price: 1 };
-    if (sort === 'price_desc') sortOption = { price: -1 };
-    if (sort === 'rating') sortOption = { rating: -1 };
+    // Sorting (Default: price descending order as requested)
+    let sortOption = { price: -1, createdAt: -1 };
+    if (sort === 'price_asc') sortOption = { price: 1, createdAt: -1 };
+    if (sort === 'price_desc') sortOption = { price: -1, createdAt: -1 };
+    if (sort === 'rating') sortOption = { rating: -1, price: -1 };
+    if (sort === 'newest') sortOption = { createdAt: -1 };
 
     const pageNum = Math.max(1, parseInt(page, 10));
     const pageSize = Math.max(1, parseInt(limit, 10));
@@ -84,7 +87,15 @@ export const getProducts = async (req, res, next) => {
  */
 export const getProductById = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    let product = null;
+    if (mongoose.Types.ObjectId.isValid(req.params.id)) {
+      product = await Product.findById(req.params.id);
+    }
+    if (!product) {
+      product = await Product.findOne({
+        $or: [{ itemCode: req.params.id }, { slug: req.params.id }]
+      });
+    }
     if (!product) {
       return sendError(res, 404, 'Product not found.');
     }
@@ -134,6 +145,7 @@ export const getFeaturedProducts = async (req, res, next) => {
 export const createProduct = async (req, res, next) => {
   try {
     const product = await Product.create(req.body);
+    emitProductCreated(product);
     return sendSuccess(res, 201, 'Product created successfully', product);
   } catch (error) {
     next(error);
@@ -156,6 +168,7 @@ export const updateProduct = async (req, res, next) => {
       return sendError(res, 404, 'Product not found');
     }
 
+    emitProductUpdated(product);
     return sendSuccess(res, 200, 'Product updated successfully', product);
   } catch (error) {
     next(error);
@@ -173,6 +186,7 @@ export const deleteProduct = async (req, res, next) => {
     if (!product) {
       return sendError(res, 404, 'Product not found');
     }
+    emitProductDeleted(req.params.id);
     return sendSuccess(res, 200, 'Product deleted successfully');
   } catch (error) {
     next(error);

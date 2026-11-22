@@ -1,28 +1,109 @@
-import React, { useState, useMemo } from 'react';
-import { ShoppingCart, MessageCircle, X, Search, Check, Sparkles, SlidersHorizontal } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ShoppingCart, MessageCircle, X, Search, Check, Sparkles, SlidersHorizontal, ChevronDown, ArrowUpDown, RotateCcw, Headphones, Watch, Zap, Shield, Camera, Tv } from 'lucide-react';
 import { ACCESSORY_CATEGORIES, ACCESSORY_PRODUCTS } from '../data/accessoriesCatalogData';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
 
+const getCategoryIcon = (catId, size = 18) => {
+  switch (catId) {
+    case 'audio': return <Headphones size={size} color="#0071e3" />;
+    case 'power': return <Zap size={size} color="#0071e3" />;
+    case 'protection': return <Shield size={size} color="#0071e3" />;
+    case 'smartwatches': return <Watch size={size} color="#0071e3" />;
+    case 'creator': return <Camera size={size} color="#0071e3" />;
+    case 'smart-home': return <Tv size={size} color="#0071e3" />;
+    default: return <Sparkles size={size} color="#0071e3" />;
+  }
+};
+
 export default function AccessoriesPage() {
   const { addToCart } = useCart();
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedCategory = searchParams.get('category') || 'all';
+
+  const setSelectedCategory = (newCat) => {
+    const next = new URLSearchParams(searchParams);
+    if (!newCat || newCat === 'all') {
+      next.delete('category');
+    } else {
+      next.set('category', newCat);
+    }
+    setSearchParams(next);
+  };
+
   const [selectedBrand, setSelectedBrand] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState('price-desc');
+  const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
+  const [brandSearchTerm, setBrandSearchTerm] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [addedItemIds, setAddedItemIds] = useState({});
+  const [liveProducts, setLiveProducts] = useState([]);
 
-  // Unique list of brands for optional secondary filter
-  const brands = useMemo(() => {
-    const set = new Set(ACCESSORY_PRODUCTS.map(p => p.brand));
-    return ['all', ...Array.from(set)];
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products?limit=1000')
+      .then(r => r.json())
+      .then(d => {
+        const list = d.data?.products || d.data || [];
+        const accItems = list.filter(p => (p.category || '').toLowerCase() !== 'phones');
+        const existingNames = new Set(ACCESSORY_PRODUCTS.map(p => p.name.toLowerCase().trim()));
+        const newItems = accItems.filter(p => !existingNames.has(p.name.toLowerCase().trim())).map(p => ({
+          id: p._id || p.id,
+          category: (p.category || 'accessories').toLowerCase(),
+          categoryLabel: p.category || 'Accessories',
+          brand: p.brand || 'Quantum',
+          name: p.name,
+          price: p.price,
+          originalPrice: p.originalPrice || Math.round(p.price * 1.1),
+          discountPercent: p.originalPrice && p.originalPrice > p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0,
+          availability: p.stock > 0 ? `${p.stock} in Stock` : 'Out of Stock',
+          mainImage: p.mainImage || '/accessories.jpg',
+          variants: p.finishes?.length ? p.finishes : [{ name: 'Standard Edition', image: p.mainImage || '/accessories.jpg', hex: '#1e293b' }],
+          specs: p.specs?.length
+            ? p.specs.map(s => typeof s === 'string' ? s : `${s.title}: ${s.desc}`)
+            : (p.description ? p.description.split('\n').filter(Boolean) : ['Genuine Sri Lanka Warranty'])
+        }));
+        setLiveProducts(newItems);
+      })
+      .catch(() => {});
   }, []);
 
-  // Filter products
+  const allAccessoryProducts = useMemo(() => [...liveProducts, ...ACCESSORY_PRODUCTS], [liveProducts]);
+
+  // Category counts
+  const categoryCounts = useMemo(() => {
+    const counts = { all: allAccessoryProducts.length };
+    allAccessoryProducts.forEach(p => {
+      const cat = (p.category || '').toLowerCase();
+      counts[cat] = (counts[cat] || 0) + 1;
+    });
+    return counts;
+  }, [allAccessoryProducts]);
+
+  // Brand stats with accurate item counts
+  const brandStats = useMemo(() => {
+    const counts = {};
+    allAccessoryProducts.forEach(p => {
+      if (p.brand) {
+        counts[p.brand] = (counts[p.brand] || 0) + 1;
+      }
+    });
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([name, count]) => ({ name, count }));
+  }, [allAccessoryProducts]);
+
+  // Top 6 popular brands for prominent single-line chips
+  const topBrands = useMemo(() => brandStats.slice(0, 6).map(b => b.name), [brandStats]);
+  // Long-tail brands cleanly housed inside searchable dropdown
+  const moreBrands = useMemo(() => brandStats.slice(6), [brandStats]);
+
+  // Filter and sort products
   const filteredProducts = useMemo(() => {
-    return ACCESSORY_PRODUCTS.filter(item => {
+    const list = allAccessoryProducts.filter(item => {
       const matchCat = selectedCategory === 'all' || item.category === selectedCategory;
       const matchBrand = selectedBrand === 'all' || item.brand === selectedBrand;
       const matchQuery = !searchQuery || 
@@ -30,7 +111,16 @@ export default function AccessoriesPage() {
         item.brand.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCat && matchBrand && matchQuery;
     });
-  }, [selectedCategory, selectedBrand, searchQuery]);
+
+    if (sortBy === 'price-desc') {
+      list.sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
+    } else if (sortBy === 'price-asc') {
+      list.sort((a, b) => (Number(a.price) || 0) - (Number(b.price) || 0));
+    } else if (sortBy === 'name-asc') {
+      list.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    }
+    return list;
+  }, [allAccessoryProducts, selectedCategory, selectedBrand, searchQuery, sortBy]);
 
   const handleOpenModal = (product) => {
     setSelectedProduct(product);
@@ -115,14 +205,17 @@ export default function AccessoriesPage() {
             marginBottom: 14
           }}>
             <Sparkles size={14} />
-            <span>ORIGINAL TECH ACCESORIES & GEAR</span>
+            <span>ORIGINAL TECH ACCESSORIES & GEAR</span>
           </div>
 
           <h1 style={{
-            fontSize: 34,
+            fontSize: 36,
             fontWeight: 900,
+            color: '#ffffff',
             margin: '0 0 12px',
-            fontFamily: 'Outfit, -apple-system, BlinkMacSystemFont, sans-serif'
+            fontFamily: 'Outfit, -apple-system, BlinkMacSystemFont, sans-serif',
+            letterSpacing: '-0.02em',
+            textShadow: '0 2px 12px rgba(0, 0, 0, 0.4)'
           }}>
             Curated Ecosystem Accessories
           </h1>
@@ -177,74 +270,372 @@ export default function AccessoriesPage() {
 
       <div className="container" style={{ maxWidth: 1240, margin: '0 auto', padding: '0 20px' }}>
         
-        {/* 2. THE 6 CATEGORY TABS BAR */}
+        {/* 2. ACTIVE DEPARTMENT TITLE & CONTEXT */}
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
+          paddingTop: 24,
+          paddingBottom: 14,
           flexWrap: 'wrap',
-          gap: 10,
-          padding: '24px 0 16px',
-          borderBottom: '2px solid #e2e8f0',
-          marginBottom: 28
+          gap: 12
         }}>
-          {ACCESSORY_CATEGORIES.map(cat => {
-            const isActive = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                style={{
-                  background: isActive ? '#0284c7' : '#ffffff',
-                  color: isActive ? '#ffffff' : '#475569',
-                  border: isActive ? '1px solid #0284c7' : '1px solid #e2e8f0',
-                  padding: '9px 18px',
-                  borderRadius: 24,
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  fontSize: 14,
-                  fontWeight: isActive ? 800 : 600,
-                  transition: 'all 0.2s ease',
-                  boxShadow: isActive ? '0 4px 12px rgba(2, 132, 199, 0.25)' : 'none'
-                }}
-              >
-                <span style={{ fontSize: 16 }}>{cat.icon}</span>
-                <span>{cat.label}</span>
-              </button>
-            );
-          })}
+          <div>
+            <div style={{ fontSize: 11, fontWeight: 700, color: '#0071e3', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>
+              Accessories Hub / {ACCESSORY_CATEGORIES.find(c => c.id === selectedCategory)?.label || 'All Accessories'}
+            </div>
+            <h2 style={{
+              fontSize: 24,
+              fontWeight: 900,
+              color: '#1d1d1f',
+              margin: 0,
+              fontFamily: 'Outfit, -apple-system, sans-serif',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10
+            }}>
+              <span>{getCategoryIcon(selectedCategory, 22)}</span>
+              <span>{ACCESSORY_CATEGORIES.find(c => c.id === selectedCategory)?.label || 'All Accessories'}</span>
+              <span style={{ fontSize: 12, fontWeight: 700, color: '#64748b', background: '#f5f5f7', padding: '3px 10px', borderRadius: 20 }}>
+                {filteredProducts.length} items
+              </span>
+            </h2>
+          </div>
         </div>
 
-        {/* Brand Filter Pills */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-          <span style={{ fontSize: 13, color: '#64748b', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
-            <SlidersHorizontal size={14} />
-            <span>Brand:</span>
-          </span>
-          {brands.map(b => (
-            <button
-              key={b}
-              onClick={() => setSelectedBrand(b)}
-              style={{
-                background: selectedBrand === b ? '#1e293b' : '#f1f5f9',
-                color: selectedBrand === b ? '#ffffff' : '#475569',
-                border: 'none',
-                padding: '4px 12px',
-                borderRadius: 14,
+        {/* 3. UNIFIED BRAND FILTER & CONTROLS TOOLBAR (Apple Frosted Glass) */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: 22,
+          border: '1px solid rgba(0, 0, 0, 0.06)',
+          padding: '16px 22px',
+          marginBottom: 28,
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
+        }}>
+          {/* Top Row: Brand Chips + Sort */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 12,
+            paddingBottom: selectedBrand !== 'all' || searchQuery || selectedCategory !== 'all' ? 14 : 0,
+            borderBottom: selectedBrand !== 'all' || searchQuery || selectedCategory !== 'all' ? '1px solid #f1f5f9' : 'none'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', flex: 1 }}>
+              <span style={{
                 fontSize: 12,
+                color: '#64748b',
                 fontWeight: 700,
-                cursor: 'pointer',
-                textTransform: 'capitalize'
-              }}
-            >
-              {b === 'all' ? 'All Brands' : b}
-            </button>
-          ))}
-          <span style={{ marginLeft: 'auto', fontSize: 13, color: '#64748b' }}>
-            Showing <strong>{filteredProducts.length}</strong> items
-          </span>
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 5,
+                marginRight: 4
+              }}>
+                <SlidersHorizontal size={13} color="#0284c7" />
+                <span>Brand:</span>
+              </span>
+
+              {/* All Brands Button */}
+              <button
+                type="button"
+                onClick={() => setSelectedBrand('all')}
+                style={{
+                  background: selectedBrand === 'all' ? '#0284c7' : '#f8fafc',
+                  color: selectedBrand === 'all' ? '#ffffff' : '#475569',
+                  border: selectedBrand === 'all' ? '1px solid #0284c7' : '1px solid #e2e8f0',
+                  padding: '5px 13px',
+                  borderRadius: 20,
+                  fontSize: 12.5,
+                  fontWeight: selectedBrand === 'all' ? 700 : 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.12s ease'
+                }}
+              >
+                All Brands
+              </button>
+
+              {/* Top 6 Popular Brands */}
+              {topBrands.map(b => {
+                const isSelected = selectedBrand === b;
+                const stat = brandStats.find(s => s.name === b);
+                return (
+                  <button
+                    key={b}
+                    type="button"
+                    onClick={() => setSelectedBrand(isSelected ? 'all' : b)}
+                    style={{
+                      background: isSelected ? '#0f172a' : '#f8fafc',
+                      color: isSelected ? '#ffffff' : '#334155',
+                      border: isSelected ? '1px solid #0f172a' : '1px solid #e2e8f0',
+                      padding: '5px 12px',
+                      borderRadius: 20,
+                      fontSize: 12.5,
+                      fontWeight: isSelected ? 700 : 600,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      transition: 'all 0.12s ease'
+                    }}
+                  >
+                    <span>{b}</span>
+                    {stat && (
+                      <span style={{
+                        fontSize: 10,
+                        opacity: isSelected ? 0.9 : 0.6,
+                        fontWeight: 700
+                      }}>
+                        {stat.count}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+
+              {/* "More Brands" Dropdown */}
+              {moreBrands.length > 0 && (
+                <div style={{ position: 'relative' }}>
+                  <button
+                    type="button"
+                    onClick={() => setIsBrandDropdownOpen(prev => !prev)}
+                    style={{
+                      background: moreBrands.some(mb => mb.name === selectedBrand) ? '#0f172a' : '#f8fafc',
+                      color: moreBrands.some(mb => mb.name === selectedBrand) ? '#ffffff' : '#475569',
+                      border: moreBrands.some(mb => mb.name === selectedBrand) ? '1px solid #0f172a' : '1px solid #cbd5e1',
+                      padding: '5px 12px',
+                      borderRadius: 20,
+                      fontSize: 12.5,
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 5
+                    }}
+                  >
+                    <span>
+                      {moreBrands.some(mb => mb.name === selectedBrand) ? selectedBrand : `+${moreBrands.length} More Brands`}
+                    </span>
+                    <ChevronDown size={13} style={{ transform: isBrandDropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.15s ease' }} />
+                  </button>
+
+                  {isBrandDropdownOpen && (
+                    <>
+                      <div
+                        onClick={() => setIsBrandDropdownOpen(false)}
+                        style={{ position: 'fixed', inset: 0, zIndex: 99 }}
+                      />
+                      <div style={{
+                        position: 'absolute',
+                        top: 'calc(100% + 8px)',
+                        left: 0,
+                        zIndex: 100,
+                        width: 240,
+                        maxHeight: 280,
+                        background: '#ffffff',
+                        borderRadius: 14,
+                        border: '1px solid #e2e8f0',
+                        boxShadow: '0 12px 32px rgba(15,23,42,0.15)',
+                        padding: 8,
+                        overflowY: 'auto'
+                      }}>
+                      <div style={{ padding: '4px 8px 8px' }}>
+                        <input
+                          type="text"
+                          placeholder="Search brand..."
+                          value={brandSearchTerm}
+                          onChange={e => setBrandSearchTerm(e.target.value)}
+                          onClick={e => e.stopPropagation()}
+                          style={{
+                            width: '100%',
+                            padding: '6px 10px',
+                            borderRadius: 8,
+                            border: '1px solid #cbd5e1',
+                            fontSize: 12,
+                            outline: 'none'
+                          }}
+                        />
+                      </div>
+                      {moreBrands
+                        .filter(mb => !brandSearchTerm || mb.name.toLowerCase().includes(brandSearchTerm.toLowerCase()))
+                        .map(mb => (
+                          <div
+                            key={mb.name}
+                            onClick={() => {
+                              setSelectedBrand(mb.name);
+                              setIsBrandDropdownOpen(false);
+                              setBrandSearchTerm('');
+                            }}
+                            style={{
+                              padding: '7px 10px',
+                              borderRadius: 8,
+                              fontSize: 12.5,
+                              color: selectedBrand === mb.name ? '#0284c7' : '#334155',
+                              fontWeight: selectedBrand === mb.name ? 700 : 500,
+                              background: selectedBrand === mb.name ? '#e0f2fe' : 'transparent',
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between'
+                            }}
+                          >
+                            <span>{mb.name}</span>
+                            <span style={{ fontSize: 11, color: '#94a3b8' }}>{mb.count}</span>
+                          </div>
+                        ))}
+                    </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Sort Dropdown */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span style={{ fontSize: 12, color: '#64748b', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <ArrowUpDown size={12} />
+                <span>Sort:</span>
+              </span>
+              <select
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value)}
+                style={{
+                  padding: '5px 10px',
+                  borderRadius: 10,
+                  border: '1px solid #cbd5e1',
+                  background: '#f8fafc',
+                  color: '#334155',
+                  fontSize: 12.5,
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  outline: 'none'
+                }}
+              >
+                <option value="price-desc">Price: High to Low</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Bottom Row: Active Filter Pills & Results Count */}
+          {(selectedBrand !== 'all' || searchQuery || selectedCategory !== 'all') ? (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              paddingTop: 12,
+              flexWrap: 'wrap',
+              gap: 8
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                <span style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase' }}>
+                  Active Filter:
+                </span>
+
+                {selectedCategory !== 'all' && (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    background: '#f1f5f9',
+                    border: '1px solid #cbd5e1',
+                    borderRadius: 14,
+                    padding: '3px 9px',
+                    fontSize: 11.5,
+                    fontWeight: 600,
+                    color: '#334155'
+                  }}>
+                    <span>{ACCESSORY_CATEGORIES.find(c => c.id === selectedCategory)?.label || selectedCategory}</span>
+                    <X
+                      size={12}
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => setSelectedCategory('all')}
+                    />
+                  </span>
+                )}
+
+                {selectedBrand !== 'all' && (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    background: '#e0f2fe',
+                    border: '1px solid #bae6fd',
+                    borderRadius: 14,
+                    padding: '3px 9px',
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    color: '#0369a1'
+                  }}>
+                    <span>Brand: {selectedBrand}</span>
+                    <X
+                      size={12}
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => setSelectedBrand('all')}
+                    />
+                  </span>
+                )}
+
+                {searchQuery && (
+                  <span style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 5,
+                    background: '#fef3c7',
+                    border: '1px solid #fde68a',
+                    borderRadius: 14,
+                    padding: '3px 9px',
+                    fontSize: 11.5,
+                    fontWeight: 600,
+                    color: '#92400e'
+                  }}>
+                    <span>"{searchQuery}"</span>
+                    <X
+                      size={12}
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => setSearchQuery('')}
+                    />
+                  </span>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedCategory('all');
+                    setSelectedBrand('all');
+                    setSearchQuery('');
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#ef4444',
+                    fontSize: 11.5,
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    textDecoration: 'underline',
+                    padding: 0
+                  }}
+                >
+                  Clear all
+                </button>
+              </div>
+
+              <div style={{ fontSize: 12.5, color: '#64748b', fontWeight: 600 }}>
+                Showing <strong style={{ color: '#0f172a' }}>{filteredProducts.length}</strong> items
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 8 }}>
+              <span style={{ fontSize: 12.5, color: '#64748b', fontWeight: 600 }}>
+                Showing <strong style={{ color: '#0f172a' }}>{filteredProducts.length}</strong> accessories
+              </span>
+            </div>
+          )}
         </div>
 
         {/* 3. PRODUCT CARDS GRID */}
@@ -280,45 +671,46 @@ export default function AccessoriesPage() {
                   onClick={() => handleOpenModal(product)}
                   style={{
                     background: '#ffffff',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: 16,
-                    padding: '16px',
+                    border: '1px solid rgba(0, 0, 0, 0.06)',
+                    borderRadius: 22,
+                    padding: '18px',
                     display: 'flex',
                     flexDirection: 'column',
                     position: 'relative',
                     cursor: 'pointer',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.02)'
+                    transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)'
                   }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 12px 24px rgba(0,0,0,0.07)';
-                    e.currentTarget.style.borderColor = '#cbd5e1';
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = '0 20px 44px rgba(0, 0, 0, 0.08)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 113, 227, 0.35)';
                   }}
                   onMouseLeave={e => {
                     e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.02)';
-                    e.currentTarget.style.borderColor = '#e2e8f0';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.03)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.06)';
                   }}
                 >
                   {/* Category and Brand Tag */}
                   <div style={{
                     fontSize: 11,
-                    color: '#64748b',
+                    color: '#86868b',
                     marginBottom: 6,
                     fontWeight: 600,
                     display: 'flex',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    letterSpacing: '0.04em'
                   }}>
                     <span>{product.categoryLabel}</span>
-                    <span style={{ color: '#0284c7', fontWeight: 800 }}>{product.brand}</span>
+                    <span style={{ color: '#0071e3', fontWeight: 800 }}>{product.brand}</span>
                   </div>
 
                   {/* Title */}
                   <h3 style={{
-                    fontSize: 14,
+                    fontSize: 14.5,
                     fontWeight: 700,
-                    color: '#0369a1',
+                    color: '#1d1d1f',
                     margin: '0 0 12px',
                     lineHeight: 1.35,
                     minHeight: 38,
@@ -338,8 +730,8 @@ export default function AccessoriesPage() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: '#f8fafc',
-                    borderRadius: 10,
+                    background: 'radial-gradient(circle at 50% 50%, rgba(245, 245, 247, 0.9) 0%, rgba(255, 255, 255, 0) 70%)',
+                    borderRadius: 16,
                     marginBottom: 16,
                     overflow: 'hidden'
                   }}>
@@ -350,7 +742,7 @@ export default function AccessoriesPage() {
                         maxHeight: '85%',
                         maxWidth: '85%',
                         objectFit: 'contain',
-                        transition: 'transform 0.25s ease'
+                        transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
                       }}
                       onError={(e) => {
                         e.target.onerror = null;
@@ -361,14 +753,15 @@ export default function AccessoriesPage() {
                     {product.discountPercent && (
                       <span style={{
                         position: 'absolute',
-                        bottom: 6,
-                        left: 6,
-                        background: '#16a34a',
+                        bottom: 8,
+                        left: 8,
+                        background: 'rgba(15, 23, 42, 0.85)',
+                        backdropFilter: 'blur(8px)',
                         color: '#ffffff',
-                        fontSize: 11,
+                        fontSize: 10,
                         fontWeight: 800,
-                        padding: '2px 7px',
-                        borderRadius: 4
+                        padding: '2px 8px',
+                        borderRadius: 20
                       }}>
                         -{product.discountPercent}%
                       </span>
@@ -381,22 +774,22 @@ export default function AccessoriesPage() {
                     display: 'flex',
                     alignItems: 'flex-end',
                     justifyContent: 'space-between',
-                    paddingTop: 8,
+                    paddingTop: 10,
                     borderTop: '1px solid #f1f5f9'
                   }}>
                     <div>
                       <div style={{
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: 900,
-                        color: '#dc2626',
+                        color: '#1d1d1f',
                         lineHeight: 1.2
                       }}>
                         රු {product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                       </div>
                       {product.originalPrice && (
                         <div style={{
-                          fontSize: 11,
-                          color: '#94a3b8',
+                          fontSize: 11.5,
+                          color: '#86868b',
                           textDecoration: 'line-through',
                           marginTop: 2
                         }}>
@@ -409,29 +802,30 @@ export default function AccessoriesPage() {
                       onClick={(e) => handleQuickAddToCart(e, product)}
                       title="Add to cart"
                       style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
+                        width: 38,
+                        height: 38,
+                        borderRadius: 12,
                         border: 'none',
-                        background: isAdded ? '#0284c7' : '#f1f5f9',
-                        color: isAdded ? '#ffffff' : '#64748b',
+                        background: isAdded ? '#0071e3' : '#f5f5f7',
+                        color: isAdded ? '#ffffff' : '#1d1d1f',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        transition: 'all 0.2s ease',
-                        flexShrink: 0
+                        transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                        flexShrink: 0,
+                        boxShadow: isAdded ? '0 4px 14px rgba(0, 113, 227, 0.35)' : 'none'
                       }}
                       onMouseEnter={e => {
                         if (!isAdded) {
-                          e.currentTarget.style.background = '#0284c7';
+                          e.currentTarget.style.background = '#0071e3';
                           e.currentTarget.style.color = '#ffffff';
                         }
                       }}
                       onMouseLeave={e => {
                         if (!isAdded) {
-                          e.currentTarget.style.background = '#f1f5f9';
-                          e.currentTarget.style.color = '#64748b';
+                          e.currentTarget.style.background = '#f5f5f7';
+                          e.currentTarget.style.color = '#1d1d1f';
                         }
                       }}
                     >

@@ -4,7 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { useSidebar } from '@/context/SidebarContext';
-import { Smartphone, Wrench, ShoppingCart, Search, ShieldCheck, Crown, ChevronDown, UserCheck, Sparkles, PanelLeft, User, LogOut } from 'lucide-react';
+import { Smartphone, Wrench, ShoppingCart, Search, ChevronDown, Sparkles, PanelLeft, User, LogOut, Package, MessageSquare, Shield, Crown, Clock, ShoppingBag, ArrowLeftRight, UserPlus } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function Navbar() {
     const { pathname } = useLocation();
@@ -106,6 +107,35 @@ export default function Navbar() {
             <span style={{ fontWeight: 600 }}>Directory</span>
           </button>
 
+          <button
+            type="button"
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('open-store-chat', {
+                detail: { id: '', name: 'General Store Inquiry' }
+              }));
+            }}
+            className="nav-link"
+            style={{
+              background: '#f0f9ff',
+              border: '1px solid #bae6fd',
+              borderRadius: 8,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              font: 'inherit',
+              padding: '7px 12px',
+              color: '#0284c7',
+              fontWeight: 700,
+              fontSize: 13,
+              transition: 'all 0.15s ease'
+            }}
+            title="Chat directly with Store Admin & Product Specialists"
+          >
+            <MessageSquare size={15} color="#0284c7" />
+            <span>Chat with Admin</span>
+          </button>
+
           <Link to="/repairs/book" className="nav-repairs-btn">
             <Wrench size={16}/>
             Book Repair
@@ -144,93 +174,243 @@ export default function Navbar() {
               <span>Sign In</span>
             </button>
           ) : (
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={() => setShowRoleMenu(!showRoleMenu)}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  padding: '7px 12px',
-                  borderRadius: '10px',
-                  background: isSuperAdmin ? '#f3e8ff' : isAdmin ? '#f0f9ff' : '#f8fafc',
-                  border: isSuperAdmin ? '1px solid #d8b4fe' : isAdmin ? '1px solid #bae6fd' : '1px solid #cbd5e1',
-                  color: '#0f172a',
-                  fontSize: 12.5,
-                  fontWeight: 600,
-                  cursor: 'pointer'
-                }}
-              >
-                {isSuperAdmin ? (
-                  <Crown size={15} color="#7c3aed" />
-                ) : isAdmin ? (
-                  <ShieldCheck size={15} color="#0284c7" />
-                ) : (
-                  <UserCheck size={15} color="#0284c7" />
-                )}
-                <span>{user?.name?.split(' ')[0] || 'Account'}</span>
-                {isAdmin && (
-                  <span
-                    style={{
-                      fontSize: 9.5,
-                      padding: '2px 6px',
-                      borderRadius: 4,
-                      fontWeight: 800,
-                      background: isSuperAdmin ? '#7c3aed' : '#0284c7',
-                      color: '#ffffff',
-                      textTransform: 'uppercase'
-                    }}
-                  >
-                    {isSuperAdmin ? 'SUPER ADMIN' : 'ADMIN'}
-                  </span>
-                )}
-                <ChevronDown size={13} color="#64748b" />
-              </button>
-
-              {showRoleMenu && (
-                <div
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              {isAdmin && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    toast.success('Switched to Customer Storefront (Guest Shopper Mode)!');
+                  }}
                   style={{
-                    position: 'absolute',
-                    right: 0,
-                    top: '115%',
-                    width: 230,
-                    background: '#ffffff',
-                    border: '1px solid #cbd5e1',
-                    borderRadius: 14,
-                    padding: 10,
-                    boxShadow: '0 12px 35px rgba(0,0,0,0.12)',
-                    zIndex: 1000
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    padding: '6px 11px',
+                    borderRadius: '10px',
+                    background: '#f0fdf4',
+                    border: '1.5px solid #86efac',
+                    color: '#15803d',
+                    fontSize: 12,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    boxShadow: '0 1px 3px rgba(21, 128, 61, 0.08)',
+                    transition: 'all 0.15s ease'
+                  }}
+                  title="Switch instantly to clean Customer / Guest Shopper Mode"
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = '#dcfce7';
+                    e.currentTarget.style.borderColor = '#4ade80';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = '#f0fdf4';
+                    e.currentTarget.style.borderColor = '#86efac';
                   }}
                 >
-                  <div style={{ padding: '6px 8px 10px', borderBottom: '1px solid #f1f5f9' }}>
-                    <div style={{ fontWeight: 800, fontSize: 13, color: '#0f172a' }}>{user.name}</div>
-                    <div style={{ fontSize: 11, color: '#64748b' }}>{user.email}</div>
-                  </div>
+                  <ShoppingBag size={14} color="#16a34a" />
+                  <span>Customer View</span>
+                </button>
+              )}
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 8 }}>
-                    {/* Admin portal shortcut if authorized */}
-                    {isSuperAdmin ? (
+              <div style={{ position: 'relative' }}>
+                <button
+                  onClick={() => setShowRoleMenu(!showRoleMenu)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '7px 12px',
+                    borderRadius: '10px',
+                    background: isAdmin ? '#f5f3ff' : '#f8fafc',
+                    border: isAdmin ? '1.5px solid #d8b4fe' : '1px solid #cbd5e1',
+                    color: '#0f172a',
+                    fontSize: 12.5,
+                    fontWeight: 700,
+                    cursor: 'pointer'
+                  }}
+                >
+                  {isAdmin ? <Shield size={15} color="#7c3aed" /> : <User size={15} color="#0284c7" />}
+                  <span>{user?.name?.split(' ')[0] || 'Account'}</span>
+                  {isAdmin && (
+                    <span style={{ fontSize: 10, background: '#7c3aed', color: '#fff', padding: '1px 6px', borderRadius: 6 }}>
+                      {isSuperAdmin ? 'OWNER' : 'STAFF'}
+                    </span>
+                  )}
+                  <ChevronDown size={13} color="#64748b" />
+                </button>
+
+                {showRoleMenu && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      right: 0,
+                      top: '115%',
+                      width: 270,
+                      background: '#ffffff',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: 14,
+                      padding: 10,
+                      boxShadow: '0 12px 35px rgba(0,0,0,0.12)',
+                      zIndex: 1000
+                    }}
+                  >
+                    <div style={{ padding: '6px 8px 10px', borderBottom: '1px solid #f1f5f9' }}>
+                      <div style={{ fontWeight: 800, fontSize: 13, color: '#0f172a' }}>{user.name}</div>
+                      <div style={{ fontSize: 11, color: '#64748b' }}>{user.email}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: isAdmin ? '#7c3aed' : '#059669', marginTop: 3 }}>
+                        ● {isAdmin ? (isSuperAdmin ? 'Platform Super Admin' : 'Store Administrator') : 'Verified Customer Account'}
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: 8 }}>
+                      {isAdmin && (
+                        <div style={{ background: '#f8fafc', padding: 8, borderRadius: 10, border: '1px solid #e2e8f0', marginBottom: 4 }}>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>
+                            Storefront Mode
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              logout();
+                              setShowRoleMenu(false);
+                              toast.success('Switched to Customer Storefront (Guest Shopper Mode)!');
+                            }}
+                            style={{
+                              width: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              padding: '7px 9px',
+                              borderRadius: 8,
+                              background: '#ecfdf5',
+                              border: '1px solid #a7f3d0',
+                              color: '#065f46',
+                              fontSize: 12,
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              marginBottom: 4,
+                              textAlign: 'left'
+                            }}
+                          >
+                            <ShoppingBag size={14} color="#059669" />
+                            <span>Browse as Customer (Guest)</span>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setShowRoleMenu(false);
+                              openAuthModal('Sign in with a customer account to test shopping & orders.');
+                            }}
+                            style={{
+                              width: '100%',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              padding: '7px 9px',
+                              borderRadius: 8,
+                              background: '#eff6ff',
+                              border: '1px solid #bfdbfe',
+                              color: '#1d4ed8',
+                              fontSize: 12,
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              textAlign: 'left'
+                            }}
+                          >
+                            <UserPlus size={14} color="#2563eb" />
+                            <span>Sign In as Customer Account</span>
+                          </button>
+                        </div>
+                      )}
+
+                      {isAdmin && (
+                        <>
+                          <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.04em', padding: '2px 8px' }}>
+                            Admin Management
+                          </div>
+                          <Link
+                            to="/admin"
+                            onClick={() => setShowRoleMenu(false)}
+                            style={{
+                              fontSize: 12.5,
+                              padding: '7px 10px',
+                              borderRadius: 8,
+                              textDecoration: 'none',
+                              color: '#0284c7',
+                              fontWeight: 700,
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 8,
+                              background: '#eff6ff'
+                            }}
+                          >
+                            <Shield size={15} color="#0284c7" /> Store Operations (Admin)
+                          </Link>
+                          {isSuperAdmin && (
+                            <Link
+                              to="/super-admin"
+                              onClick={() => setShowRoleMenu(false)}
+                              style={{
+                                fontSize: 12.5,
+                                padding: '7px 10px',
+                                borderRadius: 8,
+                                textDecoration: 'none',
+                                color: '#7c3aed',
+                                fontWeight: 700,
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 8,
+                                background: '#f5f3ff'
+                              }}
+                            >
+                              <Crown size={15} color="#7c3aed" /> Super Admin Console
+                            </Link>
+                          )}
+                          <div style={{ height: 1, background: '#f1f5f9', margin: '4px 0' }} />
+                        </>
+                      )}
+
+                      <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.04em', padding: '2px 8px' }}>
+                        Customer Navigation
+                      </div>
+
                       <Link
-                        to="/super-admin"
+                        to="/orders"
                         onClick={() => setShowRoleMenu(false)}
                         style={{
                           fontSize: 12.5,
                           padding: '7px 10px',
                           borderRadius: 8,
                           textDecoration: 'none',
-                          color: '#7c3aed',
-                          fontWeight: 700,
+                          color: '#334155',
                           display: 'flex',
                           alignItems: 'center',
-                          gap: 8,
-                          background: '#faf5ff'
+                          gap: 8
                         }}
                       >
-                        <Crown size={15} /> Executive Command
+                        <Package size={15} color="#0284c7" /> My Orders & Invoices
                       </Link>
-                    ) : isAdmin ? (
+
                       <Link
-                        to="/admin"
+                        to="/cart"
+                        onClick={() => setShowRoleMenu(false)}
+                        style={{
+                          fontSize: 12.5,
+                          padding: '7px 10px',
+                          borderRadius: 8,
+                          textDecoration: 'none',
+                          color: '#334155',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8
+                        }}
+                      >
+                        <ShoppingCart size={15} color="#0284c7" /> Shopping Cart ({totalCount})
+                      </Link>
+
+                      <Link
+                        to="/repairs/track"
                         onClick={() => setShowRoleMenu(false)}
                         style={{
                           fontSize: 12.5,
@@ -241,76 +421,61 @@ export default function Navbar() {
                           fontWeight: 700,
                           display: 'flex',
                           alignItems: 'center',
-                          gap: 8,
-                          background: '#f0f9ff'
+                          gap: 8
                         }}
                       >
-                        <ShieldCheck size={15} /> Operations Dashboard
+                        <Clock size={15} color="#0284c7" /> My Booked Repairs & Bench
                       </Link>
-                    ) : null}
 
-                    <Link
-                      to="/cart"
-                      onClick={() => setShowRoleMenu(false)}
-                      style={{
-                        fontSize: 12.5,
-                        padding: '7px 10px',
-                        borderRadius: 8,
-                        textDecoration: 'none',
-                        color: '#334155',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8
-                      }}
-                    >
-                      <ShoppingCart size={15} color="#0284c7" /> Shopping Cart ({totalCount})
-                    </Link>
+                      <Link
+                        to="/repairs/book"
+                        onClick={() => setShowRoleMenu(false)}
+                        style={{
+                          fontSize: 12.5,
+                          padding: '7px 10px',
+                          borderRadius: 8,
+                          textDecoration: 'none',
+                          color: '#334155',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8
+                        }}
+                      >
+                        <Wrench size={15} color="#0284c7" /> Book Device Repair
+                      </Link>
 
-                    <Link
-                      to="/repairs/book"
-                      onClick={() => setShowRoleMenu(false)}
-                      style={{
-                        fontSize: 12.5,
-                        padding: '7px 10px',
-                        borderRadius: 8,
-                        textDecoration: 'none',
-                        color: '#334155',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8
-                      }}
-                    >
-                      <Wrench size={15} color="#0284c7" /> Book Device Repair
-                    </Link>
+                      <div style={{ height: 1, background: '#f1f5f9', margin: '4px 0' }} />
 
-                    <div style={{ height: 1, background: '#f1f5f9', margin: '4px 0' }} />
-
-                    <button
-                      onClick={() => {
-                        logout();
-                        setShowRoleMenu(false);
-                      }}
-                      style={{
-                        width: '100%',
-                        textAlign: 'left',
-                        background: 'none',
-                        border: 'none',
-                        padding: '7px 10px',
-                        borderRadius: 8,
-                        color: '#dc2626',
-                        fontSize: 12.5,
-                        fontWeight: 700,
-                        cursor: 'pointer',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 8
-                      }}
-                    >
-                      <LogOut size={15} /> Sign Out
-                    </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          logout();
+                          setShowRoleMenu(false);
+                          toast.success('Signed out. You are now browsing in Guest Mode.');
+                        }}
+                        style={{
+                          width: '100%',
+                          textAlign: 'left',
+                          background: '#fef2f2',
+                          border: '1px solid #fee2e2',
+                          padding: '7px 10px',
+                          borderRadius: 8,
+                          color: '#dc2626',
+                          fontSize: 12.5,
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8
+                        }}
+                      >
+                        <LogOut size={14} color="#dc2626" />
+                        <span>Sign Out (Guest Mode)</span>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           )}
         </div>

@@ -1,7 +1,8 @@
 import Order from '../models/Order.js';
 import Cart from '../models/Cart.js';
 import { sendSuccess, sendError } from '../utils/apiResponse.js';
-import { sendOrderConfirmationEmail } from '../utils/emailService.js';
+import { sendOrderReceiptEmail } from '../utils/emailService.js';
+import { emitOrderCreated, emitBulkStockUpdated, emitOrderStatusUpdated } from '../socket.js';
 
 /**
  * @desc    Create new order & checkout
@@ -16,7 +17,10 @@ export const createOrder = async (req, res, next) => {
       paymentMethod,
       itemsPrice,
       shippingPrice,
-      totalPrice
+      totalPrice,
+      isPaid,
+      paidAt,
+      paymentResult
     } = req.body;
 
     if (!orderItems || orderItems.length === 0) {
@@ -27,26 +31,48 @@ export const createOrder = async (req, res, next) => {
       return sendError(res, 400, 'Complete shipping address and phone number are required.');
     }
 
+    const normalizedItems = orderItems.map((item) => ({
+      name: item.name,
+      quantity: Number(item.quantity || item.qty || 1),
+      image: item.image || '/accessories.jpg',
+      price: Number(item.price || item.unitPrice || 0),
+      selectedFinish: item.selectedFinish || {},
+      product: item.product || item.productId || item.id || 'standard_item'
+    }));
+
     const order = new Order({
       user: req.user._id,
-      orderItems,
-      shippingAddress,
-      paymentMethod: paymentMethod || 'PayHere',
+      orderItems: normalizedItems,
+      shippingAddress: {
+        ...shippingAddress,
+        district: shippingAddress.district || shippingAddress.city || 'Colombo',
+        postalCode: shippingAddress.postalCode || '00300'
+      },
+      paymentMethod: paymentMethod || 'Stripe',
+      isPaid: !!isPaid,
+      paidAt: isPaid ? (paidAt || new Date()) : null,
+      paymentResult: paymentResult || {},
       itemsPrice: Number(itemsPrice),
       shippingPrice: Number(shippingPrice || 0),
       totalPrice: Number(totalPrice),
-      orderStatus: 'PENDING'
+      orderStatus: isPaid ? 'PROCESSING' : 'PENDING'
     });
 
     const createdOrder = await order.save();
 
+    // Broadcast new order creation & inventory deduction via WebSockets
+    emitOrderCreated(createdOrder);
+    emitBulkStockUpdated(normalizedItems);
+
     // Automatically empty the user's cart after successful order creation
     await Cart.findOneAndUpdate({ user: req.user._id }, { items: [] });
 
-    // Asynchronously send order confirmation email without blocking checkout response
-    if (req.user && req.user.email) {
-      sendOrderConfirmationEmail(req.user.email, req.user.name, createdOrder).catch(
-        (err) => console.error('Failed to dispatch order email:', err.message)
+    // Asynchronously send order receipt email without blocking checkout response
+    const recipientEmail = req.body.customerEmail || req.user?.email;
+    const recipientName = req.body.shippingAddress?.fullName || req.user?.name || 'Valued Customer';
+    if (recipientEmail) {
+      sendOrderReceiptEmail(recipientEmail, recipientName, createdOrder).catch(
+        (err) => console.error('Failed to dispatch order receipt email:', err.message)
       );
     }
 
@@ -95,6 +121,55 @@ export const getOrderById = async (req, res, next) => {
 };
 
 /**
+ * @desc    Lookup orders live status & tracking by Order Reference / ID list (Public Status Sync)
+ * @route   POST /api/orders/lookup-status
+ * @access  Public
+ */
+export const lookupOrdersStatus = async (req, res, next) => {
+  try {
+    const { orderIds } = req.body;
+    if (!Array.isArray(orderIds) || orderIds.length === 0) {
+      return sendSuccess(res, 200, 'No order references provided', []);
+    }
+
+    const objectIds = [];
+    const shortIds = [];
+
+    for (const ref of orderIds) {
+      if (!ref || typeof ref !== 'string') continue;
+      const clean = ref.replace(/^ORD-/, '').trim().toLowerCase();
+      if (clean.length === 24 && /^[0-9a-f]{24}$/.test(clean)) {
+        objectIds.push(clean);
+      } else if (clean.length >= 4) {
+        shortIds.push(clean);
+      }
+    }
+
+    let foundOrders = [];
+    if (objectIds.length > 0) {
+      const byId = await Order.find({ _id: { $in: objectIds } });
+      foundOrders.push(...byId);
+    }
+
+    if (shortIds.length > 0) {
+      const recent = await Order.find().sort({ createdAt: -1 }).limit(100);
+      const matched = recent.filter(ord => {
+        const hex = ord._id.toString().toLowerCase();
+        return shortIds.some(s => hex.endsWith(s));
+      });
+      foundOrders.push(...matched);
+    }
+
+    const uniqueMap = new Map();
+    foundOrders.forEach(o => uniqueMap.set(o._id.toString(), o));
+
+    return sendSuccess(res, 200, 'Live order statuses retrieved', Array.from(uniqueMap.values()));
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * @desc    PayHere IPN (Instant Payment Notification) Webhook
  * @route   POST /api/orders/payhere-notify
  * @access  Public (Called by PayHere gateway)
@@ -118,6 +193,7 @@ export const payhereNotify = async (req, res, next) => {
         };
         order.orderStatus = 'PROCESSING';
         await order.save();
+        emitOrderStatusUpdated(order);
       }
     }
 

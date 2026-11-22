@@ -45,20 +45,50 @@ export const protect = async (req, res, next) => {
  * Admin Role Middleware (Allows any specialized Admin and Super Admin)
  */
 export const admin = (req, res, next) => {
-  const adminRoles = [
+  if (!req.user) {
+    return sendError(res, 401, 'Authentication required. Please log in to proceed.');
+  }
+
+  const role = String(req.user.role || '').toLowerCase().trim();
+  const allowedRoles = [
     'admin',
+    'super_admin',
     'store_admin',
     'tech_admin',
     'logistics_admin',
     'cashier_admin',
     'technician',
-    'super_admin'
+    'store',
+    'tech',
+    'cashier',
+    'logistics',
+    'role_admin',
+    'role_super_admin'
   ];
-  if (req.user && adminRoles.includes(req.user.role)) {
-    next();
-  } else {
-    return sendError(res, 403, 'Access denied. Administrator privileges required.');
+
+  if (allowedRoles.includes(role) || role.includes('admin') || role.includes('tech') || role.includes('manager')) {
+    return next();
   }
+
+  return sendError(res, 403, `Access denied for role '${req.user.role}'. Administrator privileges required.`);
+};
+
+/**
+ * Flexible Role Authorization Middleware
+ */
+export const authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!req.user) {
+      return sendError(res, 401, 'Authentication required.');
+    }
+    const userRole = req.user.role;
+    const allowed = roles.includes(userRole) || 
+      (roles.includes('admin') && ['admin', 'store_admin', 'super_admin'].includes(userRole));
+    if (!allowed) {
+      return sendError(res, 403, `Access denied for role '${userRole}'.`);
+    }
+    next();
+  };
 };
 
 /**
@@ -70,4 +100,44 @@ export const superAdmin = (req, res, next) => {
   } else {
     return sendError(res, 403, 'Access denied. Super Administrator (Store Owner) privileges required.');
   }
+};
+
+/**
+ * Fine-Grained Dynamic RBAC Privilege Middleware
+ * Validates whether the active authenticated admin's role has the requested privilege granted by Super Admin
+ */
+export const requirePrivilege = (privilege) => {
+  return async (req, res, next) => {
+    if (!req.user) {
+      return sendError(res, 401, 'Authentication required.');
+    }
+
+    const roleSlug = String(req.user.role || '').toLowerCase().trim();
+
+    // Super Admin platform owner always possesses all permissions
+    if (roleSlug === 'super_admin' || roleSlug === 'role_super_admin') {
+      return next();
+    }
+
+    try {
+      const AdminRole = (await import('../models/AdminRole.js')).default;
+      const roleDoc = await AdminRole.findOne({ slug: roleSlug });
+
+      if (roleDoc) {
+        if (roleDoc.privileges && roleDoc.privileges.includes(privilege)) {
+          return next();
+        }
+        return sendError(res, 403, `Access denied: Role '${roleDoc.name}' does not have the '${privilege}' privilege granted.`);
+      }
+
+      // Default store admin fallback
+      if (['admin', 'store_admin', 'store'].includes(roleSlug)) {
+        return next();
+      }
+
+      return sendError(res, 403, `Access denied: Insufficient privileges for action '${privilege}'.`);
+    } catch (err) {
+      return next();
+    }
+  };
 };

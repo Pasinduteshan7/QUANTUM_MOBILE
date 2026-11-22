@@ -18,6 +18,17 @@ const repairSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+      index: true
+    },
+    customerEmail: {
+      type: String,
+      default: '',
+      trim: true
+    },
     deviceBrand: {
       type: String,
       required: true,
@@ -87,6 +98,27 @@ const repairSchema = new mongoose.Schema(
     assignedTechnician: {
       type: String,
       default: 'Master Lab Tech (Colombo 03)'
+    },
+    // Payment Tracking via Stripe
+    isPaid: {
+      type: Boolean,
+      default: false
+    },
+    paidAt: {
+      type: Date,
+      default: null
+    },
+    paymentMethod: {
+      type: String,
+      default: 'Pending'
+    },
+    paymentAmount: {
+      type: Number,
+      default: 0
+    },
+    stripePaymentIntentId: {
+      type: String,
+      default: ''
     },
     // Courier Reverse Logistics Tracking (For Mail-in Repairs)
     courierPartner: {
