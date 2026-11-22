@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Wrench,
@@ -19,9 +19,19 @@ import {
   Sparkles,
   Search,
   Check,
-  PhoneCall
+  PhoneCall,
+  CreditCard,
+  Activity,
+  RotateCcw,
+  Receipt,
+  Lock,
+  User,
+  Mail
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { useAuth } from '@/context/AuthContext';
+import BrandLogo from '@/components/BrandLogo';
+import RepairTrackPage from './RepairTrackPage';
 
 const BRANDS = [
   { id: 'Apple', name: 'Apple', emblem: '', tag: 'iPhone • iPad • Watch', color: '#0284c7' },
@@ -108,6 +118,7 @@ const TIME_SLOTS = [
 ];
 
 export default function RepairBookPage() {
+  const { user, token, openAuthModal } = useAuth();
   const [step, setStep] = useState(1);
   const [brand, setBrand] = useState('Apple');
   const [model, setModel] = useState('iPhone 16 Pro Max');
@@ -122,6 +133,7 @@ export default function RepairBookPage() {
   const [occupiedSlots, setOccupiedSlots] = useState([]);
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
+  const [customerEmail, setCustomerEmail] = useState('');
   const [address, setAddress] = useState('');
   const [notes, setNotes] = useState('');
   const [submittingBooking, setSubmittingBooking] = useState(false);
@@ -130,11 +142,81 @@ export default function RepairBookPage() {
   const [bookingWaybill, setBookingWaybill] = useState('');
   const [bookingCourier, setBookingCourier] = useState('Domex');
 
+  // Dual-mode state: 'book' | 'track'
+  const [activeModeTab, setActiveModeTab] = useState('book');
+  const [activeTrackTicket, setActiveTrackTicket] = useState('');
+  const [recentBookings, setRecentBookings] = useState([]);
+  const [userBookedCount, setUserBookedCount] = useState(0);
+
   const currentBrandObj = BRANDS.find(b => b.id === brand) || BRANDS[0];
   const selectedIssueObj = ISSUES.find(i => i.id === issue) || ISSUES[0];
 
+  // Auto-fill customer profile details when signed in
+  useEffect(() => {
+    if (user) {
+      if (user.name && (!customerName || customerName === 'Valued Customer')) {
+        setCustomerName(user.name);
+      }
+      if (!customerPhone) {
+        setCustomerPhone(user.phone || '+94 71 987 6543');
+      }
+      if (user.email && !customerEmail) {
+        setCustomerEmail(user.email);
+      }
+      if (user.shippingAddress && !address) {
+        const addrStr = typeof user.shippingAddress === 'object'
+          ? `${user.shippingAddress.street || user.shippingAddress.addressLine1 || ''}, ${user.shippingAddress.city || ''}`
+          : String(user.shippingAddress);
+        setAddress(addrStr || 'Colombo 03');
+      }
+    }
+  }, [user]);
+
+  // Load recent bookings & URL params on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('qm_recent_repairs');
+      if (stored) {
+        setRecentBookings(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.warn('Could not read recent repairs from localStorage', e);
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get('tab');
+    const ticketParam = params.get('ticket');
+    if (tabParam === 'track' || ticketParam) {
+      setActiveModeTab('track');
+      if (ticketParam) {
+        setActiveTrackTicket(ticketParam);
+      }
+    }
+  }, []);
+
+  // Sync customer's booked repair count from database
+  useEffect(() => {
+    if (!user) {
+      setUserBookedCount(0);
+      return;
+    }
+    const checkUserRepairs = async () => {
+      try {
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const res = await fetch('http://localhost:5000/api/repairs/my-repairs', { headers });
+        const d = await res.json();
+        if (d.success && Array.isArray(d.data)) {
+          setUserBookedCount(d.data.length);
+        }
+      } catch (e) {
+        console.warn('Could not count user repairs', e);
+      }
+    };
+    checkUserRepairs();
+  }, [user, token]);
+
   // Fetch live occupied slots from backend whenever date changes
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchOccupied = async () => {
       try {
         const res = await fetch(`http://localhost:5000/api/repairs/slots?date=${selectedDate}`);
@@ -150,11 +232,19 @@ export default function RepairBookPage() {
   }, [selectedDate]);
 
   const handleConfirm = async (e) => {
-    e.preventDefault();
-    if (!customerPhone.trim()) {
-      toast.error('Please enter your contact phone number for repair SMS updates.');
+    if (e && e.preventDefault) e.preventDefault();
+    if (!user) {
+      toast('Please sign in or create an account to book your certified repair.', {
+        icon: '🔒',
+        duration: 4000
+      });
+      openAuthModal('Please sign in or create a customer account to confirm your device repair reservation and track lab diagnostics.');
       return;
     }
+
+    const finalPhone = (customerPhone && customerPhone.trim()) || user.phone || '+94 71 987 6543';
+    const finalName = (customerName && customerName.trim()) || user.name || 'Valued Customer';
+    const finalEmail = (customerEmail && customerEmail.trim()) || user?.email || '';
 
     setSubmittingBooking(true);
     try {
@@ -162,8 +252,10 @@ export default function RepairBookPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          customerName: customerName || 'Valued Customer',
-          customerPhone,
+          customerName: finalName,
+          customerPhone: finalPhone,
+          customerEmail: finalEmail,
+          userId: user._id || user.id || null,
           deviceBrand: brand,
           deviceModel: model,
           issueId: issue,
@@ -171,7 +263,7 @@ export default function RepairBookPage() {
           serviceMode: mode,
           appointmentDate: selectedDate,
           timeSlot: selectedSlot,
-          address: mode === 'mailin' ? address : '',
+          address: mode === 'mailin' ? (address || 'Colombo, Sri Lanka') : '',
           notes,
           estimatedCost: selectedIssueObj.est
         })
@@ -179,12 +271,34 @@ export default function RepairBookPage() {
 
       const data = await res.json();
       if (data.success && data.data?.ticketId) {
-        setBookingTicketId(data.data.ticketId);
+        const ticketId = data.data.ticketId;
+        setBookingTicketId(ticketId);
         setBookingWaybill(data.data.waybillNumber || '');
         setBookingCourier(data.data.courierPartner || 'Domex');
         setConfirmed(true);
+
+        // Store to localStorage so user can access it anytime alongside booking
+        try {
+          const newEntry = {
+            ticketId,
+            brand,
+            model,
+            issue: selectedIssueObj.label,
+            date: selectedDate,
+            slot: selectedSlot,
+            mode,
+            createdAt: new Date().toISOString()
+          };
+          const existing = JSON.parse(localStorage.getItem('qm_recent_repairs') || '[]');
+          const updated = [newEntry, ...existing.filter(i => i.ticketId !== ticketId)].slice(0, 5);
+          localStorage.setItem('qm_recent_repairs', JSON.stringify(updated));
+          setRecentBookings(updated);
+        } catch (storageErr) {
+          console.warn('Could not store to localStorage:', storageErr);
+        }
+
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        toast.success(`Service reservation confirmed! Ticket: ${data.data.ticketId}`, { icon: '🔧' });
+        toast.success(`Service reservation confirmed! Ticket: ${ticketId}`, { icon: '🔧' });
       } else {
         toast.error(data.message || 'Could not complete booking. Please try another slot.');
       }
@@ -368,45 +482,89 @@ export default function RepairBookPage() {
           </div>
 
           {/* Action Buttons */}
-          <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 28 }}>
             <Link
               to={`/repairs/track?ticket=${bookingTicketId}`}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                padding: '13px 28px',
+                padding: '12px 24px',
                 borderRadius: 12,
                 background: '#0284c7',
                 color: '#ffffff',
-                fontSize: 14,
-                fontWeight: 700,
+                fontSize: 13.5,
+                fontWeight: 800,
                 textDecoration: 'none',
                 boxShadow: '0 4px 14px rgba(2, 132, 199, 0.3)'
               }}
             >
-              <span>Track Ticket Online</span>
-              <ArrowRight size={16} />
+              <span>Track Ticket Full View</span>
+              <ArrowRight size={15} />
             </Link>
+
+            <button
+              type="button"
+              onClick={() => {
+                setConfirmed(false);
+                setStep(1);
+              }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                padding: '12px 20px',
+                borderRadius: 12,
+                background: '#f8fafc',
+                border: '1.5px solid #cbd5e1',
+                color: '#334155',
+                fontSize: 13.5,
+                fontWeight: 700,
+                cursor: 'pointer'
+              }}
+            >
+              <RotateCcw size={15} />
+              <span>Book Another Device Repair</span>
+            </button>
 
             <Link
               to="/"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 8,
-                padding: '13px 24px',
+                gap: 6,
+                padding: '12px 18px',
                 borderRadius: 12,
-                background: '#f8fafc',
+                background: '#ffffff',
                 border: '1px solid #cbd5e1',
-                color: '#334155',
-                fontSize: 14,
-                fontWeight: 700,
+                color: '#64748b',
+                fontSize: 13.5,
+                fontWeight: 600,
                 textDecoration: 'none'
               }}
             >
-              <span>Return to Storefront</span>
+              <span>Storefront</span>
             </Link>
+          </div>
+
+          {/* EMBEDDED REAL-TIME WORKSHOP BENCH & STRIPE CHECKOUT CONTAINER */}
+          <div style={{ borderTop: '2px dashed #cbd5e1', paddingTop: 28, textAlign: 'left' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, marginBottom: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Sparkles size={18} color="#0284c7" />
+                <h3 style={{ margin: 0, fontSize: 18, fontWeight: 900, color: '#0f172a', fontFamily: 'Outfit, sans-serif' }}>
+                  Live Diagnostic Bench & Stripe Payment Station
+                </h3>
+              </div>
+              <span style={{ fontSize: 11, background: '#ecfdf5', color: '#059669', padding: '3px 10px', borderRadius: 20, fontWeight: 800 }}>
+                🟢 Bench Active
+              </span>
+            </div>
+            <p style={{ fontSize: 13, color: '#64748b', marginTop: 0, marginBottom: 16 }}>
+              Inspect real-time bench status, cleanroom technician findings, and complete online Stripe payment directly below:
+            </p>
+
+            <RepairTrackPage initialTicketId={bookingTicketId} hideHeader={true} />
           </div>
         </div>
       </div>
@@ -480,33 +638,172 @@ export default function RepairBookPage() {
         </div>
       </div>
 
-      {/* 2. MODERN 4-STEP INTERACTIVE PROGRESS BAR */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 8,
-          marginBottom: 28,
-          background: '#ffffff',
-          padding: '12px',
-          borderRadius: 16,
-          border: '1px solid #e2e8f0',
-          boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
-        }}
-      >
-        {[
-          { num: 1, title: '1. Select Device', subtitle: 'Brand & Model' },
-          { num: 2, title: '2. Select Issue', subtitle: 'Damage Diagnostic' },
-          { num: 3, title: '3. Schedule Service', subtitle: 'Walk-In or Courier' },
-          { num: 4, title: '4. Confirmation', subtitle: 'Summary & SMS' }
-        ].map((s) => {
-          const isDone = s.num < step;
-          const isCurrent = s.num === step;
+      {/* 2. DUAL-MODE TAB SWITCHER: BOOKING WIZARD VS BOOKED REPAIRS & BENCH TRACKER */}
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 26 }}>
+        <div
+          style={{
+            display: 'inline-flex',
+            background: '#f1f5f9',
+            padding: 5,
+            borderRadius: 16,
+            border: '1.5px solid #e2e8f0',
+            gap: 6
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setActiveModeTab('book')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '10px 22px',
+              borderRadius: 12,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: 13.5,
+              fontWeight: 800,
+              background: activeModeTab === 'book' ? '#ffffff' : 'transparent',
+              color: activeModeTab === 'book' ? '#0284c7' : '#64748b',
+              boxShadow: activeModeTab === 'book' ? '0 2px 8px rgba(0,0,0,0.06)' : 'none',
+              transition: 'all 0.15s ease'
+            }}
+          >
+            <Wrench size={16} />
+            <span>Book Certified Repair</span>
+          </button>
 
-          return (
-            <button
-              key={s.num}
-              type="button"
+          <button
+            type="button"
+            onClick={() => setActiveModeTab('track')}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '10px 22px',
+              borderRadius: 12,
+              border: 'none',
+              cursor: 'pointer',
+              fontSize: 13.5,
+              fontWeight: 800,
+              background: activeModeTab === 'track' ? '#ffffff' : 'transparent',
+              color: activeModeTab === 'track' ? '#0284c7' : '#64748b',
+              boxShadow: activeModeTab === 'track' ? '0 2px 8px rgba(0,0,0,0.06)' : 'none',
+              transition: 'all 0.15s ease'
+            }}
+          >
+            <Clock size={16} />
+            <span>Booked Repairs & Live Bench</span>
+            {(userBookedCount > 0 || recentBookings.length > 0) && (
+              <span
+                style={{
+                  background: '#10b981',
+                  color: '#ffffff',
+                  fontSize: 10,
+                  fontWeight: 900,
+                  padding: '2px 8px',
+                  borderRadius: 20
+                }}
+              >
+                {userBookedCount || recentBookings.length} Active
+              </span>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {activeModeTab === 'track' ? (
+        <div>
+          <RepairTrackPage
+            initialTicketId={activeTrackTicket || bookingTicketId}
+            hideHeader={true}
+          />
+        </div>
+      ) : (
+        <>
+          {/* Active ticket banner on Step 1 if customer has existing booking */}
+          {recentBookings.length > 0 && (
+            <div
+              style={{
+                background: 'linear-gradient(90deg, #eff6ff 0%, #f0fdf4 100%)',
+                border: '1.5px solid #bfdbfe',
+                borderRadius: 14,
+                padding: '12px 18px',
+                marginBottom: 20,
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: 12
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ width: 32, height: 32, borderRadius: 8, background: '#0284c7', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Wrench size={16} />
+                </div>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 800, color: '#0f172a' }}>
+                    Active Repair in Workshop: <strong style={{ color: '#0284c7' }}>#{recentBookings[0].ticketId}</strong> ({recentBookings[0].brand} {recentBookings[0].model})
+                  </div>
+                  <div style={{ fontSize: 11.5, color: '#64748b' }}>
+                    Inspect live bench status, technician diagnostic findings, or pay service quote via Stripe.
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveTrackTicket(recentBookings[0].ticketId);
+                  setActiveModeTab('track');
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  background: '#0284c7',
+                  color: '#ffffff',
+                  border: 'none',
+                  padding: '7px 14px',
+                  borderRadius: 8,
+                  fontSize: 12,
+                  fontWeight: 800,
+                  cursor: 'pointer'
+                }}
+              >
+                <span>Track Bench & Pay</span>
+                <ArrowRight size={13} />
+              </button>
+            </div>
+          )}
+
+          {/* 3. MODERN 4-STEP INTERACTIVE PROGRESS BAR */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 8,
+              marginBottom: 28,
+              background: '#ffffff',
+              padding: '12px',
+              borderRadius: 16,
+              border: '1px solid #e2e8f0',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.02)'
+            }}
+          >
+            {[
+              { num: 1, title: '1. Select Device', subtitle: 'Brand & Model' },
+              { num: 2, title: '2. Select Issue', subtitle: 'Damage Diagnostic' },
+              { num: 3, title: '3. Schedule Service', subtitle: 'Walk-In or Courier' },
+              { num: 4, title: '4. Confirmation', subtitle: 'Summary & SMS' }
+            ].map((s) => {
+              const isDone = s.num < step;
+              const isCurrent = s.num === step;
+
+              return (
+                <button
+                  key={s.num}
+                  type="button"
               disabled={s.num > step}
               onClick={() => setStep(s.num)}
               style={{
@@ -631,11 +928,15 @@ export default function RepairBookPage() {
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          fontSize: 16,
-                          fontWeight: 900
+                          padding: 2
                         }}
                       >
-                        {b.emblem}
+                        <BrandLogo
+                          brand={b.id || b.name}
+                          size={b.id === 'Apple' ? 18 : b.id === 'Samsung' ? 22 : 18}
+                          color={isSelected ? '#ffffff' : (b.id === 'Apple' ? '#0f172a' : null)}
+                          monochrome={isSelected}
+                        />
                       </div>
 
                       <span style={{ fontSize: 13, fontWeight: isSelected ? 800 : 700, color: isSelected ? b.color : '#0f172a' }}>
@@ -897,7 +1198,7 @@ export default function RepairBookPage() {
         {/* ================= STEP 3: SERVICE MODE & SCHEDULE ================= */}
         {step === 3 && (
           <div>
-            <div style={{ marginBottom: 24 }}>
+            <div style={{ marginBottom: 20 }}>
               <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 6px', fontFamily: 'Outfit' }}>
                 Step 3: Service Mode & Appointment Slot
               </h2>
@@ -905,6 +1206,72 @@ export default function RepairBookPage() {
                 Choose whether you want to visit our Colombo 03 lab directly or have our insured courier pick up your device.
               </p>
             </div>
+
+            {/* Sign-in notice banner if guest */}
+            {!user && (
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%)',
+                  border: '1.5px solid #bfdbfe',
+                  borderRadius: 14,
+                  padding: '12px 18px',
+                  marginBottom: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: 12
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div
+                    style={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: 9,
+                      background: '#0284c7',
+                      color: '#ffffff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Lock size={16} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 800, color: '#0f172a' }}>
+                      Sign In Required to Confirm Service Reservation
+                    </div>
+                    <div style={{ fontSize: 11.5, color: '#64748b' }}>
+                      Sign in or register to lock your priority lab slot, register OEM parts warranty, and track technician bench progress.
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => openAuthModal('Please sign in or create an account to book your device repair reservation.')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    background: '#0284c7',
+                    color: '#ffffff',
+                    border: 'none',
+                    padding: '8px 16px',
+                    borderRadius: 9,
+                    fontSize: 12.5,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(2, 132, 199, 0.25)'
+                  }}
+                >
+                  <User size={14} />
+                  <span>Sign In / Register</span>
+                </button>
+              </div>
+            )}
 
             {/* TWO SERVICE MODES */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16, marginBottom: 26 }}>
@@ -1165,7 +1532,7 @@ export default function RepairBookPage() {
         {/* ================= STEP 4: REVIEW & CONFIRM ================= */}
         {step === 4 && (
           <div>
-            <div style={{ marginBottom: 24 }}>
+            <div style={{ marginBottom: 20 }}>
               <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 6px', fontFamily: 'Outfit' }}>
                 Step 4: Contact Information & Reservation Review
               </h2>
@@ -1173,6 +1540,90 @@ export default function RepairBookPage() {
                 Please provide your contact details so our lab can send real-time SMS status updates and intake verification.
               </p>
             </div>
+
+            {/* Account Status / Auth Banner */}
+            {!user ? (
+              <div
+                style={{
+                  background: 'linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%)',
+                  border: '1.5px solid #bfdbfe',
+                  borderRadius: 14,
+                  padding: '14px 18px',
+                  marginBottom: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: 12
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 10,
+                      background: '#0284c7',
+                      color: '#ffffff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0
+                    }}
+                  >
+                    <Lock size={18} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13.5, fontWeight: 900, color: '#0f172a' }}>
+                      Sign In Required to Confirm Service Reservation
+                    </div>
+                    <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>
+                      An authenticated customer account is required to link this ticket to your profile and track lab bench diagnostics.
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => openAuthModal('Please sign in or create an account to confirm your device repair reservation.')}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    background: '#0284c7',
+                    color: '#ffffff',
+                    border: 'none',
+                    padding: '9px 18px',
+                    borderRadius: 10,
+                    fontSize: 13,
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(2, 132, 199, 0.25)'
+                  }}
+                >
+                  <User size={15} />
+                  <span>Sign In / Create Account</span>
+                </button>
+              </div>
+            ) : (
+              <div
+                style={{
+                  background: '#ecfdf5',
+                  border: '1.5px solid #a7f3d0',
+                  borderRadius: 12,
+                  padding: '10px 16px',
+                  marginBottom: 20,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 10
+                }}
+              >
+                <CheckCircle2 size={18} color="#059669" />
+                <span style={{ fontSize: 13, color: '#065f46', fontWeight: 700 }}>
+                  Verified customer account: <strong>{user.name}</strong> ({user.email}). Details auto-filled below.
+                </span>
+              </div>
+            )}
 
             {/* CUSTOMER CONTACT FIELDS */}
             <div
@@ -1220,6 +1671,32 @@ export default function RepairBookPage() {
                     placeholder="e.g. +94 77 123 4567"
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px 10px 38px',
+                      borderRadius: 10,
+                      border: '1.5px solid #cbd5e1',
+                      background: '#ffffff',
+                      fontSize: 13,
+                      color: '#0f172a',
+                      outline: 'none'
+                    }}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 800, color: '#334155', marginBottom: 6 }}>
+                  Email Address (For Ticket, Tracking & Lab Receipt) *
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Mail size={16} color="#94a3b8" style={{ position: 'absolute', left: 12, top: 13 }} />
+                  <input
+                    type="email"
+                    placeholder="e.g. kasun@gmail.com"
+                    value={customerEmail}
+                    onChange={(e) => setCustomerEmail(e.target.value)}
                     required
                     style={{
                       width: '100%',
@@ -1326,29 +1803,38 @@ export default function RepairBookPage() {
               <button
                 type="button"
                 onClick={handleConfirm}
+                disabled={submittingBooking}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
                   padding: '14px 34px',
                   borderRadius: 12,
-                  background: '#10b981',
+                  background: !user ? '#0284c7' : '#10b981',
                   color: '#ffffff',
                   fontSize: 14,
                   fontWeight: 800,
                   border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(16, 185, 129, 0.35)',
+                  cursor: submittingBooking ? 'wait' : 'pointer',
+                  boxShadow: !user ? '0 4px 16px rgba(2, 132, 199, 0.35)' : '0 4px 16px rgba(16, 185, 129, 0.35)',
                   transition: 'background 0.15s ease'
                 }}
               >
-                <CheckCircle2 size={18} />
-                <span>Confirm Service Reservation</span>
+                {!user ? <Lock size={17} /> : <CheckCircle2 size={18} />}
+                <span>
+                  {submittingBooking
+                    ? 'Registering Ticket...'
+                    : !user
+                    ? 'Sign In & Confirm Reservation'
+                    : 'Confirm Service Reservation'}
+                </span>
               </button>
             </div>
           </div>
         )}
       </div>
-    </div>
-  );
+    </>
+  )}
+</div>
+);
 }
