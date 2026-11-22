@@ -34,8 +34,9 @@ export const adminService = {
     const response = await api.get('/admin/orders');
     return response.data;
   },
-  updateOrderStatus: async (id, status) => {
-    const response = await api.put(`/admin/orders/${id}/status`, { status });
+  updateOrderStatus: async (id, payload) => {
+    const body = typeof payload === 'string' ? { status: payload } : payload;
+    const response = await api.put(`/admin/orders/${id}/status`, body);
     return response.data;
   },
 
@@ -118,12 +119,56 @@ export const adminService = {
     const response = await api.put(`/super-admin/staff/${id}/status`, { isActive });
     return response.data;
   },
+  updateStaffRole: async (id, role) => {
+    const response = await api.put(`/super-admin/staff/${id}/role`, { role });
+    return response.data;
+  },
   deleteStaff: async (id) => {
     const response = await api.delete(`/super-admin/staff/${id}`);
     return response.data;
   },
   getAuditLogs: async (params) => {
     const response = await api.get('/super-admin/audit-logs', { params });
+    return response.data;
+  },
+
+  // ---- Employee HR & Payroll Directory ----
+  getEmployees: async (params) => {
+    const response = await api.get('/super-admin/employees', { params });
+    return response.data;
+  },
+  createEmployee: async (data) => {
+    const response = await api.post('/super-admin/employees', data);
+    return response.data;
+  },
+  updateEmployee: async (id, data) => {
+    const response = await api.put(`/super-admin/employees/${id}`, data);
+    return response.data;
+  },
+  updateEmployeeStatus: async (id, status) => {
+    const response = await api.put(`/super-admin/employees/${id}/status`, { status });
+    return response.data;
+  },
+  deleteEmployee: async (id) => {
+    const response = await api.delete(`/super-admin/employees/${id}`);
+    return response.data;
+  },
+
+  // ---- Dynamic Admin Roles & Privileges (RBAC) ----
+  getRoles: async () => {
+    const response = await api.get('/super-admin/roles');
+    return response.data;
+  },
+  createRole: async (data) => {
+    const response = await api.post('/super-admin/roles', data);
+    return response.data;
+  },
+  updateRole: async (id, data) => {
+    const response = await api.put(`/super-admin/roles/${id}`, data);
+    return response.data;
+  },
+  deleteRole: async (id) => {
+    const response = await api.delete(`/super-admin/roles/${id}`);
     return response.data;
   }
 };

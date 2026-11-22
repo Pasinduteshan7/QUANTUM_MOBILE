@@ -37,7 +37,7 @@ export default function PosTerminal({ products = [], repairs = [], onSaleComplet
   // Thermal Receipt Modal
   const [completedSale, setCompletedSale] = useState(null);
 
-  // Filter products
+  // Filter products (Organized in price descending order)
   const categories = ['All', 'Phones', 'Accessories', 'Chargers', 'Audio', 'Protection'];
   const filteredProducts = products.filter(p => {
     const matchesCat = selectedCategory === 'All' || (p.category || '').toLowerCase() === selectedCategory.toLowerCase();
@@ -45,7 +45,7 @@ export default function PosTerminal({ products = [], repairs = [], onSaleComplet
       p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (p.brand || '').toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCat && matchesSearch;
-  });
+  }).sort((a, b) => (Number(b.price) || 0) - (Number(a.price) || 0));
 
   // Ready repairs that can be collected at the counter
   const readyRepairs = repairs.filter(r => ['Ready', 'Quality Tested'].includes(r.status));
