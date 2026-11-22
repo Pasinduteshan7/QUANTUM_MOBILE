@@ -6,7 +6,7 @@ const CartContext = createContext(undefined);
 const API_BASE = 'http://localhost:5000/api';
 
 export const CartProvider = ({ children }) => {
-    const { token, openAuthModal } = useAuth();
+    const { token, user, openAuthModal } = useAuth();
     const [cartItems, setCartItems] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedIds, setSelectedIds] = useState([]);
@@ -55,7 +55,9 @@ export const CartProvider = ({ children }) => {
 
     const addToCart = async (product) => {
         const activeToken = token || (typeof window !== 'undefined' ? localStorage.getItem('quantum_token') : null);
-        if (!activeToken) {
+        const storedUser = user || (typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('quantum_user') || 'null') : null);
+
+        if (!activeToken || !storedUser || !activeToken.startsWith('ey')) {
             toast('Please sign in or create an account to add items to your cart.', {
                 icon: '🔒',
                 duration: 3500
@@ -76,13 +78,13 @@ export const CartProvider = ({ children }) => {
                 },
                 body: JSON.stringify({
                     productId: product.productId || product.id || 'p1',
-                    customName: product.name,
-                    customPrice: product.price || product.unitPrice,
-                    customImage: product.image,
-                    quantity: 1,
+                    customName: product.name || 'Device',
+                    customPrice: product.price !== undefined ? product.price : (product.unitPrice || 0),
+                    customImage: product.image || product.mainImage || '/hero_iphone18.jpg',
+                    quantity: product.quantity || 1,
                     selectedFinish: {
                         name: product.finishName || product.specs || 'Standard',
-                        image: product.image
+                        image: product.image || product.mainImage || '/hero_iphone18.jpg'
                     }
                 })
             });

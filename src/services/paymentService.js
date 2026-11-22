@@ -29,6 +29,18 @@ export const paymentService = {
   getConfig: async () => {
     const response = await api.get('/payments/config');
     return response.data;
+  },
+
+  /**
+   * Generates MD5 hash signature for PayHere Sri Lanka Sandbox
+   */
+  getPayHereHash: async (orderId, amount, currency = 'LKR') => {
+    const response = await api.post('/payments/payhere/hash', {
+      orderId,
+      amount,
+      currency
+    });
+    return response.data;
   }
 };
 

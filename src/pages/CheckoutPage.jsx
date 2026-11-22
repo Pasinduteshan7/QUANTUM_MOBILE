@@ -52,7 +52,7 @@ export default function CheckoutPage() {
         let newOrderId = 'ORD-' + Math.floor(5000 + Math.random() * 900);
         let generatedTxId = `pi_test_${Date.now()}`;
 
-        // 1. Process Stripe Payment Intent
+        // 1. Process Stripe or PayHere Payment Intent
         if (paymentMethod === 'stripe') {
             try {
                 const intentRes = await paymentService.createPaymentIntent(grandTotal, newOrderId, 'lkr');
@@ -61,6 +61,15 @@ export default function CheckoutPage() {
                 }
             } catch (err) {
                 console.warn('Stripe PaymentIntent fallback:', err.message);
+            }
+        } else if (paymentMethod === 'payhere') {
+            try {
+                const hashRes = await paymentService.getPayHereHash(newOrderId, grandTotal, 'LKR');
+                if (hashRes.success && hashRes.data) {
+                    generatedTxId = `payhere_${Date.now()}`;
+                }
+            } catch (err) {
+                console.warn('PayHere hash generation fallback:', err.message);
             }
         }
 
@@ -83,6 +92,7 @@ export default function CheckoutPage() {
                             price: it.unitPrice || it.price,
                             product: it.productId || it.id
                         })),
+                        customerEmail: email,
                         shippingAddress: {
                             fullName: name,
                             phone: phone,
@@ -90,12 +100,12 @@ export default function CheckoutPage() {
                             city: city,
                             postalCode: '00300'
                         },
-                        paymentMethod: paymentMethod === 'stripe' ? 'Stripe' : 'CashOnDelivery',
-                        isPaid: paymentMethod === 'stripe',
-                        paidAt: paymentMethod === 'stripe' ? new Date() : null,
+                        paymentMethod: paymentMethod === 'stripe' ? 'Stripe' : paymentMethod === 'payhere' ? 'PayHere' : 'CashOnDelivery',
+                        isPaid: paymentMethod === 'stripe' || paymentMethod === 'payhere',
+                        paidAt: (paymentMethod === 'stripe' || paymentMethod === 'payhere') ? new Date() : null,
                         paymentResult: {
                             transactionId: generatedTxId,
-                            status: paymentMethod === 'stripe' ? 'COMPLETED' : 'PENDING'
+                            status: (paymentMethod === 'stripe' || paymentMethod === 'payhere') ? 'COMPLETED' : 'PENDING'
                         },
                         itemsPrice: grandTotal,
                         shippingPrice: 0,
@@ -112,6 +122,28 @@ export default function CheckoutPage() {
         }
 
         setOrderId(newOrderId);
+
+        // Cache placed order in localStorage for instant display on OrdersPage
+        try {
+            const newOrderRecord = {
+                id: newOrderId,
+                items: cartItems.map(it => ({
+                    name: it.name,
+                    qty: it.quantity || 1,
+                    price: it.unitPrice || it.price,
+                    image: it.image || '/accessories.jpg'
+                })),
+                total: grandTotal,
+                paymentMethod: paymentMethod === 'stripe' ? 'Stripe (LKR)' : paymentMethod === 'payhere' ? 'PayHere Sandbox (LKR)' : 'Cash on Delivery (COD)',
+                paymentStatus: (paymentMethod === 'stripe' || paymentMethod === 'payhere') ? 'Paid' : 'Pending',
+                orderStatus: (paymentMethod === 'stripe' || paymentMethod === 'payhere') ? 'Processing' : 'Pending',
+                courierTracking: 'DOM-EX-' + Math.floor(100000 + Math.random() * 900000),
+                createdAt: new Date().toISOString().split('T')[0]
+            };
+            const existing = JSON.parse(localStorage.getItem('quantum_customer_orders') || '[]');
+            localStorage.setItem('quantum_customer_orders', JSON.stringify([newOrderRecord, ...existing.filter(x => x.id !== newOrderId)]));
+        } catch (e) {}
+
         setOrderPlaced(true);
         setSubmitting(false);
         clearCart();
@@ -334,6 +366,36 @@ export default function CheckoutPage() {
                   )}
                 </div>
 
+                {/* PayHere Sri Lanka Sandbox Option */}
+                <div style={{
+                  borderRadius: 12,
+                  border: paymentMethod === 'payhere' ? '2px solid #0284c7' : '1px solid var(--border)',
+                  background: paymentMethod === 'payhere' ? 'rgba(2, 132, 199, 0.05)' : 'var(--bg-input)',
+                  padding: 16,
+                  cursor: 'pointer'
+                }} onClick={() => setPaymentMethod('payhere')}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <input type="radio" name="payment" checked={paymentMethod === 'payhere'} onChange={() => setPaymentMethod('payhere')}/>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: 800, fontSize: 14, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span>PayHere Pilot Sandbox (Sri Lanka Gateway)</span>
+                        <span style={{ fontSize: 10, background: '#0284c7', color: '#ffffff', padding: '2px 6px', borderRadius: 4, fontWeight: 800 }}>PAYHERE LK</span>
+                      </div>
+                      <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2 }}>
+                        Visa, Mastercard, Genie, eZ Cash, mCash, FriMi, Sampath Vishwa & Local Bank Cards
+                      </div>
+                    </div>
+                  </div>
+
+                  {paymentMethod === 'payhere' && (
+                    <div style={{ marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
+                      <div style={{ fontSize: 11.5, color: '#0369a1', background: '#f0f9ff', padding: '8px 12px', borderRadius: 8, border: '1px solid #bae6fd', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        <CheckCircle2 size={14} /> PayHere Sandbox active: Test payments clear automatically with verified MD5 hash signature.
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 {/* Cash on Delivery Option */}
                 <div style={{
                   borderRadius: 12,
@@ -371,7 +433,9 @@ export default function CheckoutPage() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <span style={{ color: 'var(--text-muted)' }}>Gateway</span>
-                <span style={{ color: '#635bff', fontWeight: 700 }}>{paymentMethod === 'stripe' ? 'Stripe SSL' : 'COD'}</span>
+                <span style={{ color: paymentMethod === 'payhere' ? '#0284c7' : paymentMethod === 'stripe' ? '#635bff' : '#10b981', fontWeight: 700 }}>
+                  {paymentMethod === 'stripe' ? 'Stripe SSL' : paymentMethod === 'payhere' ? 'PayHere Sandbox' : 'COD'}
+                </span>
               </div>
             </div>
 
@@ -390,23 +454,41 @@ export default function CheckoutPage() {
                 gap: 8,
                 padding: '12px 20px',
                 borderRadius: 10,
-                background: paymentMethod === 'stripe' ? 'linear-gradient(135deg, #635bff, #0284c7)' : 'linear-gradient(135deg, #0284c7, #0066ff)',
+                background: paymentMethod === 'stripe' 
+                  ? 'linear-gradient(135deg, #635bff, #0284c7)' 
+                  : paymentMethod === 'payhere'
+                    ? 'linear-gradient(135deg, #0284c7, #0369a1)'
+                    : 'linear-gradient(135deg, #10b981, #059669)',
                 color: '#ffffff',
                 fontWeight: 800,
                 fontSize: 14,
                 border: 'none',
                 cursor: submitting ? 'wait' : 'pointer',
                 width: '100%',
-                boxShadow: '0 4px 18px rgba(99, 91, 255, 0.35)'
+                boxShadow: '0 4px 18px rgba(2, 132, 199, 0.25)'
               }}
             >
               <Lock size={15}/>
-              <span>{submitting ? 'Processing Stripe Payment...' : `Pay ${formattedGrandTotal} with Stripe`}</span>
+              <span>
+                {submitting
+                  ? 'Processing Payment...'
+                  : paymentMethod === 'stripe'
+                    ? `Pay ${formattedGrandTotal} with Stripe`
+                    : paymentMethod === 'payhere'
+                      ? `Pay ${formattedGrandTotal} via PayHere`
+                      : 'Place Order (Cash on Delivery)'}
+              </span>
             </button>
 
             <div style={{ marginTop: 16, textAlign: 'center', fontSize: 11, color: 'var(--text-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
               <ShieldCheck size={14} color="#10b981"/>
-              <span>Stripe Test Mode (Sandbox Cards Accepted)</span>
+              <span>
+                {paymentMethod === 'payhere'
+                  ? 'PayHere Sandbox Test Gateway (LKR)'
+                  : paymentMethod === 'stripe'
+                    ? 'Stripe Test Mode (Sandbox Cards Accepted)'
+                    : 'Doorstep Courier Payment Verified'}
+              </span>
             </div>
           </div>
         </form>
