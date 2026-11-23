@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Smartphone, Lock, Mail, User, Phone, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Smartphone, Lock, Mail, User, Phone, CheckCircle2, ArrowRight, UserPlus, ShoppingBag, ShieldCheck, Crown, Zap } from 'lucide-react';
 import toast from 'react-hot-toast';
+import SocialLoginButtons from '../components/SocialLoginButtons';
 
 export default function CustomerLoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, login, register, forgotPassword } = useAuth();
+  const { user, isAdmin, login, register, forgotPassword, logout } = useAuth();
 
   const [mode, setMode] = useState('login'); // 'login' | 'register' | 'forgot'
   const [submitting, setSubmitting] = useState(false);
@@ -25,11 +26,161 @@ export default function CustomerLoginPage() {
   const [regEmail, setRegEmail] = useState('');
   const [regPhone, setRegPhone] = useState('');
   const [regPassword, setRegPassword] = useState('');
+  const [showAuthFormAnyway, setShowAuthFormAnyway] = useState(false);
 
-  // If already logged in, redirect
-  if (user) {
-    navigate('/');
-    return null;
+  // If already logged in, show session state with one-click Switch to Guest Mode or Customer Login
+  if (user && !showAuthFormAnyway) {
+    return (
+      <div
+        style={{
+          minHeight: 'calc(100vh - 120px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '40px 16px',
+          background: 'radial-gradient(ellipse at top, #f8fafc 0%, #f1f5f9 100%)'
+        }}
+      >
+        <div
+          style={{
+            width: '100%',
+            maxWidth: 460,
+            background: '#ffffff',
+            borderRadius: 24,
+            boxShadow: '0 20px 48px rgba(15, 23, 42, 0.08)',
+            border: '1px solid #e2e8f0',
+            padding: '36px 32px',
+            textAlign: 'center'
+          }}
+        >
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 18,
+              background: isAdmin ? '#f3e8ff' : '#e0f2fe',
+              color: isAdmin ? '#7c3aed' : '#0284c7',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px'
+            }}
+          >
+            <User size={28} />
+          </div>
+
+          <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0f172a', margin: '0 0 6px', fontFamily: 'Outfit, sans-serif' }}>
+            Currently Signed In
+          </h2>
+          <p style={{ fontSize: 13.5, color: '#64748b', margin: '0 0 20px', lineHeight: 1.5 }}>
+            You are active as <strong style={{ color: '#0f172a' }}>{user.name}</strong> ({user.email}) with <strong>{isAdmin ? 'Staff / Admin privileges' : 'a Customer account'}</strong>.
+          </p>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {/* Direct switch to Customer Login form */}
+            <button
+              type="button"
+              onClick={() => {
+                logout();
+                setShowAuthFormAnyway(true);
+                toast('Customer sign-in form ready. Enter customer credentials.', { icon: '👤' });
+              }}
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: 12,
+                background: '#0284c7',
+                color: '#ffffff',
+                fontSize: 13.5,
+                fontWeight: 700,
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                boxShadow: '0 4px 14px rgba(2, 132, 199, 0.25)'
+              }}
+            >
+              <UserPlus size={16} />
+              <span>Sign In with a Customer Account</span>
+            </button>
+
+            {/* Direct switch to Guest Storefront */}
+            <button
+              type="button"
+              onClick={() => {
+                logout();
+                toast.success('Browsing storefront as Guest Shopper.');
+                navigate('/');
+              }}
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: 12,
+                background: '#ecfdf5',
+                border: '1.5px solid #a7f3d0',
+                color: '#047857',
+                fontSize: 13.5,
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8
+              }}
+            >
+              <ShoppingBag size={16} color="#059669" />
+              <span>Browse Storefront as Guest</span>
+            </button>
+
+            {isAdmin && (
+              <Link
+                to="/admin"
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  borderRadius: 12,
+                  background: '#f3e8ff',
+                  color: '#7c3aed',
+                  fontSize: 13.5,
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  textAlign: 'center'
+                }}
+              >
+                Go to Staff Admin Dashboard →
+              </Link>
+            )}
+
+            <button
+              type="button"
+              onClick={() => {
+                logout();
+                toast.success('Signed out. Session cleared.');
+              }}
+              style={{
+                width: '100%',
+                padding: '11px',
+                borderRadius: 12,
+                background: '#ffffff',
+                border: '1px solid #fee2e2',
+                color: '#dc2626',
+                fontSize: 13,
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 6
+              }}
+            >
+              <span>🚪 Sign Out Completely</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const handleLogin = async (e) => {
@@ -87,12 +238,6 @@ export default function CustomerLoginPage() {
     } finally {
       setSubmitting(false);
     }
-  };
-
-  const fillDemoCustomer = () => {
-    setLoginEmail('kasun@gmail.com');
-    setLoginPassword('password123');
-    setErrorMsg('');
   };
 
   return (
@@ -211,7 +356,8 @@ export default function CustomerLoginPage() {
           )}
 
           {mode === 'login' ? (
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <div>
+              <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div>
                 <label style={{ display: 'block', fontSize: 13, fontWeight: 700, color: '#334155', marginBottom: 6 }}>
                   Email Address
@@ -305,24 +451,8 @@ export default function CustomerLoginPage() {
                 <span>{submitting ? 'Signing In...' : 'Sign In to Account'}</span>
                 <ArrowRight size={16} />
               </button>
-
-              <button
-                type="button"
-                onClick={fillDemoCustomer}
-                style={{
-                  background: '#f8fafc',
-                  border: '1px dashed #cbd5e1',
-                  borderRadius: 10,
-                  padding: '9px',
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: '#475569',
-                  cursor: 'pointer'
-                }}
-              >
-                ⚡ Fill Demo Customer (kasun@gmail.com)
-              </button>
             </form>
+            </div>
           ) : mode === 'register' ? (
             <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
@@ -568,6 +698,16 @@ export default function CustomerLoginPage() {
                 </form>
               )}
             </div>
+          )}
+
+          {mode !== 'forgot' && (
+            <SocialLoginButtons
+              onSuccess={(authUser) => {
+                const from = location.state?.from || '/';
+                navigate(from, { replace: true });
+              }}
+              onError={(err) => setErrorMsg(err)}
+            />
           )}
 
           <div style={{ marginTop: 24, textAlign: 'center' }}>

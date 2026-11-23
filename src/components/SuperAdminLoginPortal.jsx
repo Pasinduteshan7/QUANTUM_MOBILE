@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Crown, Lock, Mail, ArrowRight, AlertTriangle, ArrowLeft, ShieldAlert } from 'lucide-react';
+import { Crown, Lock, Mail, ArrowRight, AlertTriangle, ArrowLeft, ShieldAlert, Zap, ShieldCheck } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function SuperAdminLoginPortal() {
   const { login, logout } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const executeLogin = async (targetEmail, targetPassword) => {
     setErrorMsg('');
     setSubmitting(true);
 
     try {
-      const authUser = await login(email, password);
+      const authUser = await login(targetEmail, targetPassword);
       const role = String(authUser.role || '').toLowerCase();
       if (role !== 'super_admin' && role !== 'role_super_admin') {
         logout();
@@ -32,16 +32,24 @@ export default function SuperAdminLoginPortal() {
     }
   };
 
-  const fillDemoOwner = () => {
-    setEmail('owner@quick.lk');
-    setPassword('password123');
-    setErrorMsg('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await executeLogin(email, password);
+  };
+
+  const handleFastLogin = async (targetEmail, targetPassword, label) => {
+    setEmail(targetEmail);
+    setPassword(targetPassword);
+    toast.loading(`Authenticating as ${label}...`, { id: 'fast-super-login', duration: 1200 });
+    await executeLogin(targetEmail, targetPassword);
+    toast.dismiss('fast-super-login');
   };
 
   return (
     <div
       style={{
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: '100%',
+        flex: 1,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -140,6 +148,82 @@ export default function SuperAdminLoginPortal() {
             </div>
           )}
 
+          {/* ⚡ 1-Click Super Admin Fast Pass */}
+          <div
+            style={{
+              marginBottom: 22,
+              padding: '14px 16px',
+              borderRadius: 16,
+              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(30, 20, 60, 0.8) 100%)',
+              border: '1px solid rgba(192, 132, 252, 0.4)',
+              boxShadow: '0 4px 16px rgba(124, 58, 237, 0.2)'
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: 10
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5, fontWeight: 800, color: '#d8b4fe' }}>
+                <Zap size={14} color="#fde047" />
+                <span>EXECUTIVE FAST PASS (ZERO PASSWORDS)</span>
+              </div>
+              <span style={{ fontSize: 10, color: '#a78bfa', fontWeight: 600 }}>1-Click Auth</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => handleFastLogin('owner@quick.lk', 'password123', 'Platform Owner (Super Admin)')}
+              disabled={submitting}
+              style={{
+                width: '100%',
+                padding: '12px 14px',
+                borderRadius: 12,
+                background: 'linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)',
+                border: '1px solid rgba(251, 191, 36, 0.5)',
+                color: '#ffffff',
+                fontSize: 13,
+                fontWeight: 800,
+                cursor: submitting ? 'wait' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                boxShadow: '0 4px 16px rgba(124, 58, 237, 0.45)',
+                transition: 'transform 0.1s ease'
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
+            >
+              <Crown size={17} color="#fde047" />
+              <span>👑 Unlock as Platform Owner (owner@quick.lk)</span>
+            </button>
+
+            <div style={{ fontSize: 10.5, color: '#c4b5fd', marginTop: 8, textAlign: 'center' }}>
+              💡 Click above to unlock Executive Console instantly without typing passwords.
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              margin: '16px 0 16px',
+              color: '#9333ea',
+              fontSize: 11,
+              fontWeight: 700
+            }}
+          >
+            <div style={{ flex: 1, height: 1, background: '#4c1d95' }} />
+            <span style={{ padding: '0 10px', textTransform: 'uppercase', letterSpacing: '0.8px', color: '#a78bfa' }}>
+              or enter passkey manually
+            </span>
+            <div style={{ flex: 1, height: 1, background: '#4c1d95' }} />
+          </div>
+
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div>
               <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#e9d5ff', marginBottom: 6 }}>
@@ -222,25 +306,6 @@ export default function SuperAdminLoginPortal() {
             >
               <span>{submitting ? 'Authorizing Command...' : 'Unlock Executive Console'}</span>
               <ArrowRight size={16} />
-            </button>
-
-            {/* Quick Demo Owner Helper */}
-            <button
-              type="button"
-              onClick={fillDemoOwner}
-              style={{
-                background: 'rgba(124, 58, 237, 0.12)',
-                border: '1px dashed rgba(168, 85, 247, 0.4)',
-                borderRadius: 10,
-                padding: '10px',
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#d8b4fe',
-                cursor: 'pointer',
-                textAlign: 'center'
-              }}
-            >
-              ⚡ Fill Demo Platform Owner (owner@quick.lk)
             </button>
           </form>
 

@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, Lock, Mail, ArrowRight, AlertTriangle, ArrowLeft } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, ArrowRight, AlertTriangle, ArrowLeft, Zap, Crown } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export default function AdminLoginPortal() {
-  const { login, logout } = useAuth();
+  const { user, isAdmin, login, logout } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const executeLogin = async (targetEmail, targetPassword) => {
     setErrorMsg('');
     setSubmitting(true);
 
     try {
-      const authUser = await login(email, password);
+      const authUser = await login(targetEmail, targetPassword);
       const role = String(authUser.role || '').toLowerCase();
-      if (role !== 'admin' && role !== 'super_admin' && role !== 'role_admin' && role !== 'role_super_admin') {
+      const isAllowedAdmin = [
+        'admin',
+        'super_admin',
+        'store_admin',
+        'tech_admin',
+        'cashier_admin',
+        'logistics_admin',
+        'technician'
+      ].includes(role) || role.includes('admin');
+
+      if (!isAllowedAdmin) {
         logout();
         setErrorMsg('Access Denied: This portal is strictly for Quantum Mobile Store Administrators. Customer accounts cannot enter operations.');
         return;
@@ -32,16 +42,24 @@ export default function AdminLoginPortal() {
     }
   };
 
-  const fillDemoAdmin = () => {
-    setEmail('admin@quick.lk');
-    setPassword('password123');
-    setErrorMsg('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await executeLogin(email, password);
+  };
+
+  const handleFastLogin = async (targetEmail, targetPassword, roleLabel) => {
+    setEmail(targetEmail);
+    setPassword(targetPassword);
+    toast.loading(`Authenticating as ${roleLabel}...`, { id: 'fast-login', duration: 1200 });
+    await executeLogin(targetEmail, targetPassword);
+    toast.dismiss('fast-login');
   };
 
   return (
     <div
       style={{
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: '100%',
+        flex: 1,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -117,6 +135,23 @@ export default function AdminLoginPortal() {
 
         {/* Form Body */}
         <div style={{ padding: '28px' }}>
+          {user && !isAdmin && (
+            <div
+              style={{
+                padding: '10px 14px',
+                borderRadius: 12,
+                background: 'rgba(56, 189, 248, 0.1)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                color: '#bae6fd',
+                fontSize: 12,
+                lineHeight: 1.4,
+                marginBottom: 16
+              }}
+            >
+              ℹ️ You are currently active as customer <strong>{user.name}</strong> ({user.email}). Sign in below with an Administrator account to access operations.
+            </div>
+          )}
+
           {errorMsg && (
             <div
               style={{
@@ -138,6 +173,111 @@ export default function AdminLoginPortal() {
               <span>{errorMsg}</span>
             </div>
           )}
+
+          {/* ⚡ 1-Click Instant Fast Pass (Zero Password Typing) */}
+          <div
+            style={{
+              marginBottom: 22,
+              padding: '14px 16px',
+              borderRadius: 16,
+              background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(30, 41, 59, 0.8) 100%)',
+              border: '1px solid rgba(56, 189, 248, 0.35)',
+              boxShadow: '0 4px 14px rgba(2, 132, 199, 0.15)'
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: 10
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11.5, fontWeight: 800, color: '#38bdf8' }}>
+                <Zap size={14} color="#38bdf8" />
+                <span>ONE-CLICK FAST PASS (DEV & OPS)</span>
+              </div>
+              <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>Zero typing needed</span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+              {/* Store Admin 1-Click Button */}
+              <button
+                type="button"
+                onClick={() => handleFastLogin('admin@quick.lk', 'password123', 'Store Manager (Admin)')}
+                disabled={submitting}
+                style={{
+                  padding: '10px 12px',
+                  borderRadius: 10,
+                  background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
+                  border: '1px solid rgba(56, 189, 248, 0.5)',
+                  color: '#ffffff',
+                  fontSize: 12,
+                  fontWeight: 800,
+                  cursor: submitting ? 'wait' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 6,
+                  boxShadow: '0 2px 8px rgba(2, 132, 199, 0.35)',
+                  transition: 'transform 0.1s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
+              >
+                <ShieldCheck size={14} />
+                <span>Store Admin</span>
+              </button>
+
+              {/* Super Admin 1-Click Button */}
+              <button
+                type="button"
+                onClick={() => handleFastLogin('owner@quick.lk', 'password123', 'Platform Owner (Super Admin)')}
+                disabled={submitting}
+                style={{
+                  padding: '10px 12px',
+                  borderRadius: 10,
+                  background: 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+                  border: '1px solid rgba(192, 132, 252, 0.5)',
+                  color: '#ffffff',
+                  fontSize: 12,
+                  fontWeight: 800,
+                  cursor: submitting ? 'wait' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 6,
+                  boxShadow: '0 2px 8px rgba(124, 58, 237, 0.35)',
+                  transition: 'transform 0.1s ease'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-1px)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'none')}
+              >
+                <Crown size={14} color="#fde047" />
+                <span>Super Admin</span>
+              </button>
+            </div>
+            <div style={{ fontSize: 10.5, color: '#94a3b8', marginTop: 8, textAlign: 'center' }}>
+              💡 Click above to authenticate instantly with zero password typing.
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              margin: '16px 0 16px',
+              color: '#64748b',
+              fontSize: 11,
+              fontWeight: 700
+            }}
+          >
+            <div style={{ flex: 1, height: 1, background: '#334155' }} />
+            <span style={{ padding: '0 10px', textTransform: 'uppercase', letterSpacing: '0.8px' }}>
+              or enter credentials manually
+            </span>
+            <div style={{ flex: 1, height: 1, background: '#334155' }} />
+          </div>
 
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <div>
@@ -221,25 +361,6 @@ export default function AdminLoginPortal() {
             >
               <span>{submitting ? 'Verifying Credentials...' : 'Authenticate & Enter Portal'}</span>
               <ArrowRight size={16} />
-            </button>
-
-            {/* Quick Demo Admin Helper */}
-            <button
-              type="button"
-              onClick={fillDemoAdmin}
-              style={{
-                background: 'rgba(2, 132, 199, 0.08)',
-                border: '1px dashed rgba(56, 189, 248, 0.4)',
-                borderRadius: 10,
-                padding: '10px',
-                fontSize: 12,
-                fontWeight: 600,
-                color: '#38bdf8',
-                cursor: 'pointer',
-                textAlign: 'center'
-              }}
-            >
-              ⚡ Fill Demo Store Admin (admin@quick.lk)
             </button>
           </form>
 

@@ -3,6 +3,7 @@ import { X, Lock, Mail, User, Phone, Sparkles, CheckCircle2, ArrowRight } from '
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import toast from 'react-hot-toast';
+import SocialLoginButtons from './SocialLoginButtons';
 
 export default function CustomerAuthModal() {
   const { isAuthModalOpen, authModalReason, pendingCartItem, closeAuthModal, clearPendingCartItem, login, register, forgotPassword } = useAuth();
@@ -105,12 +106,6 @@ export default function CustomerAuthModal() {
     } finally {
       setSubmitting(false);
     }
-  };
-
-  const fillDemoCustomer = () => {
-    setLoginEmail('kasun@gmail.com');
-    setLoginPassword('password123');
-    setErrorMsg('');
   };
 
   return (
@@ -377,25 +372,6 @@ export default function CustomerAuthModal() {
                 <span>{submitting ? 'Authenticating...' : 'Sign In & Continue'}</span>
                 <ArrowRight size={15} />
               </button>
-
-              {/* Quick Fill Demo Helper */}
-              <button
-                type="button"
-                onClick={fillDemoCustomer}
-                style={{
-                  background: '#f8fafc',
-                  border: '1px dashed #cbd5e1',
-                  borderRadius: 8,
-                  padding: '8px',
-                  fontSize: 11,
-                  fontWeight: 600,
-                  color: '#475569',
-                  cursor: 'pointer',
-                  textAlign: 'center'
-                }}
-              >
-                ⚡ Fill Demo Customer (kasun@gmail.com)
-              </button>
             </form>
           ) : activeTab === 'register' ? (
             <form onSubmit={handleRegisterSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -641,6 +617,13 @@ export default function CustomerAuthModal() {
                 </form>
               )}
             </div>
+          )}
+
+          {activeTab !== 'forgot' && (
+            <SocialLoginButtons
+              onSuccess={handlePostAuthSuccess}
+              onError={(err) => setErrorMsg(err)}
+            />
           )}
         </div>
       </div>

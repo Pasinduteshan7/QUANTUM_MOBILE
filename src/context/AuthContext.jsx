@@ -85,12 +85,40 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Google Sign-In / OAuth 2.0
+    const googleLogin = async (payload) => {
+        try {
+            const res = await fetch('http://localhost:5000/api/auth/google', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (data.success && data.data?.token) {
+                setUser(data.data);
+                setToken(data.data.token);
+                localStorage.setItem('quantum_user', JSON.stringify(data.data));
+                localStorage.setItem('quantum_token', data.data.token);
+                return data.data;
+            } else {
+                throw new Error(data.message || 'Google sign-in failed.');
+            }
+        } catch (err) {
+            console.error('Google login error:', err);
+            throw err;
+        }
+    };
+
     const logout = () => {
         setUser(null);
         setToken(null);
         if (typeof window !== 'undefined') {
             localStorage.removeItem('quantum_user');
             localStorage.removeItem('quantum_token');
+            // Clean chat sessions so subsequent guests/users start with zero leftover history
+            localStorage.removeItem('quantum_chat_session');
+            sessionStorage.removeItem('quantum_guest_chat');
+            window.dispatchEvent(new CustomEvent('quantum-auth-logout'));
         }
     };
 
@@ -155,9 +183,34 @@ export const AuthProvider = ({ children }) => {
         setPendingCartItem(null);
     };
 
+    // Instant 1-Click Fast Login for Developers & Administrators (Zero password typing)
+    const quickLoginAs = async (targetRole) => {
+        let creds = { email: 'admin@quick.lk', password: 'password123' };
+        if (targetRole === 'super_admin' || targetRole === 'owner') {
+            creds = { email: 'owner@quick.lk', password: 'password123' };
+        } else if (targetRole === 'admin' || targetRole === 'store') {
+            creds = { email: 'admin@quick.lk', password: 'password123' };
+        } else if (targetRole === 'customer' || targetRole === 'kasun') {
+            creds = { email: 'kasun@gmail.com', password: 'password123' };
+        } else if (targetRole === 'pasindu') {
+            creds = { email: 'pasinduteshan007@gmail.com', password: 'password123' };
+        }
+        return await login(creds.email, creds.password);
+    };
+
     const roleStr = String(user?.role || '').toLowerCase();
     const isCustomer = roleStr === 'customer' || roleStr === 'role_customer';
-    const isAdmin = roleStr === 'admin' || roleStr === 'super_admin' || roleStr === 'role_admin' || roleStr === 'role_super_admin';
+    const isAdmin = [
+        'admin',
+        'super_admin',
+        'store_admin',
+        'tech_admin',
+        'cashier_admin',
+        'logistics_admin',
+        'role_admin',
+        'role_super_admin',
+        'technician'
+    ].includes(roleStr) || roleStr.includes('admin');
     const isSuperAdmin = roleStr === 'super_admin' || roleStr === 'role_super_admin';
 
     return (
@@ -170,6 +223,7 @@ export const AuthProvider = ({ children }) => {
             isSuperAdmin,
             loading,
             login,
+            googleLogin,
             register,
             logout,
             forgotPassword,
@@ -179,7 +233,8 @@ export const AuthProvider = ({ children }) => {
             pendingCartItem,
             openAuthModal,
             closeAuthModal,
-            clearPendingCartItem
+            clearPendingCartItem,
+            quickLoginAs
         }}>
             {children}
         </AuthContext.Provider>
@@ -198,6 +253,7 @@ export const useAuth = () => {
             isSuperAdmin: false,
             loading: false,
             login: async () => {},
+            quickLoginAs: async () => {},
             register: async () => {},
             logout: () => {},
             isAuthModalOpen: false,
